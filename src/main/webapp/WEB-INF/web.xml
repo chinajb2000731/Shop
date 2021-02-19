@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+           version="3.0">
+    <display-name>Shop</display-name>
+    <welcome-file-list>
+        <welcome-file>default.jsp</welcome-file>
+       <!-- <welcome-file>useraddress.jsp</welcome-file>-->
+    </welcome-file-list>
+
+    <servlet>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>com.toolers.shop.settings.web.control.UserController</servlet-class>
+     </servlet>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/settings/user/login.do</url-pattern>
+        <url-pattern>/settings/user/register.do</url-pattern>
+        <url-pattern>/settings/user/userinfo.do</url-pattern>
+        <url-pattern>/settings/user/userheadportrait.do</url-pattern>
+        <url-pattern>/settings/user/useraddress.do</url-pattern>
+        <url-pattern>/settings/user/finduseraddress.do</url-pattern>
+        <url-pattern>/settings/user/deleteuseraddress.do</url-pattern>
+        <url-pattern>/settings/user/updateuseraddress.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SellerController</servlet-name>
+        <servlet-class>com.toolers.shop.settings.web.control.SellerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SellerController</servlet-name>
+        <url-pattern>/settings/seller/register.do</url-pattern>
+        <url-pattern>/settings/seller/login.do</url-pattern>
+        <url-pattern>/settings/user/sellerinfo.do</url-pattern>
+        <url-pattern>/settings/seller/sellerheadportrait.do</url-pattern>
+        <url-pattern>/settings/seller/selleraddress.do</url-pattern>
+        <url-pattern>/settings/seller/findselleraddress.do</url-pattern>
+        <url-pattern>/settings/seller/deleteselleraddress.do</url-pattern>
+        <url-pattern>/settings/seller/updateselleraddress.do</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>com.toolers.shop.settings.web.control.ProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/settings/prouduct/index</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.toolers.shop.web.fiter.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+</web-app>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<mapper namespace="com.toolers.shop.settings.dao.UserDao">
+
+<select id="login" resultType="User">
+
+    select * from purchaser where loginAct=#{loginAct} and loginPwd=#{loginPwd}
+
+</select>
+
+    <select id="registerSelect" resultType="User">
+        select * from purchaser where loginAct=#{registerAct}
+</select>
+
+    <select id="register" resultType="user">
+    insert into purchaser(loginAct,loginPwd)values (#{registerAct},#{registerPwd})
+    </select>
+
+    <update id="userinfo">
+        update purchaser set name =#{name},sex=#{sex},rname=#{rname},phone=#{phone},identity=#{identity},email=#{email},QQnumber=#{QQnumber} where loginAct=#{loginAct}
+    </update>
+
+    <select id="selectuserinfo" resultType="User">
+        select * from purchaser where loginAct=#{loginAct}
+</select>
+
+    <update id="userheadportrait">
+        update purchaser set headportrait=#{headportrait} where loginAct=#{loginAct}
+    </update>
+
+    <select id="selectuserheadportrait" resultType="User">
+        select * from purchaser where loginAct=#{loginAct}
+</select>
+
+    <insert id="useraddress">
+       insert into useraddress(aid,loginAct,consignee,address,postcode,phone,flag)values (#{aid},#{loginAct},#{consignee},#{address},#{postcode},#{phone},0)
+   </insert>
+    <select id="getCount" resultType="int">
+        select count(*) from useraddress where loginAct=#{loginAct} and flag=0
+    </select>
+    <select id="finduseraddress" resultType="com.toolers.shop.settings.domain.UserAddress">
+        select * from useraddress where loginAct=#{loginAct} and flag=0 limit ${index},${currentCount}
+    </select>
+
+
+    <delete id="deleteuseraddress">
+        delete from useraddress where aid=#{aid}
+    </delete>
+
+    <update id="updateuseraddress">
+        update useraddress set consignee=#{consignee},address=#{address},postcode=#{postcode},phone=#{phone} where aid=#{aid}
+    </update>
+
+</mapper>
