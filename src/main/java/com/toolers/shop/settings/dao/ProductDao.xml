@@ -11,4 +11,15 @@
         select * from product where is_sale=1 limit 0,4
     </select>
 
+    <select id="findGroProductList" resultType="product">
+        select * from product where is_group=1 limit 0,4
+    </select>
+
+    <select id="findEssenceProductList" resultType="product">
+        select * from product where is_essence=1 limit 0,4
+    </select>
+
+    <select id="findFastProductList" resultType="product">
+        select * from product where is_fast=1 limit 0,4
+    </select>
 </mapper>

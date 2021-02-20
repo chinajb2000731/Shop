@@ -38,8 +38,14 @@ public class ProductController extends HttpServlet {
         //准备商品显示---list<product>
         List<Product> newProductList=us.findNewProductList();
         List<Product> saleProductList=us.findSaleProductList();
+        List<Product> grouProductList=us.findGrouProductList();
+        List<Product> essenceProductList=us.findEssenceProductList();
+        List<Product> fastProductList=us.findFastProductList();
         request.setAttribute("newProductList",newProductList);
         request.setAttribute("saleProductList",saleProductList);
+        request.setAttribute("grouProductList",grouProductList);
+        request.setAttribute("essenceroductList",essenceProductList);
+        request.setAttribute("fastProductList",fastProductList);
         try {
             request.getRequestDispatcher("/index.jsp").forward(request,response);
         } catch (ServletException e) {

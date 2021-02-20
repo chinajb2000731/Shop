@@ -8,4 +8,10 @@ public interface ProductDao {
     List<Product> findNewProductList();
 
     List<Product> findSaleProductList();
+
+    List<Product> findGroProductList();
+
+    List<Product> findEssenceProductList();
+
+    List<Product> findFastProductList();
 }

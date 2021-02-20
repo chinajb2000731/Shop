@@ -284,27 +284,6 @@
 									</div>
 								</li>
 							</c:forEach>
-							<%--<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_12.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_13.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_15.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>--%>
 						</ul>
 						<a class="sNext" href="javascript:void(0)"></a>
 					</div><!-- slideBox End -->
@@ -321,28 +300,6 @@
 									</div>
 								</li>
 							</c:forEach>
-
-							<%--<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_15.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_34.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_58.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>--%>
 						</ul>
 						<a class="sNext" href="javascript:void(0)"></a>
 					</div><!-- slideBox End -->
@@ -350,102 +307,46 @@
 					<div class="slideBoxs">
 						<a class="sPrev" href="javascript:void(0)"></a>
 						<ul>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_57.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_56.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_54.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_55.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
+							<c:forEach items="${grouProductList}" var="groupro">
+								<li>
+									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${groupro.pimage}" /></a></div>
+									<div class="title">
+										<a href="#" target="_blank" class="name">${groupro.pname}</a>
+										<h3><b>￥</b>${groupro.price}</h3>
+									</div>
+								</li>
+							</c:forEach>
 						</ul>
 						<a class="sNext" href="javascript:void(0)"></a>
 					</div><!-- slideBox End -->
                     	<div class="slideBoxs">
 						<a class="sPrev" href="javascript:void(0)"></a>
 						<ul>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_50.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_51.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_52.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_53.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
+							<c:forEach items="${essenceroductList}" var="essencepro">
+								<li>
+									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${essencepro.pimage}" /></a></div>
+									<div class="title">
+										<a href="#" target="_blank" class="name">${essencepro.pname}</a>
+										<h3><b>￥</b>${essencepro.price}</h3>
+									</div>
+								</li>
+							</c:forEach>
 						</ul>
 						<a class="sNext" href="javascript:void(0)"></a>
 					</div><!-- slideBox End -->
                     	<div class="slideBoxs">
 						<a class="sPrev" href="javascript:void(0)"></a>
 						<ul>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_15.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_17.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_16.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_19.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
+							<c:forEach items="${fastProductList}" var="fastpro">
+								<li>
+									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${fastpro.pimage}" /></a></div>
+									<div class="title">
+										<a href="#" target="_blank" class="name">${fastpro.pname}</a>
+										<h3><b>￥</b>${fastpro.price}</h3>
+									</div>
+								</li>
+							</c:forEach>
+
 						</ul>
 						<a class="sNext" href="javascript:void(0)"></a>
 					</div><!-- slideBox End -->

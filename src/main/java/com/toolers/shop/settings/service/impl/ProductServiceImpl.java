@@ -22,4 +22,22 @@ public class ProductServiceImpl implements ProductService {
         List<Product> saleProductList=productDao.findSaleProductList();
         return saleProductList;
     }
+
+    public List<Product> findGrouProductList() {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Product> groProductList=productDao.findGroProductList();
+        return groProductList;
+    }
+
+    public List<Product> findEssenceProductList() {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Product> essenceProductList=productDao.findEssenceProductList();
+        return essenceProductList;
+    }
+
+    public List<Product> findFastProductList() {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Product> fastProductList=productDao.findFastProductList();
+        return fastProductList;
+    }
 }

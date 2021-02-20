@@ -8,4 +8,10 @@ public interface ProductService {
     List<Product> findNewProductList();
 
     List<Product> findSaleProductList();
+
+    List<Product> findGrouProductList();
+
+    List<Product> findEssenceProductList();
+
+    List<Product> findFastProductList();
 }
