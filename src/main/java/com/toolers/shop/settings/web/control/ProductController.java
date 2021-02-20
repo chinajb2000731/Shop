@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.web.control;
 
+import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.service.ProductService;
 import com.toolers.shop.settings.service.impl.ProductServiceImpl;
@@ -41,11 +42,13 @@ public class ProductController extends HttpServlet {
         List<Product> grouProductList=us.findGrouProductList();
         List<Product> essenceProductList=us.findEssenceProductList();
         List<Product> fastProductList=us.findFastProductList();
+        List<Category> categoryList=us.findAllcategory();
         request.setAttribute("newProductList",newProductList);
         request.setAttribute("saleProductList",saleProductList);
         request.setAttribute("grouProductList",grouProductList);
         request.setAttribute("essenceroductList",essenceProductList);
         request.setAttribute("fastProductList",fastProductList);
+        request.setAttribute("categoryList",categoryList);
         try {
             request.getRequestDispatcher("/index.jsp").forward(request,response);
         } catch (ServletException e) {

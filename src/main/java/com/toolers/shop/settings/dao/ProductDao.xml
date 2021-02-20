@@ -22,4 +22,8 @@
     <select id="findFastProductList" resultType="product">
         select * from product where is_fast=1 limit 0,4
     </select>
+
+    <select id="findAllcategory" resultType="category">
+        select * from category
+    </select>
 </mapper>

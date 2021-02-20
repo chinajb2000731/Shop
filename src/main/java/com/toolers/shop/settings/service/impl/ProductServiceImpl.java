@@ -1,6 +1,7 @@
 package com.toolers.shop.settings.service.impl;
 
 import com.toolers.shop.settings.dao.ProductDao;
+import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.service.ProductService;
 import com.toolers.shop.untils.SqlSessionUtil;
@@ -39,5 +40,11 @@ public class ProductServiceImpl implements ProductService {
         ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
         List<Product> fastProductList=productDao.findFastProductList();
         return fastProductList;
+    }
+
+    public List<Category> findAllcategory() {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Category> categoryList=productDao.findAllcategory();
+        return categoryList;
     }
 }
