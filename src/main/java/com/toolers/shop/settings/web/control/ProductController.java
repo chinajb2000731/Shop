@@ -37,7 +37,9 @@ public class ProductController extends HttpServlet {
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
         //准备商品显示---list<product>
         List<Product> newProductList=us.findNewProductList();
+        List<Product> saleProductList=us.findSaleProductList();
         request.setAttribute("newProductList",newProductList);
+        request.setAttribute("saleProductList",saleProductList);
         try {
             request.getRequestDispatcher("/index.jsp").forward(request,response);
         } catch (ServletException e) {

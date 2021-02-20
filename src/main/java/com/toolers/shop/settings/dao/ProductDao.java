@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductDao {
     List<Product> findNewProductList();
+
+    List<Product> findSaleProductList();
 }

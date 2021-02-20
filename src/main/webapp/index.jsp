@@ -312,14 +312,17 @@
 					<div class="slideBoxs">
 						<a class="sPrev" href="javascript:void(0)"></a>
 						<ul>
-							<li>
-								<div class="pic"><a href="#" target="_blank"><img src="products/p_15.jpg" /></a></div>
-								<div class="title">
-                                <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
-                                <h3><b>￥</b>23.00</h3>
-                                </div>
-							</li>
-							<li>
+							<c:forEach items="${saleProductList}" var="salepro">
+								<li>
+									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${salepro.pimage}" /></a></div>
+									<div class="title">
+										<a href="#" target="_blank" class="name">${salepro.pname}</a>
+										<h3><b>￥</b>${salepro.price}</h3>
+									</div>
+								</li>
+							</c:forEach>
+
+							<%--<li>
 								<div class="pic"><a href="#" target="_blank"><img src="products/p_15.jpg" /></a></div>
 								<div class="title">
                                 <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
@@ -339,7 +342,7 @@
                                 <a href="#" target="_blank" class="name">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a>
                                 <h3><b>￥</b>23.00</h3>
                                 </div>
-							</li>
+							</li>--%>
 						</ul>
 						<a class="sNext" href="javascript:void(0)"></a>
 					</div><!-- slideBox End -->
