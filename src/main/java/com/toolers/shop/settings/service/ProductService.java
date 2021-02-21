@@ -17,4 +17,6 @@ public interface ProductService {
     List<Product> findFastProductList();
 
     List<Category> findAllcategory();
+
+    Product findProductByPid(String pid);
 }

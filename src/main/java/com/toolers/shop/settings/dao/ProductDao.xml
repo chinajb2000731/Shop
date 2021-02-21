@@ -26,4 +26,8 @@
     <select id="findAllcategory" resultType="category">
         select * from category
     </select>
+
+    <select id="findProductByPid" resultType="product">
+        select * from product where  pid=#{pid}
+    </select>
 </mapper>

@@ -21,7 +21,13 @@ public class Product {
  private  String pimage;
  private  String pdesc;
  private  String is_new;
+ private  String is_sale;
+ private  String is_group;
+ private  String is_essence;
+ private  String is_fast;
+ private  String inventory;
  private  Category category;
+
 
     public String getPid() {
         return pid;
@@ -101,5 +107,45 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getIs_sale() {
+        return is_sale;
+    }
+
+    public void setIs_sale(String is_sale) {
+        this.is_sale = is_sale;
+    }
+
+    public String getIs_group() {
+        return is_group;
+    }
+
+    public void setIs_group(String is_group) {
+        this.is_group = is_group;
+    }
+
+    public String getIs_essence() {
+        return is_essence;
+    }
+
+    public void setIs_essence(String is_essence) {
+        this.is_essence = is_essence;
+    }
+
+    public String getIs_fast() {
+        return is_fast;
+    }
+
+    public void setIs_fast(String is_fast) {
+        this.is_fast = is_fast;
+    }
+
+    public String getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(String inventory) {
+        this.inventory = inventory;
     }
 }

@@ -47,4 +47,10 @@ public class ProductServiceImpl implements ProductService {
         List<Category> categoryList=productDao.findAllcategory();
         return categoryList;
     }
+
+    public Product findProductByPid(String pid) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        Product product=productDao.findProductByPid(pid);
+        return product;
+    }
 }

@@ -25,13 +25,31 @@ public class ProductController extends HttpServlet {
             index(request,response);
         }
 
+      else if("/settings/product/productinfo.do".equals(path))
+        {
+            productinfo(request,response);
+        }
 
 
 
 
 
 
+    }
 
+    private void productinfo(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        //获得商品PID
+        String pid=request.getParameter("pid");
+        Product product= us.findProductByPid(pid);
+       request.setAttribute("product",product);
+        try {
+            request.getRequestDispatcher("/product_info.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void index(HttpServletRequest request, HttpServletResponse response) {

@@ -124,9 +124,9 @@
 				<ul>
 					<li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat; background-position:center; width:100%; height:450px;"></div></a></li>
 					<li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat; background-position:center ; width:100%; height:450px;"></div></a></li>
-					<li><a href="#" target="_blank"><div style="background:url(AD/ad-3.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
-                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-7.jpg) no-repeat #f7ddea; background-position:center; width:100%; height:450px;"></div></a></li>
-                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-6.jpg) no-repeat  #F60; background-position:center; width:100%; height:450px;"></div></a></li>
+					<li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
+                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat #f7ddea; background-position:center; width:100%; height:450px;"></div></a></li>
+                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat  #F60; background-position:center; width:100%; height:450px;"></div></a></li>
 				</ul>
 			</div>
 			<!-- 下面是前/后按钮-->
@@ -224,9 +224,9 @@
 
 							<c:forEach items="${newProductList}" var="newpro">
 								<li>
-									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${newpro.pimage}"/></a></div>
+									<div class="pic"><a href="settings/product/productinfo.do?pid=${newpro.pid}" ><img src="${pageContext.request.contextPath}/${newpro.pimage}"/></a></div>
 									<div class="title">
-										<a href="#" target="_blank" class="name">${newpro.pname}</a>
+										<a href="settings/product/productinfo.do?pid=${newpro.pid}" class="name">${newpro.pname}</a>
 										<h3><b>￥</b>${newpro.price}</h3>
 									</div>
 								</li>
@@ -240,9 +240,9 @@
 						<ul>
 							<c:forEach items="${saleProductList}" var="salepro">
 								<li>
-									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${salepro.pimage}" /></a></div>
+									<div class="pic"><a href="settings/product/productinfo.do?pid=${salepro.pid}" ><img src="${pageContext.request.contextPath}/${salepro.pimage}" /></a></div>
 									<div class="title">
-										<a href="#" target="_blank" class="name">${salepro.pname}</a>
+										<a href="settings/product/productinfo.do?pid=${salepro.pid}"  class="name">${salepro.pname}</a>
 										<h3><b>￥</b>${salepro.price}</h3>
 									</div>
 								</li>
@@ -256,9 +256,9 @@
 						<ul>
 							<c:forEach items="${grouProductList}" var="groupro">
 								<li>
-									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${groupro.pimage}" /></a></div>
+									<div class="pic"><a href="settings/product/productinfo.do?pid=${groupro.pid}" ><img src="${pageContext.request.contextPath}/${groupro.pimage}" /></a></div>
 									<div class="title">
-										<a href="#" target="_blank" class="name">${groupro.pname}</a>
+										<a href="settings/product/productinfo.do?pid=${groupro.pid}"  class="name">${groupro.pname}</a>
 										<h3><b>￥</b>${groupro.price}</h3>
 									</div>
 								</li>
@@ -271,9 +271,9 @@
 						<ul>
 							<c:forEach items="${essenceroductList}" var="essencepro">
 								<li>
-									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${essencepro.pimage}" /></a></div>
+									<div class="pic"><a href="settings/product/productinfo.do?pid=${essencepro.pid}"><img src="${pageContext.request.contextPath}/${essencepro.pimage}" /></a></div>
 									<div class="title">
-										<a href="#" target="_blank" class="name">${essencepro.pname}</a>
+										<a href="settings/product/productinfo.do?pid=${essencepro.pid}" class="name">${essencepro.pname}</a>
 										<h3><b>￥</b>${essencepro.price}</h3>
 									</div>
 								</li>
@@ -286,9 +286,9 @@
 						<ul>
 							<c:forEach items="${fastProductList}" var="fastpro">
 								<li>
-									<div class="pic"><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/${fastpro.pimage}" /></a></div>
+									<div class="pic"><a href="settings/product/productinfo.do?pid=${fastpro.pid}" ><img src="${pageContext.request.contextPath}/${fastpro.pimage}" /></a></div>
 									<div class="title">
-										<a href="#" target="_blank" class="name">${fastpro.pname}</a>
+										<a href="settings/product/productinfo.do?pid=${fastpro.pid}"  class="name">${fastpro.pname}</a>
 										<h3><b>￥</b>${fastpro.price}</h3>
 									</div>
 								</li>
