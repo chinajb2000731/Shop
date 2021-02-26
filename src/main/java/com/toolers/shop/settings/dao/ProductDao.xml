@@ -41,4 +41,11 @@
     <select id="findcollectProdictList" resultType="collect">
         select * from collect where loginAct=#{loginAct} and flag=#{flag}
     </select>
+    <select id="getCount" resultType="int" >
+         select count(*) from collect where loginAct=#{loginAct} and flag=#{flag}
+    </select>
+    <select id="findcollectProdictList1" resultType="collect">
+        select * from collect where loginAct=#{loginAct} and flag=#{flag} limit ${index},${currentCount}
+    </select>
+
 </mapper>

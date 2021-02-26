@@ -72,4 +72,17 @@ public class ProductServiceImpl implements ProductService {
         return findcollectProductList;
     }
 
+    public int getCount(String loginAct, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        int totalcount=0;
+        totalcount= productDao.getCount(loginAct,flag);
+        return totalcount;
+    }
+
+    public List<Collect> findcollectProductList1(String loginAct, String flag, int index, int currentCount) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Collect> findcollectProductList=productDao.findcollectProdictList1(loginAct,flag,index,currentCount);
+        return findcollectProductList;
+    }
+
 }

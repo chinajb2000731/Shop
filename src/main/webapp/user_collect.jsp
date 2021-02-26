@@ -187,9 +187,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
      <div class="hd"><ul><li>收藏的商品</li><li>收藏的店铺</li></ul></div>
      <div class="bd">
         <ul class="commodity_list clearfix">
-         <div class="Number_Favorites">共收藏：23条</div>
+         <div class="Number_Favorites">共收藏：${pageBean.totalcount}条</div>
          <div class="clearfix">
-             <c:forEach items="${productList}" var="pro">
+             <c:forEach items="${pageBean.list}" var="pro">
                  <li class="collect_p">
                      <a href="#"> <em class="iconfont  delete"></em></a>
                      <a href="#" class="buy_btn">立即购买</a>
@@ -206,14 +206,59 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        <div class="Paging">
     <div class="Pagination">
-    <a href="#">首页</a>
-     <a href="#" class="pn-prev disabled">&lt;上一页</a>
-	 <a href="#" class="on">1</a>
+        <c:if test="${pageBean.currentPage==1}">
+            <a href="javascript:void(0);" class="pn-prev disabled">&lt;上一页</a>
+        </c:if>
+        <c:if test="${pageBean.currentPage!=1}">
+            <c:choose>
+                <c:when test="${empty seller}">
+                    <a href="settings/product/showcollect.do?loginAct=${user.loginAct}&flag=0&currentPage=${pageBean.currentPage-1}" class="pn-prev disabled">&lt;上一页</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="settings/product/showcollect.do?loginAct=${seller.loginAct}&flag=1&currentPage=${pageBean.currentPage-1}" class="pn-prev disabled">&lt;上一页</a>
+                </c:otherwise>
+            </c:choose>
+        </c:if>
+     <c:forEach begin="1" end="${pageBean.totalPage}" var="page">
+         <c:if test="${page==pageBean.currentPage}">
+             <a href="javascript:void(0);" class="on">${page}</a>
+         </c:if>
+         <c:if test="${page!=pageBean.currentPage}">
+             <c:choose>
+                 <c:when test="${empty seller}">
+                     <a href="settings/product/showcollect.do?loginAct=${user.loginAct}&flag=0&currentPage=${page}">${page}</a>
+                 </c:when>
+                 <c:otherwise>
+                     <a href="settings/product/showcollect.do?loginAct=${seller.loginAct}&flag=1&currentPage=${page}">${page}</a>
+                 </c:otherwise>
+             </c:choose>
+
+         </c:if>
+
+     </c:forEach>
+        <c:if test="${pageBean.currentPage==pageBean.totalPage}">
+            <a href="javascript:void(0);">下一页&gt;</a>
+        </c:if>
+        <c:if test="${pageBean.currentPage!=pageBean.totalPage}">
+            <c:choose>
+                <c:when test="${empty seller}">
+                    <a href="settings/product/showcollect.do?loginAct=${user.loginAct}&flag=0&currentPage=${pageBean.currentPage+1}">下一页&gt;</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="settings/product/showcollect.do?loginAct=${seller.loginAct}&flag=1&currentPage=${pageBean.currentPage+1}">下一页&gt;</a>
+                </c:otherwise>
+            </c:choose>
+
+        </c:if>
+
+   <%-- <a href="#">首页</a>
+
+
 	 <a href="#">2</a>
 	 <a href="#">3</a>
 	 <a href="#">4</a>
 	 <a href="#">下一页&gt;</a>
-	 <a href="#">尾页</a>	
+	 <a href="#">尾页</a>	--%>
      </div>
     </div>
         </ul>

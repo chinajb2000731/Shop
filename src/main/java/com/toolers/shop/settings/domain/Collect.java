@@ -5,7 +5,6 @@ public class Collect {
     private  String pid;
     private  String loginAct;
     private  String flag;
-
     public String getId() {
         return id;
     }

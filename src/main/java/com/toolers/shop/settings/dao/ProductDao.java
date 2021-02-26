@@ -28,6 +28,10 @@ public interface ProductDao {
 
     List<Collect> findcollectProdictList(@Param("loginAct")String loginAct,@Param("flag") String flag);
 
+    int getCount(@Param("loginAct")String loginAct,@Param("flag")String flag);
+
+    List<Collect> findcollectProdictList1(@Param("loginAct")String loginAct,@Param("flag")String flag,@Param("index") int index, @Param("currentCount")int currentCount);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

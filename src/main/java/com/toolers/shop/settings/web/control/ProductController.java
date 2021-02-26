@@ -5,6 +5,7 @@ import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.service.ProductService;
 import com.toolers.shop.settings.service.impl.ProductServiceImpl;
+import com.toolers.shop.settings.vo.PageBean;
 import com.toolers.shop.untils.CommonsUtils;
 import com.toolers.shop.untils.ServiceFactory;
 
@@ -47,11 +48,22 @@ public class ProductController extends HttpServlet {
 
     private void showcollect(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入收藏");
+        String currentPageStr=request.getParameter("currentPage");
+        if(currentPageStr==null)
+        {
+            currentPageStr="1";
+        }
+        int currentPage=Integer.parseInt(currentPageStr);
+        int currentCount=4;
+        int index=(currentPage-1)*currentCount;
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
         String loginAct=request.getParameter("loginAct");
         String flag=request.getParameter("flag");
-        List<Collect> collectProductList=us.findcollectProductList(loginAct,flag);
+       /* List<Collect> collectProductList=us.findcollectProductList(loginAct,flag);*/
+        List<Collect> collectProductList=us.findcollectProductList1(loginAct,flag,index,currentCount);
         List<Product> productList=new ArrayList<Product>();
+        int totalcount=us.getCount(loginAct,flag);
+        PageBean<Product> pageBean=new PageBean<Product>();
         Product product=null;
         for (Collect c:collectProductList)
         {
@@ -61,12 +73,14 @@ public class ProductController extends HttpServlet {
              productList.add(product);
 
         }
-        for (Product p:productList)
-        {
-            System.out.println(p.getPid());
-            System.out.println("======");
-        }
-        request.getSession().setAttribute("productList",productList);
+        int totalPage=(int) Math.ceil(1.0*totalcount/currentCount);
+        pageBean.setList(productList);
+        pageBean.setTotalcount(totalcount);
+        pageBean.setCurrentPage(currentPage);
+        pageBean.setCurrentCount(currentCount);
+        pageBean.setTotalPage(totalPage);
+    /*    request.getSession().setAttribute("productList",productList);*/
+        request.getSession().setAttribute("pageBean", pageBean);
         try {
             response.sendRedirect(request.getContextPath()+"/user_collect.jsp");
         } catch (IOException e) {
