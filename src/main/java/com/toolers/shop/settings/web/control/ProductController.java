@@ -1,9 +1,11 @@
 package com.toolers.shop.settings.web.control;
 
 import com.toolers.shop.settings.domain.Category;
+import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.service.ProductService;
 import com.toolers.shop.settings.service.impl.ProductServiceImpl;
+import com.toolers.shop.untils.CommonsUtils;
 import com.toolers.shop.untils.ServiceFactory;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductController extends HttpServlet {
@@ -29,12 +32,72 @@ public class ProductController extends HttpServlet {
         {
             productinfo(request,response);
         }
+       else if("/settings/product/collect.do".equals(path))
+        {
+             collect(request,response);
+        }
+      else if ("/settings/product/showcollect.do".equals(path))
+
+        {
+            showcollect(request,response);
+        }
 
 
+    }
 
+    private void showcollect(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入收藏");
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String loginAct=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        List<Collect> collectProductList=us.findcollectProductList(loginAct,flag);
+        List<Product> productList=new ArrayList<Product>();
+        Product product=null;
+        for (Collect c:collectProductList)
+        {
 
+             String pid=c.getPid();
+             product=us.findProductByPid(pid);
+             productList.add(product);
 
+        }
+        for (Product p:productList)
+        {
+            System.out.println(p.getPid());
+            System.out.println("======");
+        }
+        request.getSession().setAttribute("productList",productList);
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_collect.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    private void collect(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        Collect collect=new Collect();
+        String pid=request.getParameter("pid");
+        String loginAct=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        collect.setPid(pid);
+        collect.setLoginAct(loginAct);
+        collect.setFlag(flag);
+        collect.setId(CommonsUtils.getUUid());
+        Collect collect1=us.selectcollect(pid,loginAct,flag);
+        if (collect1==null) {
+            us.savecollect(collect);
+        }
+        Product product= us.findProductByPid(pid);
+        request.setAttribute("product",product);
+        try {
+            request.getRequestDispatcher("/product_info.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void productinfo(HttpServletRequest request, HttpServletResponse response) {

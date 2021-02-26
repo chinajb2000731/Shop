@@ -2,6 +2,7 @@ package com.toolers.shop.settings.service.impl;
 
 import com.toolers.shop.settings.dao.ProductDao;
 import com.toolers.shop.settings.domain.Category;
+import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.service.ProductService;
 import com.toolers.shop.untils.SqlSessionUtil;
@@ -53,4 +54,22 @@ public class ProductServiceImpl implements ProductService {
         Product product=productDao.findProductByPid(pid);
         return product;
     }
+
+    public void savecollect(Collect collect) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.savecollect(collect);
+    }
+
+    public Collect selectcollect(String pid, String loginAct, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        Collect collect=productDao.selectcollect(pid,loginAct,flag);
+        return collect;
+    }
+
+    public List<Collect> findcollectProductList(String loginAct, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Collect> findcollectProductList=productDao.findcollectProdictList(loginAct,flag);
+        return findcollectProductList;
+    }
+
 }

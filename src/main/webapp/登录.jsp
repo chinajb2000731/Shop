@@ -61,7 +61,7 @@ $(function(){
              if(data.success)
 
              {
-                 window.location.href="index.jsp";
+                 window.location.href="default.jsp";
 
              }else {
                  $("#msg").html(data.msg);
@@ -103,7 +103,7 @@ function sellerlogin() {
             if(data.success)
 
             {
-                window.location.href="index.jsp";
+                window.location.href="default.jsp";
 
             }else {
                 $("#msg2").html(data.msg);

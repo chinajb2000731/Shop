@@ -302,7 +302,7 @@
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="userinformation.jsp">我的订单</a></li>
+          <li> <a href="用户中心-我的订单.html">我的订单</a></li>
           <li> <a href="useraddress.jsp">收货地址</a></li>
           <li> <a href="#">缺货登记</a></li>
           <li><a href="#">跟踪包裹</a></li>
@@ -314,8 +314,15 @@
         <dd>
       <ul>
         <li> <a href="userinformation.jsp"> 用户信息</a></li>
-        <li> <a href="用户中心-我的收藏.html"> 我的收藏</a></li>
-        <li> <a href="#"> 我的留言</a></li>
+          <c:choose>
+              <c:when test="${empty seller}">
+                  <li><a href="settings/product/showcollect.do?loginAct=${user.loginAct}&flag=0">我的收藏</a></li>
+              </c:when>
+              <c:otherwise>
+                  <li><a href="settings/product/showcollect.do?loginAct=${seller.loginAct}&flag=1">我的收藏</a></li>
+              </c:otherwise>
+          </c:choose>
+
         <li><a href="#"> 我的评论</a></li>
       </ul>
     </dd>

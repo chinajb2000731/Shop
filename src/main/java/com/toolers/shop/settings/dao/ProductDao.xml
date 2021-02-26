@@ -30,4 +30,15 @@
     <select id="findProductByPid" resultType="product">
         select * from product where  pid=#{pid}
     </select>
+    <insert id="savecollect">
+       insert into collect(id,pid,loginAct,flag)values (#{id},#{pid},#{loginAct},#{flag})
+   </insert>
+
+    <select id="selectcollect" resultType="collect">
+        select * from collect where pid=#{pid} and loginAct=#{loginAct} and flag=#{flag}
+    </select>
+
+    <select id="findcollectProdictList" resultType="collect">
+        select * from collect where loginAct=#{loginAct} and flag=#{flag}
+    </select>
 </mapper>

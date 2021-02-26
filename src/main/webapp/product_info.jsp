@@ -133,12 +133,21 @@ div.zoomMask {
 <script type="text/javascript">
 //弹出隐藏层
 function ShowDiv(show_div,bg_div){
+   <c:choose>
+    <c:when test="${empty seller}">
+    location.href="settings/product/collect.do?pid=${product.pid}&loginAct=${user.loginAct}&flag=0";
+    </c:when>
+    <c:otherwise>
+    location.href="settings/product/collect.do?pid=${product.pid}&loginAct=${seller.loginAct}&flag=1";
+    </c:otherwise>
+    </c:choose>
 document.getElementById(show_div).style.display='block';
 document.getElementById(bg_div).style.display='block' ;
 var bgdiv = document.getElementById(bg_div);
 bgdiv.style.width = document.body.scrollWidth;
 // bgdiv.style.height = $(document).height();
 $("#"+bg_div).height($(document).height());
+
 };
 //关闭弹出层
 function CloseDiv(show_div,bg_div)
@@ -157,17 +166,38 @@ document.getElementById(bg_div).style.display='none';
     <div class="top wrapper">
         <div class="float-lt margin-b10">
             <ul>
-                <li><a href=""class=" colororange">请登录</a></li>
-                <li><a href="">注册会员</a></li>
+                <c:choose>
+                    <c:when test="${empty user and empty seller}">
+                        <li><a href="登录.jsp"class=" colororange">请登录</a></li>
+                        <li><a href="注册.jsp">免费注册</a></li>
+                    </c:when>
+                    <c:when test="${empty user and !empty seller}">
+                        <li><span>欢迎:【${seller.name}】</span>&nbsp&nbsp</li>
+                        <li><a href="用户中心.jsp"class=" colororange">用户中心</a></li>
+                        <li><a href="店铺专区.jsp">店铺专区</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><span>欢迎:【${user.name}】</span>&nbsp&nbsp</li>
+                        <li><a href="用户中心.jsp"class=" colororange">用户中心</a></li>
+                    </c:otherwise>
+                </c:choose>
+
             </ul>
         </div>
         <div class="float-rt">
             <ul>
-                <li><a href="">首页</a></li>
-                <li><a href="">我的小充</a></li>
-                <li><a id="linkOrder" href="">消息中心</a></li>
-                <li><a href="">商品分类</a></li>
-                <li>我的购物车<small class="num">20</small></li>
+                <c:choose>
+                    <c:when test="">
+                        <li><a href="">首页</a></li>
+                        <li><a href="">商品分类</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="">首页</a></li>
+                        <li><a href="">商品分类</a></li>
+                        <li><a id="linkOrder" href="">消息中心</a></li>
+                        <li>我的购物车<small class="num">20</small></li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </div>
     </div>
@@ -301,7 +331,7 @@ document.getElementById(bg_div).style.display='none';
             <div class="pro_detail_btn margin-t30">
                 <ul>
                     <li class="pro_detail_shop"><a href="pay1.html">立即购买</a></li>
-                    <li class="pro_detail_add"><a href="#" onclick="ShowDiv('MyDiv','fade')">加入我的收藏</a></li>
+                    <li class="pro_detail_add"><a href="javascript:void(0);" onclick="ShowDiv('MyDiv','fade')">加入收藏</a></li>
                 </ul>
             </div>
         </div>
