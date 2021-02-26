@@ -191,7 +191,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          <div class="clearfix">
              <c:forEach items="${pageBean.list}" var="pro">
                  <li class="collect_p">
-                     <a href="#"> <em class="iconfont  delete"></em></a>
+                     <c:choose>
+                         <c:when test="${empty seller}">
+                             <a href="settings/product/deletecollect.do?pid=${pro.pid}&loginAct=${user.loginAct}&flag=0&currentPage=${pageBean.currentPage}"> <em class="iconfont  delete"></em></a>
+                         </c:when>
+                         <c:otherwise>
+                             <a href="settings/product/deletecollect.do?pid=${pro.pid}&loginAct=${seller.loginAct}&flag=1&currentPage=${pageBean.currentPage}"> <em class="iconfont  delete"></em></a>
+                         </c:otherwise>
+                     </c:choose>
                      <a href="#" class="buy_btn">立即购买</a>
                      <div class="collect_info">
                          <div class="img_link"> <a href="#" class="center "><img src="${pageContext.request.contextPath}/${pro.pimage}"></a></div>

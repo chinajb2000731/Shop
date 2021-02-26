@@ -48,4 +48,9 @@
         select * from collect where loginAct=#{loginAct} and flag=#{flag} limit ${index},${currentCount}
     </select>
 
+    <delete id="deletecollect">
+        delete from collect where pid=#{pid} and loginAct=#{loginAct} and flag=#{flag}
+    </delete>
+
+
 </mapper>

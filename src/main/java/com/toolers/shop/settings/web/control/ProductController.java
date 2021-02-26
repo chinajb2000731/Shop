@@ -42,8 +42,21 @@ public class ProductController extends HttpServlet {
         {
             showcollect(request,response);
         }
+        else if("/settings/product/deletecollect.do".equals(path))
+        {
+            deletecollect(request,response);
+        }
 
 
+    }
+
+    private void deletecollect(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String pid=request.getParameter("pid");
+        String loginAct=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        us.deletecollect(pid,loginAct,flag);
+        showcollect(request,response);
     }
 
     private void showcollect(HttpServletRequest request, HttpServletResponse response) {

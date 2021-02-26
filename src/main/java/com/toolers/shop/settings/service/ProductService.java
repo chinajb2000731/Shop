@@ -30,4 +30,6 @@ public interface ProductService {
     int getCount(String loginAct, String flag);
 
     List<Collect> findcollectProductList1(String loginAct, String flag, int index, int currentCount);
+
+    void deletecollect(String pid, String loginAct, String flag);
 }

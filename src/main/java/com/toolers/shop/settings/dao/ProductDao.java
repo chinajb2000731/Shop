@@ -32,6 +32,8 @@ public interface ProductDao {
 
     List<Collect> findcollectProdictList1(@Param("loginAct")String loginAct,@Param("flag")String flag,@Param("index") int index, @Param("currentCount")int currentCount);
 
+    void deletecollect(@Param("pid")String pid,@Param("loginAct")String loginAct,@Param("flag") String flag);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

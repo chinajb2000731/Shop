@@ -85,4 +85,10 @@ public class ProductServiceImpl implements ProductService {
         return findcollectProductList;
     }
 
+    public void deletecollect(String pid, String loginAct, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.deletecollect(pid,loginAct,flag);
+
+    }
+
 }
