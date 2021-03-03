@@ -96,7 +96,7 @@
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-			<li><a href="./index.html">首页</a></li>
+			<li><a href="./index.jsp">首页</a></li>
 			<li><a href="#">预售专区</a><em class="hot_icon"></em></li>
 			<li><a href="./产品-产品列表.html">商城</a></li>
 			<li><a href="#">限时折扣</a></li>

@@ -188,11 +188,11 @@ document.getElementById(bg_div).style.display='none';
             <ul>
                 <c:choose>
                     <c:when test="">
-                        <li><a href="">首页</a></li>
+                        <li><a href="index.jsp">首页</a></li>
                         <li><a href="">商品分类</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="">首页</a></li>
+                        <li><a href="index.jsp">首页</a></li>
                         <li><a href="">商品分类</a></li>
                         <li><a id="linkOrder" href="">消息中心</a></li>
                         <li>我的购物车<small class="num">20</small></li>
