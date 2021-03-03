@@ -102,7 +102,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-			<li><a href="./index.html">首页</a></li>
+			<li><a href="default.jsp">首页</a></li>
 			<li><a href="./产品-产品列表.html">商城</a></li>
 			<li><a href="#">热销活动</a></li>
 			<li><a href="#">联系我们</a></li>

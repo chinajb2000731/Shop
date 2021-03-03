@@ -188,11 +188,11 @@ document.getElementById(bg_div).style.display='none';
             <ul>
                 <c:choose>
                     <c:when test="">
-                        <li><a href="index.jsp">首页</a></li>
+                        <li><a href="default.jsp">首页</a></li>
                         <li><a href="">商品分类</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="index.jsp">首页</a></li>
+                        <li><a href="default.jsp">首页</a></li>
                         <li><a href="">商品分类</a></li>
                         <li><a id="linkOrder" href="">消息中心</a></li>
                         <li>我的购物车<small class="num">20</small></li>
@@ -277,7 +277,12 @@ document.getElementById(bg_div).style.display='none';
 					$("#h1").css("background-image","url('images/iconfont-xingxingman_add.png') ");
 				})
 			}) 
+          function addCart() {
 
+             var buyNum=$("#quantity").val();
+            location.href="settings/product/cart.do?pid=${product.pid}&loginAct=${user.loginAct}&flag=0&buyNum="+buyNum;
+
+          }
 </script>
             <input type="button" value="加入收藏" id="h1" class="addcart" onclick="ShowDiv('MyDiv2','fade2')" />
         </div>
@@ -311,7 +316,7 @@ document.getElementById(bg_div).style.display='none';
             <div class="pro_detail_number margin-t30">
                 <div class="margin-r20 float-lt">数量</div>
                 <div class=""> <i class="jian"></i>
-                    <input type="text" value="1" class="float-lt choose_input"/>
+                    <input type="text" id="quantity" value="1" class="float-lt choose_input"/>
                     <i class="jia"></i> <span>&nbsp;盒</span> <span>（库存${product.inventory}盒）</span> </div>
                 <div class="clear"></div>
             </div>
@@ -330,7 +335,10 @@ document.getElementById(bg_div).style.display='none';
             <div class="clear"></div>
             <div class="pro_detail_btn margin-t30">
                 <ul>
-                    <li class="pro_detail_shop"><a href="pay1.html">立即购买</a></li>
+                    <li class="pro_detail_shop"><a href="">立即购买</a></li>
+                    <li class="pro_detail_add"><a href="javascript:void(0);" onclick="addCart()">加入购物车</a></li>
+                    <li>------------------------------------------------------------------------</li>
+                    <li class="pro_detail_shop"><a href="">立刻租用</a></li>
                     <li class="pro_detail_add"><a href="javascript:void(0);" onclick="ShowDiv('MyDiv','fade')">加入收藏</a></li>
                 </ul>
             </div>

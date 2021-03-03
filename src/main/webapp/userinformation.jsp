@@ -47,7 +47,7 @@
       </div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./index.jsp">首页</a></li>
+	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="default.jsp">首页</a></li>
 	 <!--   <li class="hd_menu_tit" data-addclass="hd_menu_hover"> <a href="#">我的小充</a> </li> -->
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./消息中心.html">消息中心</a></li>
        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./产品-产品列表.html">商品分类</a></li>

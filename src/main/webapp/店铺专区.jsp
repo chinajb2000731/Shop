@@ -26,7 +26,7 @@
       <div class="Collection"><a href="./登录.html" class="green">请登录</a> <a href="./注册.html" class="green">免费注册</a></div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./index.jsp">首页</a></li>
+	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="default.jsp">首页</a></li>
 	   <!-- <li class="hd_menu_tit" data-addclass="hd_menu_hover"> <a href="#">我的小充</a> </li> -->
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./消息中心.html">消息中心</a></li>
        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./产品-产品列表.html">商品分类</a></li>
