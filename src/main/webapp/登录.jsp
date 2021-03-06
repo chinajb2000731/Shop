@@ -61,7 +61,8 @@ $(function(){
              if(data.success)
 
              {
-                 window.location.href="default.jsp";
+                 location.href="settings/product/showcart.do?flag=0&loginAct="+loginAct;
+
 
              }else {
                  $("#msg").html(data.msg);
@@ -103,11 +104,11 @@ function sellerlogin() {
             if(data.success)
 
             {
-                window.location.href="default.jsp";
+                location.href="settings/product/showcart.do?flag=1&loginAct="+loginAct;
 
             }else {
-                $("#msg2").html(data.msg);
 
+                $("#msg2").html(data.msg);
             }
 
         },

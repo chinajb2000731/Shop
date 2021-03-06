@@ -56,6 +56,8 @@
         <url-pattern>/settings/product/showcollect.do</url-pattern>
         <url-pattern>/settings/product/deletecollect.do</url-pattern>
         <url-pattern>/settings/product/cart.do</url-pattern>
+        <url-pattern>/settings/product/showcart.do</url-pattern>
+        <url-pattern>/settings/product/deletecart.do</url-pattern>
     </servlet-mapping>
 
     <filter>

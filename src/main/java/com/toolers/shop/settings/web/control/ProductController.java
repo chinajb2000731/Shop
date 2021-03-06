@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.web.control;
 
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
@@ -46,7 +47,76 @@ public class ProductController extends HttpServlet {
         {
             deletecollect(request,response);
         }
+        else if("/settings/product/cart.do".equals(path))
+        {
+            cart(request,response);
+        }
+        else if("/settings/product/showcart.do".equals(path))
+        {
+            showcart(request,response);
+        }
 
+    }
+
+    private void showcart(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("=========");
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String cid=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        double totalprice=0;
+        double totalnum=0;
+        List<Cart> shopcarts=us.findallshopcar(cid,flag);
+        List<Product> productcartList=new ArrayList<Product>();
+        Product product=null;
+        if (shopcarts==null)
+        {
+            request.getSession().setAttribute("productcartList", productcartList);
+            index(request,response);
+        }
+        else {
+            for (Cart c : shopcarts) {
+                String pid = c.getPid();
+                product = us.findProductByPid(pid);
+                totalnum = totalnum + c.getBuynum();
+                totalprice = totalprice + c.getBuynum() * product.getPrice();
+                product.setBuynum(c.getBuynum());
+                productcartList.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList", productcartList);
+        request.getSession().setAttribute("totalcartprice",totalprice);
+        request.getSession().setAttribute("totalcartnum",totalnum);
+        index(request,response);
+
+
+
+
+    }
+
+    private void cart(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        System.out.println("进入购物车");
+        String pid=request.getParameter("pid");
+        String cid=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        String buyNumstr=request.getParameter("buyNum");
+        int buyNum=Integer.parseInt(buyNumstr);
+        Cart cart1=new Cart();
+        Cart cart=us.selectcart(pid,cid,flag);
+        if(cart!=null)
+        {
+            us.updatecart(cart.getId(),buyNum+cart.getBuynum());
+        }
+         else
+        {
+            cart1.setBuynum(buyNum);
+            cart1.setCid(cid);
+            cart1.setId(CommonsUtils.getUUid());
+            cart1.setPid(pid);
+            cart1.setFlag(flag);
+            us.addcart(cart1);
+        }
+        showcart(request,response);
 
     }
 
@@ -132,7 +202,7 @@ public class ProductController extends HttpServlet {
         //获得商品PID
         String pid=request.getParameter("pid");
         Product product= us.findProductByPid(pid);
-       request.setAttribute("product",product);
+        request.setAttribute("product",product);
         try {
             request.getRequestDispatcher("/product_info.jsp").forward(request,response);
         } catch (ServletException e) {

@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.service;
 
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
@@ -32,4 +33,12 @@ public interface ProductService {
     List<Collect> findcollectProductList1(String loginAct, String flag, int index, int currentCount);
 
     void deletecollect(String pid, String loginAct, String flag);
+
+    Cart selectcart(String pid, String cid, String flag);
+
+    void updatecart(String id, int i);
+
+    void addcart(Cart cart);
+
+    List<Cart> findallshopcar(String cid, String flag);
 }

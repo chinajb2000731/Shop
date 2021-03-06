@@ -51,7 +51,7 @@
 	 <!--   <li class="hd_menu_tit" data-addclass="hd_menu_hover"> <a href="#">我的小充</a> </li> -->
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./消息中心.html">消息中心</a></li>
        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./产品-产品列表.html">商品分类</a></li>
-        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./用户中心-我的订单.html">我的购物车<b>(23)</b></a></li>	
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
 	  </ul>
 	</div>
     </div>
@@ -73,23 +73,31 @@
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="./用户中心-我的订单.html">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">0</i></div>
+   <div class="s_cart"><a href="./用户中心-我的订单.html">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
-	 <!--<div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>-->
-	 <ul class="p_s_list">	   
-		<li>
-		    <div class="img"><img src="images/tianma.png"></div>
-		    <div class="content"><p class="name"><a href="#">产品名称</a></p><p>颜色分类:紫花8255尺码:XL</p></div>
-			<div class="Operations">
-			<p class="Price">￥55.00</p>
-			<p><a href="#">删除</a></p></div>
-		  </li>
-		</ul>		
-	 <div class="Shopping_style">
-	 <div class="p-total">共<b>1</b>件商品　共计<strong>￥ 515.00</strong></div>
-	  <a href="Shop_cart.html" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
-	 </div>	 
+       <c:choose>
+           <c:when test="${empty productcartList}">
+               <div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>
+           </c:when>
+           <c:otherwise>
+               <ul class="p_s_list">
+                   <c:forEach items="${productcartList}" var="shopcar">
+                       <li>
+                           <div class="img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}"></div>
+                           <div class="content"><p class="name">产品名称</p><p>${shopcar.pname}X${shopcar.buynum}</p></div>
+                           <div class="Operations">
+                               <p class="Price">￥${shopcar.price*shopcar.buynum}</p>
+                           </div>
+                       </li>
+                   </c:forEach>
+               </ul>
+               <div class="Shopping_style">
+                   <div class="p-total">共<b>${totalcartnum}</b>件商品　共计<strong>￥${totalcartprice}</strong></div>
+                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+               </div>
+           </c:otherwise>
+       </c:choose>
    </div>
  </div>
 </div>

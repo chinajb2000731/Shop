@@ -13,6 +13,7 @@ public class Product {
   `pdesc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `is_new` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL*/
  private  String pid;
+ private  String cid;
  private  String sid;
  private  String pname;
  private  double rent;
@@ -26,6 +27,7 @@ public class Product {
  private  String is_essence;
  private  String is_fast;
  private  String inventory;
+ private  int  buynum;
  private  Category category;
 
 
@@ -148,4 +150,22 @@ public class Product {
     public void setInventory(String inventory) {
         this.inventory = inventory;
     }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
+    public int getBuynum() {
+        return buynum;
+    }
+
+    public void setBuynum(int buynum) {
+        this.buynum = buynum;
+    }
+
+
 }

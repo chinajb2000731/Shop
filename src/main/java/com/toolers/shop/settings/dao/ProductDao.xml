@@ -51,6 +51,18 @@
     <delete id="deletecollect">
         delete from collect where pid=#{pid} and loginAct=#{loginAct} and flag=#{flag}
     </delete>
+    <select id="selectcart" resultType="Cart">
+        select * from cart where pid=#{pid} and cid=#{cid} and flag=#{flag}
+    </select>
+    <update id="updatecart">
+        update cart set buynum=#{i} where id=#{id}
+    </update>
+    <insert id="addcart">
+       insert into cart(id,pid,cid,buynum,flag)values (#{id},#{pid},#{cid},#{buynum},#{flag})
+   </insert>
 
 
+    <select id="findallshopcar" resultType="Cart">
+        select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag}
+    </select>
 </mapper>

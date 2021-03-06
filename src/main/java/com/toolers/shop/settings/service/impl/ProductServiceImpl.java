@@ -1,6 +1,7 @@
 package com.toolers.shop.settings.service.impl;
 
 import com.toolers.shop.settings.dao.ProductDao;
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
@@ -89,6 +90,28 @@ public class ProductServiceImpl implements ProductService {
         ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
         productDao.deletecollect(pid,loginAct,flag);
 
+    }
+
+    public Cart selectcart(String pid, String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        Cart cart=productDao.selectcart(pid,cid,flag);
+        return cart;
+    }
+
+    public void updatecart(String id, int i) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.updatecart(id,i);
+    }
+
+    public void addcart(Cart cart) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.addcart(cart);
+    }
+
+    public List<Cart> findallshopcar(String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Cart> shopcarts=productDao.findallshopcar(cid,flag);
+        return shopcarts;
     }
 
 }

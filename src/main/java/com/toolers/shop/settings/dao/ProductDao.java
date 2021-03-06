@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.dao;
 
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
@@ -33,6 +34,14 @@ public interface ProductDao {
     List<Collect> findcollectProdictList1(@Param("loginAct")String loginAct,@Param("flag")String flag,@Param("index") int index, @Param("currentCount")int currentCount);
 
     void deletecollect(@Param("pid")String pid,@Param("loginAct")String loginAct,@Param("flag") String flag);
+
+    Cart selectcart(@Param("pid")String pid,@Param("cid") String cid, @Param("flag")String flag);
+
+    void updatecart(@Param("id")String id,@Param("i") int i);
+
+    void addcart(Cart cart);
+
+    List<Cart> findallshopcar(@Param("cid")String cid, @Param("flag")String flag);
 
 
 

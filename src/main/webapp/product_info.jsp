@@ -189,13 +189,13 @@ document.getElementById(bg_div).style.display='none';
                 <c:choose>
                     <c:when test="">
                         <li><a href="default.jsp">首页</a></li>
-                        <li><a href="">商品分类</a></li>
+                        <li><a href="#">商品分类</a></li>
                     </c:when>
                     <c:otherwise>
                         <li><a href="default.jsp">首页</a></li>
-                        <li><a href="">商品分类</a></li>
+                        <li><a href="#">商品分类</a></li>
                         <li><a id="linkOrder" href="">消息中心</a></li>
-                        <li>我的购物车<small class="num">20</small></li>
+                        <li>我的购物车<small class="num">${totalcartnum}</small></li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -226,7 +226,6 @@ document.getElementById(bg_div).style.display='none';
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>
     </div>
-    <div class="homecart float-rt">购物车<strong>(99)</strong></div>
 </div>
 <!--头部快捷栏END-->
 
@@ -280,7 +279,15 @@ document.getElementById(bg_div).style.display='none';
           function addCart() {
 
              var buyNum=$("#quantity").val();
-            location.href="settings/product/cart.do?pid=${product.pid}&loginAct=${user.loginAct}&flag=0&buyNum="+buyNum;
+             <c:choose>
+              <c:when test="${empty seller}">
+              location.href="settings/product/cart.do?pid=${product.pid}&loginAct=${user.loginAct}&flag=0&buyNum="+buyNum;
+              </c:when>
+              <c:otherwise>
+              location.href="settings/product/cart.do?pid=${product.pid}&loginAct=${seller.loginAct}&flag=1&buyNum="+buyNum;
+              </c:otherwise>
+              </c:choose>
+
 
           }
 </script>
@@ -316,7 +323,7 @@ document.getElementById(bg_div).style.display='none';
             <div class="pro_detail_number margin-t30">
                 <div class="margin-r20 float-lt">数量</div>
                 <div class=""> <i class="jian"></i>
-                    <input type="text" id="quantity" value="1" class="float-lt choose_input"/>
+                    <input type="text" id="quantity" name="quantity" value="1" class="float-lt choose_input"/>
                     <i class="jia"></i> <span>&nbsp;盒</span> <span>（库存${product.inventory}盒）</span> </div>
                 <div class="clear"></div>
             </div>
