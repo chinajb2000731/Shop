@@ -44,10 +44,10 @@
       </div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="default.jsp">首页</a></li>
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./消息中心.html">消息中心</a></li>
-       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="product_lists.jsp">商品分类</a></li>
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
+	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
+	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">消息中心</a></li>
+       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
+          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">我的购物车<b>(${totalcartnum})</b></a></li>
       </ul>
 	</div>
     </div>

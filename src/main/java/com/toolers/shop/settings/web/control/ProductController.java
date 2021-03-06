@@ -65,11 +65,27 @@ public class ProductController extends HttpServlet {
     }
 
     private void showproductlists(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("j进入商品列表");
+        System.out.println("进入商品列表");
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
-
-
-
+        //获得cid
+        String cid=request.getParameter("cid");
+        String currentPageStr=request.getParameter("currentPage");
+        if (currentPageStr==null)
+        {
+            currentPageStr="1";
+        }
+        int currentPage=Integer.parseInt(currentPageStr);;
+        int currentCount=16;
+        PageBean pageBean=us.findProductByCid(cid,currentPage,currentCount);
+        request.getSession().setAttribute("pageProductBean",pageBean);
+        request.getSession().setAttribute("productcid",cid);
+        try {
+            request.getRequestDispatcher("/product_lists.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showcart(HttpServletRequest request, HttpServletResponse response) {

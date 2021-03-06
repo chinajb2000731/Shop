@@ -134,19 +134,22 @@ div.zoomMask {
 //弹出隐藏层
 function ShowDiv(show_div,bg_div){
    <c:choose>
+    <c:when test="${empty seller and empty user}">
+    location.href="登录.jsp";
+    </c:when>
+
+    <c:otherwise>
+    <c:choose>
     <c:when test="${empty seller}">
     location.href="settings/product/collect.do?pid=${product.pid}&loginAct=${user.loginAct}&flag=0";
     </c:when>
+
     <c:otherwise>
     location.href="settings/product/collect.do?pid=${product.pid}&loginAct=${seller.loginAct}&flag=1";
     </c:otherwise>
     </c:choose>
-document.getElementById(show_div).style.display='block';
-document.getElementById(bg_div).style.display='block' ;
-var bgdiv = document.getElementById(bg_div);
-bgdiv.style.width = document.body.scrollWidth;
-// bgdiv.style.height = $(document).height();
-$("#"+bg_div).height($(document).height());
+    </c:otherwise>
+    </c:choose>
 
 };
 //关闭弹出层
@@ -187,14 +190,14 @@ document.getElementById(bg_div).style.display='none';
         <div class="float-rt">
             <ul>
                 <c:choose>
-                    <c:when test="">
-                        <li><a href="default.jsp">首页</a></li>
-                        <li><a href="#">商品分类</a></li>
+                    <c:when test="${empty user and empty seller}">
+                        <li><a href="index.jsp">首页</a></li>
+                        <li><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="default.jsp">首页</a></li>
-                        <li><a href="#">商品分类</a></li>
-                        <li><a id="linkOrder" href="">消息中心</a></li>
+                        <li><a href="index.jsp">首页</a></li>
+                        <li><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
+                        <li><a id="linkOrder" href="javascript:void(0)">消息中心</a></li>
                         <li>我的购物车<small class="num">${totalcartnum}</small></li>
                     </c:otherwise>
                 </c:choose>
@@ -280,11 +283,18 @@ document.getElementById(bg_div).style.display='none';
 
              var buyNum=$("#quantity").val();
              <c:choose>
+              <c:when test="${empty seller and empty user}">
+              location.href="登录.jsp";
+              </c:when>
+              <c:otherwise>
+              <c:choose>
               <c:when test="${empty seller}">
               location.href="settings/product/cart.do?pid=${product.pid}&loginAct=${user.loginAct}&flag=0&buyNum="+buyNum;
               </c:when>
               <c:otherwise>
               location.href="settings/product/cart.do?pid=${product.pid}&loginAct=${seller.loginAct}&flag=1&buyNum="+buyNum;
+              </c:otherwise>
+              </c:choose>
               </c:otherwise>
               </c:choose>
 

@@ -4,6 +4,7 @@ import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
+import com.toolers.shop.settings.vo.PageBean;
 
 import java.util.List;
 
@@ -41,4 +42,6 @@ public interface ProductService {
     void addcart(Cart cart);
 
     List<Cart> findallshopcar(String cid, String flag);
+
+    PageBean findProductByCid(String cid,int currentPage,int currentCount);
 }

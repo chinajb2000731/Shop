@@ -46,20 +46,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       </div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-          <c:choose>
-              <c:when test="${empty user}">
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">首页</a></li>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">商品分类</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp)">首页</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
-              </c:when>
-              <c:otherwise>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">首页</a></li>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">商品分类</a></li>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
-              </c:otherwise>
-          </c:choose>
 	  </ul>
 	</div>
     </div>
@@ -127,8 +117,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-			<li><a href="default.jsp">首页</a></li>
-			<li><a href="product_lists.jsp">商城</a></li>
+			<li><a href="index.jsp">首页</a></li>
+			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 			<li><a href="#">热销活动</a></li>
 			<li><a href="#">联系我们</a></li>
 		 </ul>			 

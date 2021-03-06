@@ -69,14 +69,21 @@ $(function() {
  <div id="header_top">
   <div id="top">
     <div class="Inside_pages">
-      <div class="Collection"><a href="#" class="green">请登录</a> <a href="#" class="green">免费注册</a></div>
+      <div class="Collection"><a href="登录.jsp" class="green">请登录</a> <a href="注册.jsp" class="green">免费注册</a></div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">首页</a></li> 
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"> <a href="#">我的小充</a> </li>
-	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
-       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">商品分类</a></li>
-        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(23)</b></a></li>	
+          <c:choose>
+              <c:when test="${empty user and empty seller}">
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
+              </c:when>
+              <c:otherwise>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">首页</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
+              </c:otherwise>
+          </c:choose>
 	  </ul>
 	</div>
     </div>
@@ -87,8 +94,8 @@ $(function() {
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="#">产品</a></li>
-                <li><a href="#">信息</a></li>
+                <li class="current"><a href="javascript:void(0)">产品</a></li>
+                <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
@@ -99,40 +106,65 @@ $(function() {
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="#">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">0</i></div>
+   <div class="s_cart"><a href="#">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
-	 <!--<div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>-->
-	 <ul class="p_s_list">	   
-		<li>
-		    <div class="img"><img src="images/tianma.png"></div>
-		    <div class="content"><p class="name"><a href="#">产品名称</a></p><p>颜色分类:紫花8255尺码:XL</p></div>
-			<div class="Operations">
-			<p class="Price">￥55.00</p>
-			<p><a href="#">删除</a></p></div>
-		  </li>
-		</ul>		
-	 <div class="Shopping_style">
-	 <div class="p-total">共<b>1</b>件商品　共计<strong>￥ 515.00</strong></div>
-	  <a href="Shop_cart.html" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
-	 </div>	 
+       <c:choose>
+           <c:when test="${empty productcartList}">
+               <div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>
+           </c:when>
+           <c:otherwise>
+               <ul class="p_s_list">
+                   <c:forEach items="${productcartList}" var="shopcar">
+                       <li>
+                           <div class="img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}"></div>
+                           <div class="content"><p class="name">产品名称</p><p>${shopcar.pname}X${shopcar.buynum}</p></div>
+                           <div class="Operations">
+                               <c:choose>
+                                   <c:when test="${shopcar.rent==''}">
+                                       <p class="Price">（此商品不支持租用） 购买价格：￥${shopcar.price*shopcar.buynum}</p>
+                                   </c:when>
+                                   <c:otherwise>
+                                       <p class="Price">租用价格：￥${shopcar.rent*shopcar.buynum}   购买价格：￥${shopcar.price*shopcar.buynum}</p>
+                                   </c:otherwise>
+                               </c:choose>
+
+                           </div>
+                       </li>
+                   </c:forEach>
+               </ul>
+               <div class="Shopping_style">
+                   <c:choose>
+                       <c:when test="${totalrentprice==0}">
+                           <div class="p-total">共<b>${totalcartnum}</b>件商品　共计购买<strong>￥${totalcartprice} </strong></div>
+                       </c:when>
+                       <c:otherwise>
+                           <div class="p-total">共<b>${totalcartnum}</b>件商品　共计购买<strong>￥${totalcartprice} </strong></div>
+                           <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
+                       </c:otherwise>
+                   </c:choose>
+
+                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+               </div>
+           </c:otherwise>
+       </c:choose>
+
    </div>
  </div>
 </div>
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
-		 <ul class="Navigation_name">
-			<li><a href="Home.html">首页</a></li>
+        <ul class="Navigation_name">
+            <li><a href="javascript:void(0)">首页</a></li>
             <li class="hour"><span class="bg_muen"></span><a href="#">半小时生活圈</a></li>
-			<li><a href="#">你身边的超市</a></li>
-			<li><a href="#">预售专区</a><em class="hot_icon"></em></li>
-			<li><a href="products_list.html">商城</a></li>
-			
-			<li><a href="#">好评商户</a></li>
-			<li><a href="#">热销活动</a></li>
-			<li><a href="Brands.html">联系我们</a></li>
-		 </ul>			 
-		</div>
+            <li><a href="javascript:void(0)">你身边的超市</a></li>
+            <li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>
+            <li><a href="javascript:void(0)">商城</a></li>
+
+            <li><a href="javascript:void(0)">热销活动</a></li>
+            <li><a href="javascript:void(0)">联系我们</a></li>
+        </ul>
+    </div>
 	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
     </div>
 </head>
@@ -154,32 +186,32 @@ $(function() {
     <div class="title_name">广告区</div>
    <div class="demo">
       <ul class="nav">
-         <li class="Menu_Bar"><a href="#">服务</a>
+         <li class="Menu_Bar"><a href="javascript:void(0)">西南交通大学</a>
               <ul>
-                  <li><a href="#">西南交通大学</a></li>
-                  <li><a href="#">西南交通大学</a></li>
-                  <li><a href="#">西南交通大学</a></li>
-                  <li><a href="#">西南交通大学</a></li>
+                  <li><a href="javascript:void(0)">西南交通大学</a></li>
+                  <li><a href="javascript:void(0)">西南交通大学</a></li>
+                  <li><a href="javascript:void(0)">西南交通大学</a></li>
+                  <li><a href="javascript:void(0)">西南交通大学</a></li>
               </ul>
          </li>
-         <li class="Menu_Bar"><a href="#">案例</a></li>
-         <li class="Menu_Bar"><a href="#">文章</a></a>
+         <li class="Menu_Bar"><a href="javascript:void(0)">西南交通大学</a></li>
+         <li class="Menu_Bar"><a href="javascript:void(0)">西南交通大学</a></a>
               <ul>
-                   <li class="active"><a href="#">西南交通大学</a></li>
+                   <li class="active"><a href="javascript:void(0)">西南交通大学</a></li>
                    <li><a href="#">西南交通大学</a>
                         <ul>
-                            <li><a href="#">西南交通大学</a></li>
-                            <li><a href="#">西南交通大学</a></li>
-                            <li><a href="#">西南交通大学</a></li>
-                            <li><a href="#">西南交通大学</a></li>
+                            <li><a href="javascript:void(0)">西南交通大学</a></li>
+                            <li><a href="javascript:void(0)">西南交通大学</a></li>
+                            <li><a href="javascript:void(0)">西南交通大学</a></li>
+                            <li><a href="javascript:void(0)">西南交通大学</a></li>
                         </ul>
                    </li>
-                   <li><a href="#" target="_blank">西南交通大学</a></li>
-                   <li><a href="#" target="_blank">西南交通大学</a></li>
-                   <li><a href="#" target="_blank">西南交通大学</a></li>
+                   <li><a href="javascript:void(0)" >西南交通大学</a></li>
+                   <li><a href="javascript:void(0)" >西南交通大学</a></li>
+                   <li><a href="javascript:void(0)" >西南交通大学</a></li>
               </ul>
          </li>
-         <li class="Menu_Bar"><a href="#" target="_blank">西南交通大学</a></li>
+         <li class="Menu_Bar"><a href="javascript:void(0)">西南交通大学</a></li>
       </ul>
    </div> 
   </div>
@@ -187,219 +219,75 @@ $(function() {
  <div class="page_right_style">
  <div class="Sorted">
   <div class="Sorted_style">
-   <a href="#" class="on">综合<i class="iconfont icon-fold"></i></a>
-   <a href="#">信用<i class="iconfont icon-fold"></i></a>
-   <a href="#">价格<i class="iconfont icon-fold"></i></a>
-   <a href="#">销量<i class="iconfont icon-fold"></i></a>
+	  <c:forEach items="${categoryList}" var="category">
+		  <a href="settings/product/productlists.do?cid=${category.cid}">${category.cname}<i class="iconfont icon-fold"></i></a>
+	  </c:forEach>
    </div>
    <!--产品搜索-->
    <div class="products_search">
     <input name="" type="text" class="search_text" value="请输入你要搜索的产品" onfocus="this.value=''" onblur="if(!value){value=defaultValue;}"><input name="" type="submit" value="" class="search_btn">
    </div>
-   <!--页数-->
-   <div class="s_Paging">
-   <span> 1/12</span>
-   <a href="#" class="on">&lt;</a>
-   <a href="#">&gt;</a>
-   </div>
    </div>
    <div class="p_list  clearfix">
    <ul>
-    <li class="gl-item">
-    <em class="icon_special tejia"></em>
-	<div class="Borders">
-	 <div class="img"><a href="Product_Detailed.html"><img src="products/p_11.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥87</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="Product_Detailed.html">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-    <em class="icon_special tejia"></em>
-	<div class="Borders">
-	 <div class="img"><a href="Product_Detailed.html"><img src="products/P_2.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥87</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="Product_Detailed.html">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-    <em class="icon_special tejia"></em>
-	<div class="Borders">
-	 <div class="img"><a href="Product_Detailed.html"><img src="products/P_3.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="Product_Detailed.html">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	<div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="Product_Detailed.html"><img src="products/P_4.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="Product_Detailed.html">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-    <em class="icon_special xinping"></em>
-	<div class="Borders">
-	 <div class="img"><a href="Product_Detailed.html"><img src="products/P_5.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="Product_Detailed.html">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	<div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_6.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	<div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_7.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_15.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_9.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	<div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_8.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	<div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_11.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_16.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_16.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_17.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	<div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
-	<li class="gl-item">
-	<div class="Borders">
-	 <div class="img"><a href="#"><img src="products/P_15.jpg" style="width:220px;height:220px"></a></div>
-	 <div class="Price"><b>¥89</b><span>[¥49.01/500g]</span></div>
-	 <div class="name"><a href="#">乐事 无限薯片三连装（原味+番茄+烤肉）104g*3/组</a></div>
-	 <div class="Shop_name"><a href="#">三只松鼠旗舰店</a></div>
-	 <div class="p-operate">
-	  <a href="#" class="p-o-btn Collect"><em></em>收藏</a>
-	  <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
-	 </div>
-	 </div>
-	</li>
+       <c:forEach items="${pageProductBean.list}" var="pro">
+           <li class="gl-item">
+               <em class="icon_special tejia"></em>
+               <div class="Borders">
+                   <div class="img"><a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/${pro.pimage}" style="width:220px;height:220px"></a></div>
+                   <div class="Price"><b>¥${pro.price}</b><%--<span>[¥49.01/500g]</span>--%></div>
+                   <div class="name"><a href="Product_Detailed.html">${pro.pname}</a></div>
+                   <div class="p-operate">
+                       <c:choose>
+                           <c:when test="${empty seller and empty user}">
+                               <a href="登录.jsp" class="p-o-btn Collect"><em></em>收藏</a>
+                           </c:when>
+                           <c:otherwise>
+                               <c:choose>
+                                   <c:when test="${empty seller}">
+                                       <a href="settings/product/collect.do?pid=${pro.pid}&loginAct=${user.loginAct}&flag=0" class="p-o-btn Collect"><em></em>收藏</a>
+                                   </c:when>
+                                   <c:otherwise>
+                                       <a href="settings/product/collect.do?pid=${pro.pid}&loginAct=${seller.loginAct}&flag=1" class="p-o-btn Collect"><em></em>收藏</a>
+                                   </c:otherwise>
+                               </c:choose>
+
+                           </c:otherwise>
+                       </c:choose>
+                       <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
+                   </div>
+               </div>
+           </li>
+       </c:forEach>
+
    </ul>
+
    <div class="Paging">
     <div class="Pagination">
-    <a href="#">首页</a>
-     <a href="#" class="pn-prev disabled">&lt;上一页</a>
-	 <a href="#" class="on">1</a>
-	 <a href="#">2</a>
-	 <a href="#">3</a>
-	 <a href="#">4</a>
-	 <a href="#">下一页&gt;</a>
-	 <a href="#">尾页</a>	
+        <!-- 显示每一页-->
+
+        <c:if test="${pageProductBean.currentPage==1}">
+            <a href="javascript:void(0);" class="pn-prev disabled">&lt;上一页</a>
+        </c:if>
+        <c:if test="${pageProductBean.currentPage!=1}">
+            <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${pageProductBean.currentPage-1}" class="pn-prev disabled">&lt;上一页</a>
+        </c:if>
+
+        <c:forEach begin="1" end="${pageProductBean.totalPage}" var="page">
+            <c:if test="${page==pageProductBean.currentPage}">
+                <a href="javascript:void(0)" class="on">${page}</a>
+            </c:if>
+            <c:if test="${page!=pageProductBean.currentPage}">
+                <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${page}">${page}</a>
+            </c:if>
+        </c:forEach>
+
+        <c:if test="${pageProductBean.currentPage==pageProductBean.totalPage}">
+            <a href="javascript:void(0);">下一页&gt;</a>
+        </c:if>
+        <c:if test="${pageProductBean.currentPage!=pageProductBean.totalPage}">
+            <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${pageProductBean.currentPage+1}">下一页&gt;</a>
+        </c:if>
      </div>
     </div>
    </div>
@@ -485,7 +373,7 @@ $(function() {
 <div class="fixedBox">
   <ul class="fixedBoxList">
       <li class="fixeBoxLi user"><a href="#"> <span class="fixeBoxSpan"></span> <strong>消息中心</strong></a> </li>
-    <li class="fixeBoxLi cart_bd" style="display:block;" id="cartboxs">
+    <li class="fixeBoxLi cart_bd" style="display:block;" >
 		<p class="good_cart">9</p>
 			<span class="fixeBoxSpan"></span> <strong>购物车</strong>
 			<div class="cartBox">
@@ -523,6 +411,7 @@ $(function() {
     <li class="fixeBoxLi Home"> <a href="./"> <span class="fixeBoxSpan"></span> <strong>收藏夹</strong> </a> </li>
     <li class="fixeBoxLi BackToTop"> <span class="fixeBoxSpan"></span> <strong>返回顶部</strong> </li>
   </ul>
+</div>
 </div>
 </body>
 </html>

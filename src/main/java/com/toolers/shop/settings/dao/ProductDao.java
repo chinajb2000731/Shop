@@ -43,6 +43,10 @@ public interface ProductDao {
 
     List<Cart> findallshopcar(@Param("cid")String cid, @Param("flag")String flag);
 
+    int getProudcutCount(String cid);
+
+    List<Product> findProductByPage(@Param("cid")String cid, @Param("index")int index, @Param("currentCount")int currentCount);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

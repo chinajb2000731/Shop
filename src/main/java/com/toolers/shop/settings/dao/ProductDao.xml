@@ -65,4 +65,13 @@
     <select id="findallshopcar" resultType="Cart">
         select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag}
     </select>
+
+
+    <select id="getProudcutCount" resultType="int" >
+         select count(*) from product where cid=#{cid}
+    </select>
+
+    <select id="findProductByPage" resultType="product" >
+          select * from product where cid=#{cid} limit ${index},${currentCount}
+    </select>
 </mapper>

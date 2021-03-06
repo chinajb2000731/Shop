@@ -6,6 +6,7 @@ import com.toolers.shop.settings.domain.Category;
 import com.toolers.shop.settings.domain.Collect;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.service.ProductService;
+import com.toolers.shop.settings.vo.PageBean;
 import com.toolers.shop.untils.SqlSessionUtil;
 
 import java.util.List;
@@ -112,6 +113,23 @@ public class ProductServiceImpl implements ProductService {
         ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
         List<Cart> shopcarts=productDao.findallshopcar(cid,flag);
         return shopcarts;
+    }
+
+    public PageBean findProductByCid(String cid,int currentPage,int currentCount) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        PageBean<Product> pageBean=new PageBean<Product>();
+
+
+        pageBean.setCurrentPage(currentPage);
+        pageBean.setCurrentCount(currentCount);
+        int totalCount=productDao.getProudcutCount(cid);
+        pageBean.setTotalcount(totalCount);
+        int totalPage=(int) Math.ceil(1.0*totalCount/currentCount);
+        pageBean.setTotalPage(totalPage);
+        int index=(currentPage-1)*currentCount;
+        List<Product> list= productDao.findProductByPage(cid,index,currentCount);
+        pageBean.setList(list);
+        return pageBean;
     }
 
 }
