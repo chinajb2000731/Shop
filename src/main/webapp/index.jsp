@@ -44,8 +44,8 @@
 	  <ul class="clearfix">
 		  <c:choose>
 			  <c:when test="${empty user}">
-				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">首页</a></li>
-				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">商品分类</a></li>
+				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">首页</a></li>
+				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="">商品分类</a></li>
 				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
 				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
 			  </c:when>

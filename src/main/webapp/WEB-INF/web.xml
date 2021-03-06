@@ -52,6 +52,7 @@
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/settings/prouduct/index</url-pattern>
         <url-pattern>/settings/product/productinfo.do</url-pattern>
+        <url-pattern>/settings/product/productlists.do</url-pattern>
         <url-pattern>/settings/product/collect.do</url-pattern>
         <url-pattern>/settings/product/showcollect.do</url-pattern>
         <url-pattern>/settings/product/deletecollect.do</url-pattern>

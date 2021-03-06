@@ -54,12 +54,25 @@ public class ProductController extends HttpServlet {
         else if("/settings/product/showcart.do".equals(path))
         {
             showcart(request,response);
+
+        }
+        else if("/settings/product/productlists.do".equals(path))
+        {
+            showproductlists(request,response);
+
         }
 
     }
 
+    private void showproductlists(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("j进入商品列表");
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+
+
+
+    }
+
     private void showcart(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("=========");
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
         String cid=request.getParameter("loginAct");
         String flag=request.getParameter("flag");
@@ -104,7 +117,6 @@ public class ProductController extends HttpServlet {
 
     private void cart(HttpServletRequest request, HttpServletResponse response) {
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
-        System.out.println("进入购物车");
         String pid=request.getParameter("pid");
         String cid=request.getParameter("loginAct");
         String flag=request.getParameter("flag");
@@ -139,7 +151,6 @@ public class ProductController extends HttpServlet {
     }
 
     private void showcollect(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("进入收藏");
         String currentPageStr=request.getParameter("currentPage");
         if(currentPageStr==null)
         {

@@ -29,7 +29,7 @@
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="default.jsp">首页</a></li>
 	   <!-- <li class="hd_menu_tit" data-addclass="hd_menu_hover"> <a href="#">我的小充</a> </li> -->
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./消息中心.html">消息中心</a></li>
-       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./产品-产品列表.html">商品分类</a></li>
+       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="product_lists.jsp">商品分类</a></li>
         <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
 	  </ul>
 	</div>
@@ -41,7 +41,7 @@
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="./产品-产品列表.html">产品</a></li>
+                <li class="current"><a href="product_lists.jsp">产品</a></li>
                 <!-- <li><a href="#">信息</a></li> -->
             </ul>
         </div>
@@ -102,7 +102,7 @@
 		  <li><a href="./index.html">首页</a></li>
 			<!-- <li><a href="#">你身边的超市</a></li> -->
 		<!-- 	<li><a href="#">预售专区</a><em class="hot_icon"></em></li> -->
-		  <li><a href="./产品-产品列表.html">商城</a></li>
+		  <li><a href="product_lists.jsp">商城</a></li>
       <li><a href="./半小时圈主页.html">半小时生活圈</a></li>
 	<!-- 		<li><a href="#">好评商户</a></li> -->
       <li><a href="#">限时折扣</a></li>

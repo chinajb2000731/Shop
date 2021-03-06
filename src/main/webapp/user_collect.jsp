@@ -70,7 +70,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="./产品-产品列表.html">产品</a></li>
+                <li class="current"><a href="product_lists.jsp">产品</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
@@ -128,7 +128,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
 			<li><a href="default.jsp">首页</a></li>
-			<li><a href="./产品-产品列表.html">商城</a></li>
+			<li><a href="product_lists.jsp">商城</a></li>
 			<li><a href="#">热销活动</a></li>
 			<li><a href="#">联系我们</a></li>
 		 </ul>			 

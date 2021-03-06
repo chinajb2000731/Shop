@@ -46,7 +46,7 @@
 	  <ul class="clearfix">
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="default.jsp">首页</a></li>
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./消息中心.html">消息中心</a></li>
-       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="./产品-产品列表.html">商品分类</a></li>
+       <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="product_lists.jsp">商品分类</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
       </ul>
 	</div>
@@ -116,7 +116,7 @@
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
 			<li><a href="./index.html">首页</a></li>
-			<li><a href="./产品-产品列表.html">商城</a></li>
+			<li><a href="product_lists.jsp">商城</a></li>
       <li><a href="./半小时圈主页.html">半小时生活圈</a></li>
 			<li><a href="#">限时折扣</a></li>
       <li><a href="#">联系我们</a></li>
