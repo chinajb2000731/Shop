@@ -74,7 +74,7 @@ public class ProductController extends HttpServlet {
         {
             currentPageStr="1";
         }
-        int currentPage=Integer.parseInt(currentPageStr);;
+        int currentPage=Integer.parseInt(currentPageStr);
         int currentCount=16;
         PageBean pageBean=us.findProductByCid(cid,currentPage,currentCount);
         request.getSession().setAttribute("pageProductBean",pageBean);
