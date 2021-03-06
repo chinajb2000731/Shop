@@ -403,7 +403,7 @@ $(function() {
        		<div class="bjfff"></div>
 			<div class="QR_code">
 			 <p><img src="images/erweim.jpg" width="180px" height="180px" /></p>
-			 <p>微信扫一扫，关注我们</p>
+			 <p>微信扫扫，关注我们</p>
 			</div>		
 			</div>
 			</li>
