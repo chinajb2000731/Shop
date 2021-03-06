@@ -349,7 +349,7 @@
    
     </div>
     <div class="Plate_product">
-    <ul id="lists">
+    <ul id="lists1">
      <li class="product_display">
      <a href="" class="Collect"><em></em>收藏</a>
      <a href="#" class="img_link"><img src="products/p_44.jpg"  width="140" height="140"/></a>
@@ -406,7 +406,7 @@
    
     </div>
     <div class="Plate_product">
-    <ul id="lists">
+    <ul id="lists2">
      <li class="product_display">
      <a href="" class="Collect"><em></em>收藏</a>
      <a href="#" class="img_link"><img src="products/p_15.jpg"  width="140" height="140"/></a>
@@ -462,7 +462,7 @@
    
     </div>
     <div class="Plate_product">
-    <ul id="lists">
+    <ul id="lists3">
      <li class="product_display">
      <a href="" class="Collect"><em></em>收藏</a>
      <a href="#" class="img_link"><img src="products/p_21.jpg"  width="140" height="140"/></a>
@@ -667,7 +667,7 @@
 <div class="fixedBox">
   <ul class="fixedBoxList">
       <li class="fixeBoxLi user"><a href="#"> <span class="fixeBoxSpan"></span> <strong>消息中心</strong></a> </li>
-    <li class="fixeBoxLi cart_bd" style="display:block;" id="cartboxs">
+    <li class="fixeBoxLi cart_bd" style="display:block;" id="cartboxs1">
 		<p class="good_cart">9</p>
 			<span class="fixeBoxSpan"></span> <strong>购物车</strong>
 			<div class="cartBox">

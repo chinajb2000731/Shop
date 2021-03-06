@@ -75,7 +75,7 @@ div.zoomDiv {
 }
 div.zoomMask {
 	position: absolute;
-	background: url("") repeat;
+	background: /*url("")*/ repeat;
 	cursor: move;
 	z-index: 1;
 }
