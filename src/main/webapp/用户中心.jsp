@@ -242,7 +242,7 @@
    <!--浏览记录样式-->
     <div class="us_Records">
 	  <div id="Record_ps" class="Record_p">
-	    <div class="title_name"><span class="name left">浏览历史</span><span class="pageState right"></div>
+          <div class="title_name"><span class="name left">浏览历史</span><span class="pageState right"></span></div>
 	      <div class="hd"><a class="next">&lt;</a><a class="prev">&gt;</a></div>
             <div class="bd">
                 <ul >
@@ -669,8 +669,8 @@
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
 	</dl>
-     <dl>
-		   
+     <%--<dl>--%>
+
    </div>
     </div>
 </div>
