@@ -65,13 +65,19 @@ public class ProductController extends HttpServlet {
         String flag=request.getParameter("flag");
         double totalprice=0;
         double totalnum=0;
+        double totalrentprice=0;
         List<Cart> shopcarts=us.findallshopcar(cid,flag);
         List<Product> productcartList=new ArrayList<Product>();
         Product product=null;
         if (shopcarts==null)
         {
             request.getSession().setAttribute("productcartList", productcartList);
-            index(request,response);
+            try {
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            /*index(request,response);*/
         }
         else {
             for (Cart c : shopcarts) {
@@ -79,6 +85,7 @@ public class ProductController extends HttpServlet {
                 product = us.findProductByPid(pid);
                 totalnum = totalnum + c.getBuynum();
                 totalprice = totalprice + c.getBuynum() * product.getPrice();
+                totalrentprice = totalrentprice + c.getBuynum() * product.getRent();
                 product.setBuynum(c.getBuynum());
                 productcartList.add(product);
             }
@@ -86,10 +93,12 @@ public class ProductController extends HttpServlet {
         request.getSession().setAttribute("productcartList", productcartList);
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
-        index(request,response);
-
-
-
+        request.getSession().setAttribute("totalrentprice",totalrentprice);
+        try {
+            response.sendRedirect(request.getContextPath()+"/index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -221,16 +230,14 @@ public class ProductController extends HttpServlet {
         List<Product> essenceProductList=us.findEssenceProductList();
         List<Product> fastProductList=us.findFastProductList();
         List<Category> categoryList=us.findAllcategory();
-        request.setAttribute("newProductList",newProductList);
-        request.setAttribute("saleProductList",saleProductList);
-        request.setAttribute("grouProductList",grouProductList);
-        request.setAttribute("essenceroductList",essenceProductList);
-        request.setAttribute("fastProductList",fastProductList);
-        request.setAttribute("categoryList",categoryList);
+        request.getSession().setAttribute("newProductList",newProductList);
+        request.getSession().setAttribute("saleProductList",saleProductList);
+        request.getSession().setAttribute("grouProductList",grouProductList);
+        request.getSession().setAttribute("essenceroductList",essenceProductList);
+        request.getSession().setAttribute("fastProductList",fastProductList);
+        request.getSession().setAttribute("categoryList",categoryList);
         try {
-            request.getRequestDispatcher("/index.jsp").forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
+            response.sendRedirect(request.getContextPath()+"/index.jsp");
         } catch (IOException e) {
             e.printStackTrace();
         }

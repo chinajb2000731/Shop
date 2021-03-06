@@ -67,13 +67,28 @@
                            <div class="img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}"></div>
                            <div class="content"><p class="name">产品名称</p><p>${shopcar.pname}X${shopcar.buynum}</p></div>
                            <div class="Operations">
-                               <p class="Price">￥${shopcar.price*shopcar.buynum}</p>
+                               <c:choose>
+                                   <c:when test="${shopcar.rent==''}">
+                                       <p class="Price">（此商品不支持租用） 购买价格：￥${shopcar.price*shopcar.buynum}</p>
+                                   </c:when>
+                                   <c:otherwise>
+                                       <p class="Price">租用价格：￥${shopcar.rent*shopcar.buynum}   购买价格：￥${shopcar.price*shopcar.buynum}</p>
+                                   </c:otherwise>
+                               </c:choose>
                            </div>
                        </li>
                    </c:forEach>
                </ul>
                <div class="Shopping_style">
-                   <div class="p-total">共<b>${totalcartnum}</b>件商品　共计<strong>￥${totalcartprice}</strong></div>
+                   <c:choose>
+                       <c:when test="${totalrentprice==0}">
+                           <div class="p-total">共<b>${totalcartnum}</b>件商品　共计购买<strong>￥${totalcartprice} </strong></div>
+                       </c:when>
+                       <c:otherwise>
+                           <div class="p-total">共<b>${totalcartnum}</b>件商品　共计购买<strong>￥${totalcartprice} </strong></div>
+                           <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
+                       </c:otherwise>
+                   </c:choose>
                    <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
