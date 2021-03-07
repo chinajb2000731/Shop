@@ -132,4 +132,19 @@ public class ProductServiceImpl implements ProductService {
         return pageBean;
     }
 
+    public PageBean findProductByKeyword(String keyword, int currentPage, int currentCount) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        PageBean<Product> pageBean=new PageBean<Product>();
+        pageBean.setCurrentPage(currentPage);
+        pageBean.setCurrentCount(currentCount);
+        int totalCount=productDao.getProductCountByKeyword(keyword);
+        pageBean.setTotalcount(totalCount);
+        int totalPage=(int) Math.ceil(1.0*totalCount/currentCount);
+        pageBean.setTotalPage(totalPage);
+        int index=(currentPage-1)*currentCount;
+        List<Product> list= productDao.findProductByKeyword(keyword,index,currentCount);
+        pageBean.setList(list);
+        return pageBean;
+    }
+
 }

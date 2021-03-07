@@ -61,7 +61,36 @@ public class ProductController extends HttpServlet {
             showproductlists(request,response);
 
         }
+        else if("/settings/product/productsearch.do".equals(path))
+        {
 
+            productsearch(request,response);
+        }
+
+    }
+
+    private void productsearch(HttpServletRequest request, HttpServletResponse response) {
+
+        System.out.println("进入商品搜索");
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String keyword=request.getParameter("keyword");
+        String currentPageStr=request.getParameter("currentPage");
+        if (currentPageStr==null)
+        {
+            currentPageStr="1";
+        }
+        int currentPage=Integer.parseInt(currentPageStr);
+        int currentCount=16;
+        PageBean pageBean=us.findProductByKeyword(keyword,currentPage,currentCount);
+        request.getSession().setAttribute("pageProductBean",pageBean);
+        request.setAttribute("keyword",keyword);
+        try {
+            request.getRequestDispatcher("/product_lists.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showproductlists(HttpServletRequest request, HttpServletResponse response) {

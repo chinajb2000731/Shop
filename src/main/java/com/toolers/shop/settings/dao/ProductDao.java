@@ -47,6 +47,10 @@ public interface ProductDao {
 
     List<Product> findProductByPage(@Param("cid")String cid, @Param("index")int index, @Param("currentCount")int currentCount);
 
+    int getProductCountByKeyword(String keyword);
+
+    List<Product> findProductByKeyword(@Param("keyword")String keyword,@Param("index") int index,@Param("currentCount") int currentCount);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

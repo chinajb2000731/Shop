@@ -63,6 +63,11 @@ $(function() {
 		durationTime : 600
 	});
 });
+function productsearch() {
+    var keyword=$("#keyword").val();
+    location.href="settings/product/productsearch.do?keyword="+keyword;
+
+}
 </script>
 <body>
 <head>
@@ -99,8 +104,8 @@ $(function() {
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="searchName" class="search_box" onkeydown="keyDownSearch()" type="text">
-           <input name="" type="submit" value="搜 索"  class="Search_btn"/>
+           <input name="searchName" id="keyword" class="search_box" type="text">
+           <input name="" type="button" value="搜 索" onclick="productsearch()" class="Search_btn"/>
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>
 </div>
@@ -234,8 +239,18 @@ $(function() {
            <li class="gl-item">
                <em class="icon_special tejia"></em>
                <div class="Borders">
-                   <div class="img"><a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/${pro.pimage}" style="width:220px;height:220px"></a></div>
-                   <div class="Price"><b>¥${pro.price}</b><%--<span>[¥49.01/500g]</span>--%></div>
+                   <div class="img"><a href="settings/product/productinfo.do?pid=${pro.pid}"><img src="${pageContext.request.contextPath}/${pro.pimage}" style="width:220px;height:220px"></a></div>
+                   <div class="Price">
+                       <c:choose>
+                           <c:when test="${pro.rent==''}">
+                               <b>租用:不支持租用<br/>购买:¥${pro.price}</b><%--<span>[¥49.01/500g]</span>--%>
+                           </c:when>
+                           <c:otherwise>
+                               <b>租用:¥${pro.rent}<br/>购买:¥${pro.price}</b><%--<span>[¥49.01/500g]</span>--%>
+                           </c:otherwise>
+                       </c:choose>
+
+                   </div>
                    <div class="name"><a href="Product_Detailed.html">${pro.pname}</a></div>
                    <div class="p-operate">
                        <c:choose>
@@ -270,7 +285,15 @@ $(function() {
             <a href="javascript:void(0);" class="pn-prev disabled">&lt;上一页</a>
         </c:if>
         <c:if test="${pageProductBean.currentPage!=1}">
-            <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${pageProductBean.currentPage-1}" class="pn-prev disabled">&lt;上一页</a>
+            <c:choose>
+                <c:when test="${empty keyword}">
+                    <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${pageProductBean.currentPage-1}" class="pn-prev disabled">&lt;上一页</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="settings/product/productsearch.do?keyword=${keyword}&currentPage=${pageProductBean.currentPage-1}" class="pn-prev disabled">&lt;上一页</a>
+                </c:otherwise>
+            </c:choose>
+
         </c:if>
 
         <c:forEach begin="1" end="${pageProductBean.totalPage}" var="page">
@@ -278,7 +301,15 @@ $(function() {
                 <a href="javascript:void(0)" class="on">${page}</a>
             </c:if>
             <c:if test="${page!=pageProductBean.currentPage}">
-                <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${page}">${page}</a>
+                <c:choose>
+                    <c:when test="${empty keyword}">
+                        <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${page}">${page}</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="settings/product/productsearch.do?keyword=${keyword}&currentPage=${page}">${page}</a>
+                    </c:otherwise>
+                </c:choose>
+
             </c:if>
         </c:forEach>
 
@@ -286,7 +317,15 @@ $(function() {
             <a href="javascript:void(0);">下一页&gt;</a>
         </c:if>
         <c:if test="${pageProductBean.currentPage!=pageProductBean.totalPage}">
-            <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${pageProductBean.currentPage+1}">下一页&gt;</a>
+            <c:choose>
+                <c:when test="${empty keyword}">
+                    <a href="settings/product/productlists.do?cid=${productcid}&currentPage=${pageProductBean.currentPage+1}">下一页&gt;</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="settings/product/productsearch.do?keyword=${keyword}&currentPage=${pageProductBean.currentPage+1}">下一页&gt;</a>
+                </c:otherwise>
+            </c:choose>
+
         </c:if>
      </div>
     </div>

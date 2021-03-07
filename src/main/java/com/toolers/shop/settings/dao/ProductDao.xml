@@ -74,4 +74,12 @@
     <select id="findProductByPage" resultType="product" >
           select * from product where cid=#{cid} limit ${index},${currentCount}
     </select>
+
+    <select id="getProductCountByKeyword" resultType="int" >
+         select count(*) from product where pname like '%' #{keyword} '%'
+    </select>
+
+    <select id="findProductByKeyword" resultType="product" >
+          select * from product where pname like '%' #{keyword} '%' limit ${index},${currentCount}
+    </select>
 </mapper>

@@ -16,6 +16,13 @@
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function productsearch() {
+		    var keyword=$("#keyword").val();
+		    location.href="settings/product/productsearch.do?keyword="+keyword;
+
+        }
+	</script>
 <title>网站首页</title>
 </head>
 <body>
@@ -69,8 +76,8 @@
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="searchName" class="search_box" onkeydown="keyDownSearch()" type="text">
-           <input name="" type="submit" value="搜 索"  class="Search_btn"/>
+           <input name="searchName" id="keyword" class="search_box" type="text">
+           <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>
 </div>

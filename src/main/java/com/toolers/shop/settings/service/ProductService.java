@@ -44,4 +44,6 @@ public interface ProductService {
     List<Cart> findallshopcar(String cid, String flag);
 
     PageBean findProductByCid(String cid,int currentPage,int currentCount);
+
+    PageBean findProductByKeyword(String keyword, int currentPage, int currentCount);
 }

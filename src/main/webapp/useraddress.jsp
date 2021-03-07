@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<%--<%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>">--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -186,7 +186,7 @@
 
        function updateuseraddress(aid,consignee,address,postcode,phone) {
 
-        if(${empty seller}) {
+        if( ${empty seller}) {
             $("#consignee2").val(consignee);
             $("#address2").val(address);
             $("#postcode2").val(postcode);
@@ -325,7 +325,7 @@
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="用户中心-我的订单.html">我的订单</a></li>
+          <li> <a href="javascript:void(0)">我的订单</a></li>
           <li> <a href="useraddress.jsp">收货地址</a></li>
           <li> <a href="#">缺货登记</a></li>
           <li><a href="#">跟踪包裹</a></li>
@@ -406,10 +406,10 @@
              <td>${ad.phone}</td>
          <c:choose>
              <c:when test="${empty seller}">
-                 <td><a href="#my-modal-box"onclick="updateuseraddress('${ad.aid}','${ad.consignee}','${ad.address}','${ad.postcode}','${ad.phone}')">修改</a> | <a href="settings/user/deleteuseraddress.do?aid=${ad.aid}">删除</a></td>
+                 <td><a href="#my-modal-box" onclick="updateuseraddress('${ad.aid}','${ad.consignee}','${ad.address}','${ad.postcode}','${ad.phone}')">修改</a> | <a href="settings/user/deleteuseraddress.do?aid=${ad.aid}">删除</a></td>
              </c:when>
              <c:otherwise>
-                 <td><a href="#my-modal-box"onclick="updateuseraddress('${ad.aid}','${ad.consignee}','${ad.address}','${ad.postcode}','${ad.phone}')">修改</a> | <a href="settings/seller/deleteselleraddress.do?aid=${ad.aid}">删除</a></td>
+                 <td><a href="#my-modal-box" onclick="updateuseraddress('${ad.aid}','${ad.consignee}','${ad.address}','${ad.postcode}','${ad.phone}')">修改</a> | <a href="settings/seller/deleteselleraddress.do?aid=${ad.aid}">删除</a></td>
              </c:otherwise>
          </c:choose>
 
