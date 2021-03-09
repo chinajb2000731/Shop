@@ -99,7 +99,7 @@ function productsearch() {
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
               </c:when>
               <c:otherwise>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">首页</a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
@@ -115,7 +115,7 @@ function productsearch() {
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="javascript:void(0)">产品</a></li>
+                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
                 <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
@@ -176,11 +176,11 @@ function productsearch() {
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
         <ul class="Navigation_name">
-            <li><a href="javascript:void(0)">首页</a></li>
+            <li><a href="index.jsp">首页</a></li>
             <li class="hour"><span class="bg_muen"></span><a href="#">半小时生活圈</a></li>
             <li><a href="javascript:void(0)">你身边的超市</a></li>
             <li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>
-            <li><a href="javascript:void(0)">商城</a></li>
+            <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 
             <li><a href="javascript:void(0)">热销活动</a></li>
             <li><a href="javascript:void(0)">联系我们</a></li>

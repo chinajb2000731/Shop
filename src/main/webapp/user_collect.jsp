@@ -62,7 +62,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     </div>
   </div>
   <div id="header"  class="header page_style">
-  <div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+  <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
   <!--结束图层-->
   <div class="Search">
         <div class="search_list">

@@ -174,11 +174,11 @@
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-			<li><a href="Home.html">首页</a></li>
+			<li><a href="index.jsp">首页</a></li>
 			<li><a href="#">预租专区</a><em class="hot_icon"></em></li>
-			<li><a href="products_list.html">商城</a></li>
+			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 			<li><a href="#">热销活动</a></li>
-			<li><a href="Brands.html">联系我们</a></li>
+			<li><a href="#">联系我们</a></li>
 		 </ul>			 
 		</div>
 	<script>
@@ -361,7 +361,7 @@
       <dt class="transaction_manage"><em class="icon_3"></em>账户管理</dt>
       <dd>
        <ul>
-       <li><a href="用户中心-消费记录.html">消费记录</a></li>     
+       <li><a href="#">消费记录</a></li>
       </ul>
      </dd>
     </dl>

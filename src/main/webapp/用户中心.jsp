@@ -116,7 +116,7 @@
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
 			<li><a href="index.jsp">首页</a></li>
-			<li><a href="product_lists.jsp">商城</a></li>
+			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
       <li><a href="#">半小时生活圈</a></li>
 			<li><a href="#">限时折扣</a></li>
       <li><a href="#">联系我们</a></li>

@@ -141,7 +141,7 @@
             <li class="hour"><span class="bg_muen"></span><a href="#">半小时生活圈</a></li>
 			<li><a href="javascript:void(0)">你身边的超市</a></li>
 			<li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>
-			<li><a href="javascript:void(0)">商城</a></li>
+			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 			<li><a href="javascript:void(0)">热销活动</a></li>
 			<li><a href="javascript:void(0)">联系我们</a></li>
 		 </ul>			 

@@ -103,9 +103,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-			<li><a href="./index.html">首页</a></li>
+			<li><a href="index.jsp">首页</a></li>
 			<li><a href="#">预租专区</a><em class="hot_icon"></em></li>
-			<li><a href="./产品-产品列表.html">商城</a></li>
+			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
             <li><a href="#">限时折扣</a></li>
 			<li><a href="#">联系我们</a></li>
 		 </ul>			 
@@ -117,14 +117,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
  <div class="user_center clearfix">
    <div class="left_style">
      <div class="menu_style">
-     <div class="user_title"><a href="用户中心.html">用户中心</a></div>
+     <div class="user_title"><a href="用户中心.jsp">用户中心</a></div>
      <div class="user_Head">
      <div class="user_portrait">
-      <a href="#" title="修改头像" class="btn_link"></a> <img src="images/people.png">
+
+         <c:choose>
+             <c:when test="${empty seller}">
+                 <img src="${pageContext.request.contextPath}/${user.headportrait}" width="200px" height="200px">
+             </c:when>
+             <c:otherwise>
+                 <img src="${pageContext.request.contextPath}/${seller.headportrait}" width="200px" height="200px">
+             </c:otherwise>
+         </c:choose>
+
       <div class="background_img"></div>
       </div>
       <div class="user_name">
-       <p><span class="name">化海天堂</span><a href="#">[修改密码]</a></p>
+          <c:choose>
+              <c:when test="${empty seller}">
+                  <p><span class="name">${user.name}</span><a href="#">[修改密码]</a></p>
+              </c:when>
+              <c:otherwise>
+                  <p><span class="name">${seller.name}</span><a href="#">[修改密码]</a></p>
+              </c:otherwise>
+          </c:choose>
        <p>访问时间：2016-1-21 10:23</p>
        </div>           
      </div>
@@ -134,9 +150,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="user_order.jsp">我的订单</a></li>
-          <li> <a href="用户中心-收货地址.html">收货地址</a></li>
-          <li> <a href="用户中心-产品预订.html">产品预订</a></li>
+            <li> <a href="user_order.jsp">我的订单</a></li>
+            <li> <a href="useraddress.jsp">收货地址</a></li>
+            <li> <a href="#">缺货登记</a></li>
         </ul>
       </dd>
     </dl>
@@ -144,9 +160,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <dt class="transaction_manage"><em class="icon_2"></em>用户管理</dt>
         <dd>
       <ul>
-        <li> <a href="用户中心-用户信息.html"> 用户信息</a></li>
-        <li> <a href="用户中心-我的收藏.html"> 我的收藏</a></li>
-        <li> <a href="#"> 我的留言</a></li>
+        <li> <a href="userinformation.jsp"> 用户信息</a></li>
+        <li> <a href="user_collect.jsp"> 我的收藏</a></li>
+        <li> <a href="#"> 我的评论</a></li>
       <!--   <li><a href="#"> 我的评论</a></li> -->
       </ul>
     </dd>
