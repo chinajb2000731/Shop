@@ -58,12 +58,12 @@
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="#">产品</a></li>
+                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="searchName" class="search_box" onkeydown="keyDownSearch()" type="text">
-           <input name="" type="submit" value="搜 索"  class="Search_btn"/>
+           <input name="searchName" id="keyword" class="search_box" type="text">
+            <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
         <div class="clear hotword">热门搜索词：汽车&nbsp;&nbsp;&nbsp;电脑&nbsp;&nbsp;&nbsp;手机&nbsp;&nbsp;&nbsp;平板&nbsp;&nbsp;&nbsp;玩具</div>
 </div>
@@ -115,9 +115,9 @@
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-			<li><a href="./index.html">首页</a></li>
+			<li><a href="index.jsp">首页</a></li>
 			<li><a href="product_lists.jsp">商城</a></li>
-      <li><a href="./半小时圈主页.html">半小时生活圈</a></li>
+      <li><a href="#">半小时生活圈</a></li>
 			<li><a href="#">限时折扣</a></li>
       <li><a href="#">联系我们</a></li>
 		 </ul>			 

@@ -20,6 +20,13 @@
 <script src="layer/layer.js" type="text/javascript"></script>
 <script src="js/iCheck.js" type="text/javascript"></script>
 <script src="js/custom.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function productsearch() {
+            var keyword=$("#keyword").val();
+            location.href="settings/product/productsearch.do?keyword="+keyword;
+
+        }
+    </script>
 <title>用户信息</title>
 </head>
 
@@ -61,12 +68,12 @@
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="product_lists.jsp">产品</a></li>
+                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="searchName" class="search_box" onkeydown="keyDownSearch()" type="text">
-           <input name="" type="submit" value="搜 索"  class="Search_btn"/>
+           <input name="searchName" id="keyword" class="search_box"  type="text">
+            <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
         <div class="clear hotword">热门搜索词：汽车&nbsp;&nbsp;&nbsp;电脑&nbsp;&nbsp;&nbsp;手机&nbsp;&nbsp;&nbsp;平板&nbsp;&nbsp;&nbsp;玩具</div>
 </div>
