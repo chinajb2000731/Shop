@@ -161,7 +161,7 @@
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="用户中心-我的订单.html">我的订单</a></li>
+          <li> <a href="user_order.jsp">我的订单</a></li>
             <li> <a href="useraddress.jsp" onclick="">收货地址</a></li>
           <li> <a href="用户中心-产品预订.html">产品预租</a></li>
         </ul>

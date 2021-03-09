@@ -19,6 +19,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script src="js/footer.js" type="text/javascript"></script>
 <script src="js/iCheck.js" type="text/javascript"></script>
 <script src="js/custom.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function productsearch() {
+            var keyword=$("#keyword").val();
+            location.href="settings/product/productsearch.do?keyword="+keyword;
+
+        }
+    </script>
 <title>会员中心-我的收藏</title>
 </head>
 
@@ -64,14 +71,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="searchName" class="search_box" onkeydown="keyDownSearch()" type="text">
-           <input name="" type="submit" value="搜 索"  class="Search_btn"/>
+           <input name="searchName" id="keyword" class="search_box" type="text">
+            <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
          <div class="clear hotword">热门搜索词：汽车&nbsp;&nbsp;&nbsp;电脑&nbsp;&nbsp;&nbsp;手机&nbsp;&nbsp;&nbsp;平板&nbsp;&nbsp;&nbsp;玩具</div>
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="./用户中心-我的订单.html">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>
@@ -166,7 +173,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="用户中心-我的订单.html">我的订单</a></li>
+          <li> <a href="user_order.jsp">我的订单</a></li>
           <li> <a href="useraddress.jsp">收货地址</a></li>
           <li> <a href="#">缺货登记</a></li>
         </ul>

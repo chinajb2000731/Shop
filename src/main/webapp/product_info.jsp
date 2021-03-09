@@ -16,6 +16,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script src="js/jquery.simpleGal.js"></script>
 <script type="text/javascript" src="js/jquery.imagezoom.min.js"></script>
+    <script type="text/javascript">
+        function productsearch() {
+            var keyword=$("#keyword").val();
+            location.href="settings/product/productsearch.do?keyword="+keyword;
+
+        }
+    </script>
 <style>
 img {
 	max-width: none;
@@ -213,18 +220,18 @@ document.getElementById(bg_div).style.display='none';
     <div class="search float-lt">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="#">产品</a></li>
-                <li><a href="#">信息</a></li>
+                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
+                <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
             <ul>
                 <li>
-                    <input name="searchName" id="searchName" class="search_box" onkeydown="keyDownSearch()" type="text">
+                    <input name="searchName" id="keyword" class="search_box"  type="text">
                 </li>
             </ul>
             <ul>
-                <li class="search_btn"><a href="product-list.html">搜索</a></li>
+                <li class="search_btn"><a href="javascript:void(0)" onclick="productsearch()">搜索</a></li>
             </ul>
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>

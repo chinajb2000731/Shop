@@ -53,7 +53,7 @@
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="./用户中心-我的订单.html">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>

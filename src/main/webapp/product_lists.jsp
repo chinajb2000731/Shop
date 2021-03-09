@@ -74,7 +74,23 @@ function productsearch() {
  <div id="header_top">
   <div id="top">
     <div class="Inside_pages">
-      <div class="Collection"><a href="登录.jsp" class="green">请登录</a> <a href="注册.jsp" class="green">免费注册</a></div>
+      <div class="Collection">
+          <c:choose>
+              <c:when test="${empty user and empty seller}">
+                  <a href="登录.jsp" class="green">请登录</a>
+                  <a href="注册.jsp" class="green">免费注册</a>
+              </c:when>
+              <c:when test="${empty user and !empty seller}">
+                  <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
+                  <a href="用户中心.jsp" class="green" >用户中心</a>&nbsp&nbsp
+                  <a href="店铺专区.jsp" class="green">店铺专区</a>
+              </c:when>
+              <c:otherwise>
+                  <span>欢迎:【${user.name}】</span>&nbsp&nbsp
+                  <a href="用户中心.jsp" class="green">用户中心</a>
+              </c:otherwise>
+          </c:choose>
+      </div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
           <c:choose>
