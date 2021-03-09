@@ -209,36 +209,89 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <td class="list_name_title6">操作</td>
          </tr>
          </thead> 
-         
-            <tbody>       
-           <tr class="Order_info"><td colspan="7" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td></tr>
-           <tr class="Order_Details" >
-           <td colspan="3">
-           <table class="Order_product_style">
-           <tbody><tr>
-           <td>
-            <div class="product_name clearfix">
-            <a href="#" class="product_img"><img src="Products/p_12.jpg" width="80px" height="80px"></a>
-            <a href="3" class="p_name">天然绿色多汁香甜无污染水蜜桃</a>
-            <p class="specification">礼盒装20个/盒</p>
-            </div>
-            </td>
-            <td>5</td>
-           <td>2</td>
-            </tr>
-            </tbody></table>
-           </td>   
-           <td class="split_line">100</td>
-          <td class="split_line">100</td>
-           <td class="split_line"><p style="color:#F33">买家已付款</p></td>
-           <td class="operating">
-                <a href="#">查看订单</a>
-                <a href="#">在线客服</a>
-                <a href="#" class="Delivery_btn">确认收货</a>            
-           </td>
-           </tr>
-           </tbody>  
-             <tbody>       
+            <c:forEach items="${productcartList}" var="shopcar">
+                <tbody>
+                <tr class="Order_info">
+                    <td colspan="7" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td>
+                </tr>
+                <tr class="Order_Details" >
+                    <td colspan="3">
+                        <table class="Order_product_style">
+                            <tbody><tr>
+                                <td>
+                                    <div class="product_name clearfix">
+                                        <a href="#" class="product_img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}" width="80px" height="80px"></a>
+                                        <a href="#" class="p_name">${shopcar.pname}</a>
+                                        <%--<p class="specification">礼盒装20个/盒</p>--%>
+                                    </div>
+                                </td>
+                                <c:choose>
+                                    <c:when test="${shopcar.rent==''}">
+                                        <td>租:不支持</br>买:${shopcar.price}(元)</td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td>租:${shopcar.rent}</br>买:${shopcar.price}(元)</td>
+                                    </c:otherwise>
+                                </c:choose>
+                                <td>${shopcar.buynum}</td>
+                            </tr>
+                            </tbody></table>
+                    </td>
+                    <td class="split_line">${shopcar.price*shopcar.buynum}</td>
+                    <c:choose>
+                        <c:when test="${shopcar.rent==''}">
+                            <td class="split_line">不支持租赁</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="split_line">${shopcar.rent*shopcar.buynum}</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${shopcar.is_pay=='0'}">
+                            <td class="split_line">等待付款</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td class="split_line"><p style="color:#F33">买家已付款</p></td>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <td class="operating">
+                        <c:choose>
+                            <c:when test="${shopcar.is_pay=='0'}">
+                                <a href="#">去购买付款</a>
+                            </c:when>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${shopcar.rent==''}">
+
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${shopcar.is_pay=='0'}">
+                                        <a href="#">去租赁付款</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="#">查看订单</a>
+                                        <a href="#">在线客服</a>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${shopcar.is_pay=='0'}">
+                                <a href="#" >删除</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="#" class="Delivery_btn">确认收货</a>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </td>
+                </tr>
+                </tbody>
+            </c:forEach>
+             <%--<tbody>
            <tr class="Order_info"><td colspan="7" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td></tr>
            <tr class="Order_Details">
            <td colspan="3">
@@ -267,35 +320,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              <a href="#">删除</a>
            </td>
            </tr>
-           </tbody>    
-            <!--  <tbody>       
-           <tr class="Order_info"><td colspan="6" class="Order_form_time"><input tabindex="13" type="checkbox" id="flat-checkbox-1">下单时间：2015-12-3 | 订单号：445454654654654</td></tr>
-           <tr class="Order_Details">
-           <td colspan="3">
-           <table class="Order_product_style">
-           <tbody><tr>
-           <td>
-            <div class="product_name clearfix">
-            <a href="#" class="product_img"><img src="Products/p_12.jpg" width="80px" height="80px"></a>
-            <a href="3" class="p_name">天然绿色多汁香甜无污染水蜜桃</a>
-            <p class="specification">礼盒装20个/盒</p>
-            </div>
-            </td>
-            <td>5</td>
-           <td>2</td>
-            </tr>
-            </tbody></table>
-           </td>   
-           <td class="split_line">100</td>
-           <td class="split_line"><p style="color:#F33">确认收货</p><p style="color:#CCC">买家未评价</p></td>
-           <td class="operating">
-                <a href="#">查看详细</a>
-                <a href="#">在线客服</a>
-                <a href="#" class="Refund_btn">评价商品</a>
-             
-           </td>
-           </tr>
-           </tbody>             -->
+           </tbody>--%>
          </table>
     </div>
      </div>
@@ -363,7 +388,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
      <dd><a href="#">常见问题 </a></dd>
 	</dl>
      <dl>
-	   
+     </dl>
    </div>
     </div>
 </div>

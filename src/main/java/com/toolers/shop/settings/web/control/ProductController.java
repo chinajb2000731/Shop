@@ -145,6 +145,8 @@ public class ProductController extends HttpServlet {
                 totalprice = totalprice + c.getBuynum() * product.getPrice();
                 totalrentprice = totalrentprice + c.getBuynum() * product.getRent();
                 product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
                 productcartList.add(product);
             }
         }

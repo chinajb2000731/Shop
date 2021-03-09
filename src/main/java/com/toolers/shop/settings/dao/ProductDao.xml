@@ -58,7 +58,7 @@
         update cart set buynum=#{i} where id=#{id}
     </update>
     <insert id="addcart">
-       insert into cart(id,pid,cid,buynum,flag)values (#{id},#{pid},#{cid},#{buynum},#{flag})
+       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0)
    </insert>
 
 
