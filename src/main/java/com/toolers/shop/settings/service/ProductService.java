@@ -46,4 +46,14 @@ public interface ProductService {
     PageBean findProductByCid(String cid,int currentPage,int currentCount);
 
     PageBean findProductByKeyword(String keyword, int currentPage, int currentCount);
+
+    List<Cart> findallshoporder(String cid, String flag);
+
+    void productconfirmorder(String loginAct, String pid, String flag);
+
+    void productconfirmorderrent(String loginAct, String pid, String flag);
+
+    void productget(String loginAct, String pid, String flag);
+
+    void deleteorder(String id);
 }

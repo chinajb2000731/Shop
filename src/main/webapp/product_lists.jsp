@@ -102,7 +102,7 @@ function productsearch() {
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
               </c:otherwise>
           </c:choose>
 	  </ul>
@@ -127,7 +127,7 @@ function productsearch() {
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="#">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>
@@ -165,7 +165,7 @@ function productsearch() {
                        </c:otherwise>
                    </c:choose>
 
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>

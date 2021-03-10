@@ -257,24 +257,24 @@ document.getElementById(bg_div).style.display='none';
                 </tr>
             </table>
         </div>
-        <div class=" clear bread"><a href="#">首页</a> <span class="pipe">&gt;</span> <a href="#">某供应商</a> <span class="pipe">&gt;</span> <a href="#">某产品</a></div>
+        <div class=" clear bread"><a href="javascript:void(0)">首页</a> <span class="pipe">&gt;</span> <a href="javascript:void(0)">某供应商</a> <span class="pipe">&gt;</span> <a href="javascript:void(0)">某产品</a></div>
 </div>
     <div class="pro_detail" >
         <div class="pro_detail_img float-lt">
             <div class="gallery">
-                <div class="tb-booth tb-pic tb-s310"> <a href=""><img src="${pageContext.request.contextPath}/${product.pimage}"  alt="展品细节展示放大镜特效" rel="${pageContext.request.contextPath}/${product.pimage}" class="jqzoom" /></a> </div>
+                <div class="tb-booth tb-pic tb-s310"> <a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/${product.pimage}"  alt="展品细节展示放大镜特效" rel="${pageContext.request.contextPath}/${product.pimage}" class="jqzoom" /></a> </div>
                 <ul class="tb-thumb" id="thumblist">
                     <li class="tb-selected">
-                        <div class="tb-pic tb-s40"><a href="#"><img src="${pageContext.request.contextPath}/${product.pimage}" mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
+                        <div class="tb-pic tb-s40"><a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/${product.pimage}" mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
                     </li>
                     <li>
-                        <div class="tb-pic tb-s40"><a href="#"><img  src="${pageContext.request.contextPath}/${product.pimage}"  mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
+                        <div class="tb-pic tb-s40"><a href="javascript:void(0)"><img  src="${pageContext.request.contextPath}/${product.pimage}"  mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
                     </li>
                     <li>
-                        <div class="tb-pic tb-s40"><a href="#"><img src="${pageContext.request.contextPath}/${product.pimage}"  mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
+                        <div class="tb-pic tb-s40"><a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/${product.pimage}"  mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
                     </li>
                     <li style="margin-right:0px;">
-                        <div class="tb-pic tb-s40"><a href="#"><img src="${pageContext.request.contextPath}/${product.pimage}"  mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
+                        <div class="tb-pic tb-s40"><a href="javascript:void(0)"><img src="${pageContext.request.contextPath}/${product.pimage}"  mid="${pageContext.request.contextPath}/${product.pimage}" big="${pageContext.request.contextPath}/${product.pimage}"></a></div>
                     </li>
                 </ul>
             </div>
@@ -359,10 +359,10 @@ document.getElementById(bg_div).style.display='none';
             <div class="clear"></div>
             <div class="pro_detail_btn margin-t30">
                 <ul>
-                    <li class="pro_detail_shop"><a href="">立即购买</a></li>
-                    <li class="pro_detail_add"><a href="javascript:void(0);" onclick="addCart()">加入购物车</a></li>
-                    <li>------------------------------------------------------------------------</li>
-                    <li class="pro_detail_shop"><a href="">立刻租用</a></li>
+                    <%--<li class="pro_detail_shop"><a href="">立即购买</a></li>--%>
+                    <li class="pro_detail_shop"><a href="javascript:void(0);" onclick="addCart()">加入购物车</a></li>
+                    <%--<li>------------------------------------------------------------------------</li>--%>
+                   <%-- <li class="pro_detail_shop"><a href="">立刻租用</a></li>--%>
                     <li class="pro_detail_add"><a href="javascript:void(0);" onclick="ShowDiv('MyDiv','fade')">加入收藏</a></li>
                 </ul>
             </div>

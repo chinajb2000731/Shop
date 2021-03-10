@@ -147,4 +147,31 @@ public class ProductServiceImpl implements ProductService {
         return pageBean;
     }
 
+    public List<Cart> findallshoporder(String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Cart> shoporder=productDao.findallshoporder(cid,flag);
+        return shoporder;
+    }
+
+    public void productconfirmorder(String loginAct, String pid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.productconfirmorder(loginAct,pid,flag);
+    }
+
+    public void productconfirmorderrent(String loginAct, String pid, String flag) {
+
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.productconfirmorderrent(loginAct,pid,flag);
+    }
+
+    public void productget(String loginAct, String pid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.productget(loginAct,pid,flag);
+    }
+
+    public void deleteorder(String id) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.deleteorder(id);
+    }
+
 }

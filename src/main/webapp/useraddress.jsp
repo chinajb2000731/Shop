@@ -106,7 +106,7 @@
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">消息中心</a></li>
        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
-        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">我的购物车<b>(${totalcartnum})</b></a></li>
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
 	  </ul>
 	</div>
     </div>
@@ -128,7 +128,7 @@
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="#">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>
@@ -332,7 +332,7 @@
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="javascript:void(0)">我的订单</a></li>
+          <li> <a href="user_order.jsp">我的订单</a></li>
           <li> <a href="useraddress.jsp">收货地址</a></li>
           <li> <a href="#">缺货登记</a></li>
           <li><a href="#">跟踪包裹</a></li>

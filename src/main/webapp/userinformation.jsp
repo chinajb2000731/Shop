@@ -57,7 +57,7 @@
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">消息中心</a></li>
        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
-        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">我的购物车<b>(${totalcartnum})</b></a></li>
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
 	  </ul>
 	</div>
     </div>
@@ -115,7 +115,7 @@
                            <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                        </c:otherwise>
                    </c:choose>
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>
@@ -233,7 +233,7 @@
       <dt class="transaction_manage"><em class="icon_3"></em>账户管理</dt>
       <dd>
        <ul>
-       <li><a href="用户中心-消费记录.html">消费记录</a></li>   
+       <li><a href="#">消费记录</a></li>
       </ul>
      </dd>
     </dl>

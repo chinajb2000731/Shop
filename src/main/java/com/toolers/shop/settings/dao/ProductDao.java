@@ -51,6 +51,16 @@ public interface ProductDao {
 
     List<Product> findProductByKeyword(@Param("keyword")String keyword,@Param("index") int index,@Param("currentCount") int currentCount);
 
+    List<Cart> findallshoporder(@Param("cid")String cid, @Param("flag")String flag);
+
+    void productconfirmorder(@Param("loginAct")String loginAct,@Param("pid") String pid, @Param("flag")String flag);
+
+    void productconfirmorderrent(@Param("loginAct")String loginAct, @Param("pid")String pid,@Param("flag") String flag);
+
+    void productget(@Param("loginAct")String loginAct, @Param("pid")String pid, @Param("flag")String flag);
+
+    void deleteorder(String id);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

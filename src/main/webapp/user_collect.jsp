@@ -56,7 +56,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
                   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
-                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
+                  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
 	  </ul>
 	</div>
     </div>
@@ -114,7 +114,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                        <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                    </c:otherwise>
                </c:choose>
-               <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+               <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
            </div>
        </c:otherwise>
        </c:choose>
@@ -221,7 +221,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                              <a href="settings/product/deletecollect.do?pid=${pro.pid}&loginAct=${seller.loginAct}&flag=1&currentPage=${pageBean.currentPage}"> <em class="iconfont  delete"></em></a>
                          </c:otherwise>
                      </c:choose>
-                     <a href="#" class="buy_btn">立即购买</a>
+                     <a href="settings/product/productinfo.do?pid=${pro.pid}" class="buy_btn">立即购买</a>
                      <div class="collect_info">
                          <div class="img_link"> <a href="#" class="center "><img src="${pageContext.request.contextPath}/${pro.pimage}"></a></div>
                          <dl class="xinxi">

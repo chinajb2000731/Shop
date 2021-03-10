@@ -31,6 +31,8 @@ public class Product {
  private  Category category;
  private  String is_pay;
  private  String is_get;
+ private  String is_rent;
+ private  String id;
 
     public String getPid() {
         return pid;
@@ -182,5 +184,21 @@ public class Product {
 
     public void setIs_get(String is_get) {
         this.is_get = is_get;
+    }
+
+    public String getIs_rent() {
+        return is_rent;
+    }
+
+    public void setIs_rent(String is_rent) {
+        this.is_rent = is_rent;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

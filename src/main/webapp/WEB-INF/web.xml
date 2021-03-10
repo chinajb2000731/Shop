@@ -60,6 +60,10 @@
         <url-pattern>/settings/product/showcart.do</url-pattern>
         <url-pattern>/settings/product/deletecart.do</url-pattern>
         <url-pattern>/settings/product/productsearch.do</url-pattern>
+        <url-pattern>/settings/product/productorder.do</url-pattern>
+        <url-pattern>/settings/product/productorderent.do</url-pattern>
+        <url-pattern>/settings/product/productget.do</url-pattern>
+        <url-pattern>/settings/product/deleteorder.do</url-pattern>
     </servlet-mapping>
 
     <filter>

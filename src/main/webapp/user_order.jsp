@@ -54,7 +54,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       </div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-	   <<li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
+	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">消息中心</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">我的购物车<b>(${totalcartnum})</b></a></li>
@@ -68,7 +68,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="Search">
         <div class="search_list">
             <ul>
-                li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
+                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
                 <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
@@ -80,23 +80,56 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="./user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">0</i></div>
+
+   <div class="s_cart">
+       <a href="javascript:void(0)">我的购物车</a>
+       <i class="ci-right">&gt;</i>
+       <i class="ci-count" id="shopping-amount">${totalcartnum}</i>
+   </div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
-	 <!--<div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>-->
-	 <ul class="p_s_list">	   
-		<li>
-		    <div class="img"><img src="images/tianma.png"></div>
-		    <div class="content"><p class="name"><a href="#">产品名称</a></p><p>颜色分类:紫花8255尺码:XL</p></div>
-			<div class="Operations">
-			<p class="Price">￥55.00</p>
-			<p><a href="#">删除</a></p></div>
-		  </li>
-		</ul>		
-	 <div class="Shopping_style">
-	 <div class="p-total">共<b>1</b>件商品　共计<strong>￥ 515.00</strong></div>
-	  <a href="Shop_cart.html" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
-	 </div>	 
+
+       <c:choose>
+           <c:when test="${empty productcartList}">
+               <div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>
+           </c:when>
+           <c:otherwise>
+               <ul class="p_s_list">
+                   <c:forEach items="${productcartList}" var="shopcar">
+                       <li>
+                           <div class="img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}"></div>
+                           <div class="content"><p class="name">产品名称</p><p>${shopcar.pname}X${shopcar.buynum}</p></div>
+                           <div class="Operations">
+                               <c:choose>
+                                   <c:when test="${shopcar.rent==''}">
+                                       <p class="Price">（此商品不支持租用） 购买价格：￥${shopcar.price*shopcar.buynum}</p>
+                                   </c:when>
+                                   <c:otherwise>
+                                       <p class="Price">租用价格：￥${shopcar.rent*shopcar.buynum}   购买价格：￥${shopcar.price*shopcar.buynum}</p>
+                                   </c:otherwise>
+                               </c:choose>
+
+                           </div>
+                       </li>
+                   </c:forEach>
+               </ul>
+               <div class="Shopping_style">
+                   <c:choose>
+                       <c:when test="${totalrentprice==0}">
+                           <div class="p-total">共<b>${totalcartnum}</b>件商品　共计购买<strong>￥${totalcartprice} </strong></div>
+                       </c:when>
+                       <c:otherwise>
+                           <div class="p-total">共<b>${totalcartnum}</b>件商品　共计购买<strong>￥${totalcartprice} </strong></div>
+                           <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
+                       </c:otherwise>
+                   </c:choose>
+
+                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+               </div>
+           </c:otherwise>
+       </c:choose>
+
+
    </div>
  </div>
 </div>
@@ -209,7 +242,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <td class="list_name_title6">操作</td>
          </tr>
          </thead> 
-            <c:forEach items="${productcartList}" var="shopcar">
+            <c:forEach items="${productcartList2}" var="shopcar">
                 <tbody>
                 <tr class="Order_info">
                     <td colspan="7" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td>
@@ -247,28 +280,62 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </c:otherwise>
                     </c:choose>
                     <c:choose>
-                        <c:when test="${shopcar.is_pay=='0'}">
+                        <c:when test="${shopcar.is_pay=='0' and shopcar.is_rent=='0'}">
                             <td class="split_line">等待付款</td>
                         </c:when>
                         <c:otherwise>
-                            <td class="split_line"><p style="color:#F33">买家已付款</p></td>
+                            <c:choose>
+                                <c:when test="${shopcar.is_get=='0'}">
+                                    <td class="split_line"><p style="color:#F33">买家已付款</p></td>
+                                </c:when>
+                                <c:otherwise>
+                                   <td class="split_line"><p style="color:#F33">已收货,交易成功</p></td>
+                                </c:otherwise>
+                            </c:choose>
+
                         </c:otherwise>
                     </c:choose>
 
                     <td class="operating">
                         <c:choose>
-                            <c:when test="${shopcar.is_pay=='0'}">
-                                <a href="#">去购买付款</a>
+                            <c:when test="${shopcar.is_pay=='0' and shopcar.is_rent=='0'}">
+                                <c:choose>
+                                    <c:when test="${empty seller}">
+                                        <a href="settings/product/productorder.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0&pay=${shopcar.price*shopcar.buynum}">去购买付款</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="settings/product/productorder.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1&pay=${shopcar.price*shopcar.buynum}">去购买付款</a>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </c:when>
                         </c:choose>
                         <c:choose>
                             <c:when test="${shopcar.rent==''}">
+                                <c:choose>
+                                    <c:when test="${shopcar.is_pay=='0'}">
+
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="#">查看订单</a>
+                                        <a href="#">在线客服</a>
+                                       <%-- <a href="#">查看物流</a>--%>
+                                    </c:otherwise>
+                                </c:choose>
 
                             </c:when>
                             <c:otherwise>
                                 <c:choose>
-                                    <c:when test="${shopcar.is_pay=='0'}">
-                                        <a href="#">去租赁付款</a>
+                                    <c:when test="${shopcar.is_pay=='0' and shopcar.is_rent=='0' }">
+                                        <c:choose>
+                                            <c:when test="${empty seller}">
+                                                <a href="settings/product/productorderent.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0&pay=${shopcar.rent*shopcar.buynum}">去租赁付款</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="settings/product/productorderent.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1&pay=${shopcar.rent*shopcar.buynum}">去租赁付款</a>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </c:when>
                                     <c:otherwise>
                                         <a href="#">查看订单</a>
@@ -279,14 +346,64 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             </c:otherwise>
                         </c:choose>
                         <c:choose>
-                            <c:when test="${shopcar.is_pay=='0'}">
-                                <a href="#" >删除</a>
+                            <c:when test="${shopcar.is_get=='0' and (shopcar.is_pay=='1' or shopcar.is_rent=='1') }">
+                                <a href="#">查看物流</a>
                             </c:when>
-                            <c:otherwise>
-                                <a href="#" class="Delivery_btn">确认收货</a>
-                            </c:otherwise>
                         </c:choose>
 
+                        <c:choose>
+                            <c:when test="${shopcar.is_get=='1'}">
+                               <c:choose>
+                                   <c:when test="${shopcar.is_pay=='1'}">
+                                       <a href="#">申请售后</a>
+                                   </c:when>
+                                   <c:otherwise>
+                                       <a href="#">申请售后</a>
+                                       <a href="#">退租</a>
+                                   </c:otherwise>
+                               </c:choose>
+                            </c:when>
+
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${(shopcar.is_pay=='0') and (shopcar.is_rent=='0')}">
+                                <c:choose>
+                                    <c:when test="${empty seller}">
+                                        <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">删除</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">删除</a>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${shopcar.is_get=='0'}">
+                                        <c:choose>
+                                            <c:when test="${empty seller}">
+                                                <a href="settings/product/productget.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0" class="Delivery_btn">确认收货</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="settings/product/productget.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1" class="Delivery_btn">确认收货</a>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:choose>
+                                            <c:when test="${empty seller}">
+                                                <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">删除</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">删除</a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </c:otherwise>
+                        </c:choose>
                     </td>
                 </tr>
                 </tbody>

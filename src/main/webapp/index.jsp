@@ -58,7 +58,7 @@
 				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">首页</a></li>
 				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
 				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
-				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">我的购物车<b>(${totalcartnum})</b></a></li>
+				  <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
 			  </c:otherwise>
 		  </c:choose>
 	  </ul>
@@ -83,7 +83,8 @@
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="#">我的购物车</a>
+   <div class="s_cart">
+       <a href="user_order.jsp">我的购物车</a>
 	   <i class="ci-right">&gt;</i>
 	   <i class="ci-count" id="shopping-amount">${totalcartnum}</i>
    </div>
@@ -125,7 +126,7 @@
 				   </c:otherwise>
 			   </c:choose>
 
-			   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+			   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
 		   </div>
 	   </c:otherwise>
    </c:choose>
@@ -185,14 +186,14 @@
     <ul class="Menu_list">
 		<c:forEach items="${categoryList}" var="category">
 			<li class="name">
-				<div class="Menu_name"><a href="product_list.html" >${category.cname}</a><span>&lt;</span></div>
+				<div class="Menu_name"><a href="settings/product/productlists.do?cid=${category.cid}" >${category.cname}</a><span>&lt;</span></div>
 				<div class="link_name">
 					<p>
-						<a href="Product_Detailed.html">茅台</a> |
+						<a href="#">茅台</a> |
 						<a href="#">五粮液</a> |
 						<a href="#">郎酒</a> |
 						<a href="#">剑南春</a>
-						<a href="Product_Detailed.html">茅台</a> |
+						<a href="#">茅台</a> |
 						<a href="#">五粮液</a> |
 						<a href="#">郎酒</a> |
 						<a href="#">剑南春</a>

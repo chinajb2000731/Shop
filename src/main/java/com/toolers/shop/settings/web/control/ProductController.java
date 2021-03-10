@@ -66,12 +66,326 @@ public class ProductController extends HttpServlet {
 
             productsearch(request,response);
         }
+        else if("/settings/product/productorder.do".equals(path))
+        {
+            productorder(request,response);
+        }
+        else if ("/settings/product/productorderent.do".equals(path))
+        {
+            productorderent(request,response);
+        }
+        else if ("/settings/product/productget.do".equals(path))
+        {
+            productget(request,response);
+        }
+        else if("/settings/product/deleteorder.do".equals(path))
+        {
+            deleteorder(request,response);
+        }
+    }
+
+    private void deleteorder(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String id=request.getParameter("id");
+        String loginAct=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        us.deleteorder(id);
+        double totalprice=0;
+        double totalnum=0;
+        double totalrentprice=0;
+        List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
+        List<Cart> shoporders=us.findallshoporder(loginAct,flag);
+        List<Product> productcartList=new ArrayList<Product>();
+        List<Product> productcartList2=new ArrayList<Product>();
+        Product product=null;
+        if (shopcarts==null)
+        {
+            request.getSession().setAttribute("productcartList", productcartList);
+           /* try {
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            /*index(request,response);*/
+        }
+        else {
+            for (Cart c : shopcarts) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                totalnum = totalnum + c.getBuynum();
+                totalprice = totalprice + c.getBuynum() * product.getPrice();
+                totalrentprice = totalrentprice + c.getBuynum() * product.getRent();
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList.add(product);
+            }
+        }
+
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList", productcartList);
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("totalcartprice",totalprice);
+        request.getSession().setAttribute("totalcartnum",totalnum);
+        request.getSession().setAttribute("totalrentprice",totalrentprice);
+
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void productorderent(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String loginAct=request.getParameter("loginAct");
+        String pid=request.getParameter("pid");
+        String flag=request.getParameter("flag");
+        us.productconfirmorderrent(loginAct,pid,flag);
+        double totalprice=0;
+        double totalnum=0;
+        double totalrentprice=0;
+        List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
+        List<Cart> shoporders=us.findallshoporder(loginAct,flag);
+        List<Product> productcartList=new ArrayList<Product>();
+        List<Product> productcartList2=new ArrayList<Product>();
+        Product product=null;
+        if (shopcarts==null)
+        {
+            request.getSession().setAttribute("productcartList", productcartList);
+           /* try {
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            /*index(request,response);*/
+        }
+        else {
+            for (Cart c : shopcarts) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                totalnum = totalnum + c.getBuynum();
+                totalprice = totalprice + c.getBuynum() * product.getPrice();
+                totalrentprice = totalrentprice + c.getBuynum() * product.getRent();
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList.add(product);
+            }
+        }
+
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList", productcartList);
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("totalcartprice",totalprice);
+        request.getSession().setAttribute("totalcartnum",totalnum);
+        request.getSession().setAttribute("totalrentprice",totalrentprice);
+
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void productget(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String loginAct=request.getParameter("loginAct");
+        String pid=request.getParameter("pid");
+        String flag=request.getParameter("flag");
+        us.productget(loginAct,pid,flag);
+        double totalprice=0;
+        double totalnum=0;
+        double totalrentprice=0;
+        List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
+        List<Cart> shoporders=us.findallshoporder(loginAct,flag);
+        List<Product> productcartList=new ArrayList<Product>();
+        List<Product> productcartList2=new ArrayList<Product>();
+        Product product=null;
+        if (shopcarts==null)
+        {
+            request.getSession().setAttribute("productcartList", productcartList);
+           /* try {
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            /*index(request,response);*/
+        }
+        else {
+            for (Cart c : shopcarts) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                totalnum = totalnum + c.getBuynum();
+                totalprice = totalprice + c.getBuynum() * product.getPrice();
+                totalrentprice = totalrentprice + c.getBuynum() * product.getRent();
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList.add(product);
+            }
+        }
+
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList", productcartList);
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("totalcartprice",totalprice);
+        request.getSession().setAttribute("totalcartnum",totalnum);
+        request.getSession().setAttribute("totalrentprice",totalrentprice);
+
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void productorder(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入订单界面");
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String loginAct=request.getParameter("loginAct");
+        String pid=request.getParameter("pid");
+        String flag=request.getParameter("flag");
+        us.productconfirmorder(loginAct,pid,flag);
+        double totalprice=0;
+        double totalnum=0;
+        double totalrentprice=0;
+        List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
+        List<Cart> shoporders=us.findallshoporder(loginAct,flag);
+        List<Product> productcartList=new ArrayList<Product>();
+        List<Product> productcartList2=new ArrayList<Product>();
+        Product product=null;
+        if (shopcarts==null)
+        {
+            request.getSession().setAttribute("productcartList", productcartList);
+           /* try {
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            /*index(request,response);*/
+        }
+        else {
+            for (Cart c : shopcarts) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                totalnum = totalnum + c.getBuynum();
+                totalprice = totalprice + c.getBuynum() * product.getPrice();
+                totalrentprice = totalrentprice + c.getBuynum() * product.getRent();
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList.add(product);
+            }
+        }
+
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList", productcartList);
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("totalcartprice",totalprice);
+        request.getSession().setAttribute("totalcartnum",totalnum);
+        request.getSession().setAttribute("totalrentprice",totalrentprice);
+
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     private void productsearch(HttpServletRequest request, HttpServletResponse response) {
 
-        System.out.println("进入商品搜索");
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
         String keyword=request.getParameter("keyword");
         String currentPageStr=request.getParameter("currentPage");
@@ -94,7 +408,6 @@ public class ProductController extends HttpServlet {
     }
 
     private void showproductlists(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("进入商品列表");
         ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
         //获得cid
         String cid=request.getParameter("cid");
@@ -125,16 +438,18 @@ public class ProductController extends HttpServlet {
         double totalnum=0;
         double totalrentprice=0;
         List<Cart> shopcarts=us.findallshopcar(cid,flag);
+        List<Cart> shoporders=us.findallshoporder(cid,flag);
         List<Product> productcartList=new ArrayList<Product>();
+        List<Product> productcartList2=new ArrayList<Product>();
         Product product=null;
         if (shopcarts==null)
         {
             request.getSession().setAttribute("productcartList", productcartList);
-            try {
+           /* try {
                 response.sendRedirect(request.getContextPath()+"/index.jsp");
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
             /*index(request,response);*/
         }
         else {
@@ -147,10 +462,35 @@ public class ProductController extends HttpServlet {
                 product.setBuynum(c.getBuynum());
                 product.setIs_pay(c.getIs_pay());
                 product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
                 productcartList.add(product);
             }
         }
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/index.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid = c.getPid();
+                product = us.findProductByPid(pid);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                productcartList2.add(product);
+            }
+        }
+
         request.getSession().setAttribute("productcartList", productcartList);
+        request.getSession().setAttribute("productcartList2", productcartList2);
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
         request.getSession().setAttribute("totalrentprice",totalrentprice);

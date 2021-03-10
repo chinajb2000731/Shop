@@ -47,13 +47,13 @@
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
 	   <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">消息中心</a></li>
        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="javascript:void(0)">我的购物车<b>(${totalcartnum})</b></a></li>
+          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
       </ul>
 	</div>
     </div>
   </div>
   <div id="header"  class="header top_header_style">
-  <div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+  <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
   <!--结束图层-->
   <div class="Search">
         <div class="search_list">
@@ -69,7 +69,7 @@
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="#">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>
@@ -105,7 +105,7 @@
                        <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                    </c:otherwise>
                </c:choose>
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>
@@ -117,9 +117,9 @@
 		 <ul class="Navigation_name">
 			<li><a href="index.jsp">首页</a></li>
 			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
-      <li><a href="#">半小时生活圈</a></li>
-			<li><a href="#">限时折扣</a></li>
-      <li><a href="#">联系我们</a></li>
+      <li><a href="javascript:void(0)">半小时生活圈</a></li>
+			<li><a href="javascript:void(0)">限时折扣</a></li>
+      <li><a href="javascript:void(0)">联系我们</a></li>
 		 </ul>			 
 		</div>
 	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
@@ -163,7 +163,7 @@
         <ul>
           <li> <a href="user_order.jsp">我的订单</a></li>
             <li> <a href="useraddress.jsp" onclick="">收货地址</a></li>
-          <li> <a href="用户中心-产品预订.html">产品预租</a></li>
+          <li> <a href="#">产品预租</a></li>
         </ul>
       </dd>
     </dl>
@@ -181,7 +181,7 @@
               </c:otherwise>
           </c:choose>
 
-        <li><a href="#">我的评论</a></li>
+        <li><a href="javascript:void(0)">我的评论</a></li>
       </ul>
     </dd>
     </dl>
@@ -189,8 +189,8 @@
       <dt class="transaction_manage"><em class="icon_3"></em>账户管理</dt>
       <dd>
        <ul>
-        <li><a href="用户中心-消费记录.html">消费记录</a></li>   
-       <li><a href="#">跟踪包裹</a></li>
+        <li><a href="javascript:void(0)">消费记录</a></li>
+       <li><a href="javascript:void(0)">跟踪包裹</a></li>
       </ul>
      </dd>
     </dl>

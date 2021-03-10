@@ -52,18 +52,18 @@
         delete from collect where pid=#{pid} and loginAct=#{loginAct} and flag=#{flag}
     </delete>
     <select id="selectcart" resultType="Cart">
-        select * from cart where pid=#{pid} and cid=#{cid} and flag=#{flag}
+        select * from cart where pid=#{pid} and cid=#{cid} and flag=#{flag} and is_pay=0 and is_rent=0;
     </select>
     <update id="updatecart">
         update cart set buynum=#{i} where id=#{id}
     </update>
     <insert id="addcart">
-       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0)
+       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get,is_rent)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0,0)
    </insert>
 
 
     <select id="findallshopcar" resultType="Cart">
-        select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag}
+        select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and ca.is_pay=0 and ca.is_rent=0;
     </select>
 
 
@@ -82,4 +82,24 @@
     <select id="findProductByKeyword" resultType="product" >
           select * from product where pname like '%' #{keyword} '%' limit ${index},${currentCount}
     </select>
+
+    <select id="findallshoporder" resultType="Cart">
+        select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag};
+    </select>
+
+    <update id="productconfirmorder">
+        update cart set is_pay=1 where cid=#{loginAct} and pid=#{pid} and flag=#{flag}
+    </update>
+
+    <update id="productconfirmorderrent">
+        update cart set is_rent=1 where cid=#{loginAct} and pid=#{pid} and flag=#{flag}
+    </update>
+
+    <update id="productget">
+        update cart set is_get=1 where cid=#{loginAct} and pid=#{pid} and flag=#{flag}
+    </update>
+
+    <delete id="deleteorder">
+        delete from cart where id=#{id}
+    </delete>
 </mapper>
