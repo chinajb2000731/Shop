@@ -56,4 +56,6 @@ public interface ProductService {
     void productget(String loginAct, String pid, String flag);
 
     void deleteorder(String id);
+
+    int getCountorder(String cid, String flag);
 }

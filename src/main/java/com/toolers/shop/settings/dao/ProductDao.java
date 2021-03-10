@@ -61,6 +61,8 @@ public interface ProductDao {
 
     void deleteorder(String id);
 
+    int getCountorder(@Param("cid")String cid,@Param("flag") String flag);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

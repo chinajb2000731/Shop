@@ -102,4 +102,8 @@
     <delete id="deleteorder">
         delete from cart where id=#{id}
     </delete>
+
+    <select id="getCountorder" resultType="int" >
+         select count(*) from cart where cid=#{cid} and flag=#{flag}
+    </select>
 </mapper>

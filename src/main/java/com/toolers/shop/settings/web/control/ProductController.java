@@ -93,6 +93,7 @@ public class ProductController extends HttpServlet {
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
+        int ordercount=us.getCountorder(loginAct,flag);
         List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
         List<Cart> shoporders=us.findallshoporder(loginAct,flag);
         List<Product> productcartList=new ArrayList<Product>();
@@ -127,6 +128,7 @@ public class ProductController extends HttpServlet {
         if (shoporders==null)
         {
             request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
             try {
                 response.sendRedirect(request.getContextPath()+"/user_order.jsp");
             } catch (IOException e) {
@@ -150,7 +152,7 @@ public class ProductController extends HttpServlet {
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
         request.getSession().setAttribute("totalrentprice",totalrentprice);
-
+        request.getSession().setAttribute("ordercount",ordercount);
         try {
             response.sendRedirect(request.getContextPath()+"/user_order.jsp");
         } catch (IOException e) {
@@ -167,6 +169,7 @@ public class ProductController extends HttpServlet {
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
+        int ordercount=us.getCountorder(loginAct,flag);
         List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
         List<Cart> shoporders=us.findallshoporder(loginAct,flag);
         List<Product> productcartList=new ArrayList<Product>();
@@ -201,6 +204,7 @@ public class ProductController extends HttpServlet {
         if (shoporders==null)
         {
             request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
             try {
                 response.sendRedirect(request.getContextPath()+"/user_order.jsp");
             } catch (IOException e) {
@@ -224,7 +228,7 @@ public class ProductController extends HttpServlet {
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
         request.getSession().setAttribute("totalrentprice",totalrentprice);
-
+        request.getSession().setAttribute("ordercount",ordercount);
         try {
             response.sendRedirect(request.getContextPath()+"/user_order.jsp");
         } catch (IOException e) {
@@ -242,6 +246,7 @@ public class ProductController extends HttpServlet {
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
+        int ordercount=us.getCountorder(loginAct,flag);
         List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
         List<Cart> shoporders=us.findallshoporder(loginAct,flag);
         List<Product> productcartList=new ArrayList<Product>();
@@ -276,6 +281,7 @@ public class ProductController extends HttpServlet {
         if (shoporders==null)
         {
             request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
             try {
                 response.sendRedirect(request.getContextPath()+"/user_order.jsp");
             } catch (IOException e) {
@@ -299,7 +305,7 @@ public class ProductController extends HttpServlet {
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
         request.getSession().setAttribute("totalrentprice",totalrentprice);
-
+        request.getSession().setAttribute("ordercount",ordercount);
         try {
             response.sendRedirect(request.getContextPath()+"/user_order.jsp");
         } catch (IOException e) {
@@ -318,6 +324,7 @@ public class ProductController extends HttpServlet {
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
+        int ordercount=us.getCountorder(loginAct,flag);
         List<Cart> shopcarts=us.findallshopcar(loginAct,flag);
         List<Cart> shoporders=us.findallshoporder(loginAct,flag);
         List<Product> productcartList=new ArrayList<Product>();
@@ -352,6 +359,7 @@ public class ProductController extends HttpServlet {
         if (shoporders==null)
         {
             request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
             try {
                 response.sendRedirect(request.getContextPath()+"/user_order.jsp");
             } catch (IOException e) {
@@ -375,7 +383,7 @@ public class ProductController extends HttpServlet {
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
         request.getSession().setAttribute("totalrentprice",totalrentprice);
-
+        request.getSession().setAttribute("ordercount",ordercount);
         try {
             response.sendRedirect(request.getContextPath()+"/user_order.jsp");
         } catch (IOException e) {
@@ -437,6 +445,7 @@ public class ProductController extends HttpServlet {
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
+        int ordercount=us.getCountorder(cid,flag);
         List<Cart> shopcarts=us.findallshopcar(cid,flag);
         List<Cart> shoporders=us.findallshoporder(cid,flag);
         List<Product> productcartList=new ArrayList<Product>();
@@ -470,6 +479,7 @@ public class ProductController extends HttpServlet {
         if (shoporders==null)
         {
             request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
             try {
                 response.sendRedirect(request.getContextPath()+"/index.jsp");
             } catch (IOException e) {
@@ -494,6 +504,7 @@ public class ProductController extends HttpServlet {
         request.getSession().setAttribute("totalcartprice",totalprice);
         request.getSession().setAttribute("totalcartnum",totalnum);
         request.getSession().setAttribute("totalrentprice",totalrentprice);
+        request.getSession().setAttribute("ordercount",ordercount);
         try {
             response.sendRedirect(request.getContextPath()+"/index.jsp");
         } catch (IOException e) {

@@ -218,13 +218,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="title_style"><em></em>订单管理</div> 
    <div class="Order_form_style">
       <div class="Order_form_filter">
-       <a href="#" class="on">全部订单（23）</a>
-       <a href="#" class="">代付款（2）</a>
-       <a href="#" class="">代发货（3）</a>
-       <a href="#" class="">待收货（5）</a>
-       <a href="#" class="">退货/退款（0）</a>
-       <a href="#" class="">交易成功（0）</a>
-       <a href="#" class="">交易关闭（0）</a>
+       <a href="javascript:void(0)" class="on">全部订单（${ordercount}）</a>
+       <a href="javascript:void(0)" class="">代付款（0）</a>
+       <a href="javascript:void(0)" class="">代发货（0）</a>
+       <a href="javascript:void(0)" class="">待收货（0）</a>
+       <a href="javascript:void(0)" class="">退货/退款（0）</a>
+       <a href="javascript:void(0)" class="">交易成功（0）</a>
+      <%-- <a href="#" class="">交易关闭（0）</a>--%>
       </div>
       <!-- <div class="Order_Operation"> -->
      <!-- <div class="left"> <label><input name="" type="checkbox" value=""  class="checkbox"/>全选</label> <input name="" type="submit" value="批量确认收货"  class="confirm_Order"/></div> -->

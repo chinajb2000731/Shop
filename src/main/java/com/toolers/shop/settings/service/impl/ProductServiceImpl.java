@@ -174,4 +174,10 @@ public class ProductServiceImpl implements ProductService {
         productDao.deleteorder(id);
     }
 
+    public int getCountorder(String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        int count=productDao.getCountorder(cid,flag);
+        return count;
+    }
+
 }
