@@ -82,6 +82,164 @@ public class ProductController extends HttpServlet {
         {
             deleteorder(request,response);
         }
+        else if("/settings/product/selectorder.do".equals(path))
+        {
+            selectorder(request,response);
+        }
+    }
+
+    private void selectorder(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String cid=request.getParameter("cid");
+        String flag=request.getParameter("flag");
+        String orderflagstr=request.getParameter("orderflag");
+        int orderflag=Integer.parseInt(orderflagstr);
+
+
+        if(orderflag==0)
+        {
+            System.out.println("00000000000");
+            List<Cart> shoporders=us.findallshoporder(cid,flag);
+            List<Product> productcartList2=new ArrayList<Product>();
+            Product product=null;
+            if (shoporders==null)
+            {
+                request.getSession().setAttribute("productcartList2", productcartList2);
+                try {
+                    response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                for (Cart c : shoporders) {
+                    String pid2 = c.getPid();
+                    product = us.findProductByPid(pid2);
+                    product.setBuynum(c.getBuynum());
+                    product.setIs_pay(c.getIs_pay());
+                    product.setIs_get(c.getIs_get());
+                    product.setIs_rent(c.getIs_rent());
+                    product.setId(c.getId());
+                    productcartList2.add(product);
+                }
+            }
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        else if (orderflag==3)
+        {
+            System.out.println("33333333");
+            List<Cart> shoporders=us.findallnogetorder(cid,flag);
+            List<Product> productcartList2=new ArrayList<Product>();
+            Product product=null;
+            if (shoporders==null)
+            {
+                request.getSession().setAttribute("productcartList2", productcartList2);
+                try {
+                    response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                for (Cart c : shoporders) {
+                    String pid2 = c.getPid();
+                    product = us.findProductByPid(pid2);
+                    product.setBuynum(c.getBuynum());
+                    product.setIs_pay(c.getIs_pay());
+                    product.setIs_get(c.getIs_get());
+                    product.setIs_rent(c.getIs_rent());
+                    product.setId(c.getId());
+                    productcartList2.add(product);
+                }
+            }
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        else if(orderflag==1)
+        {
+            System.out.println("11111");
+            List<Cart> shoporders=us.findallnopayorder(cid,flag);
+            List<Product> productcartList2=new ArrayList<Product>();
+            Product product=null;
+            if (shoporders==null)
+            {
+                request.getSession().setAttribute("productcartList2", productcartList2);
+                try {
+                    response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                for (Cart c : shoporders) {
+                    String pid2 = c.getPid();
+                    product = us.findProductByPid(pid2);
+                    product.setBuynum(c.getBuynum());
+                    product.setIs_pay(c.getIs_pay());
+                    product.setIs_get(c.getIs_get());
+                    product.setIs_rent(c.getIs_rent());
+                    product.setId(c.getId());
+                    productcartList2.add(product);
+                }
+            }
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        else if(orderflag==5)
+        {
+            List<Cart> shoporders=us.findallSuccessfultransactions(cid,flag);
+            List<Product> productcartList2=new ArrayList<Product>();
+            Product product=null;
+            if (shoporders==null)
+            {
+                request.getSession().setAttribute("productcartList2", productcartList2);
+                try {
+                    response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                for (Cart c : shoporders) {
+                    String pid2 = c.getPid();
+                    product = us.findProductByPid(pid2);
+                    product.setBuynum(c.getBuynum());
+                    product.setIs_pay(c.getIs_pay());
+                    product.setIs_get(c.getIs_get());
+                    product.setIs_rent(c.getIs_rent());
+                    product.setId(c.getId());
+                    productcartList2.add(product);
+                }
+            }
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     private void deleteorder(HttpServletRequest request, HttpServletResponse response) {

@@ -223,9 +223,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                      </c:choose>
                      <a href="settings/product/productinfo.do?pid=${pro.pid}" class="buy_btn">立即购买</a>
                      <div class="collect_info">
-                         <div class="img_link"> <a href="#" class="center "><img src="${pageContext.request.contextPath}/${pro.pimage}"></a></div>
+                         <div class="img_link"> <a href="javascript:void(0)" class="center "><img src="${pageContext.request.contextPath}/${pro.pimage}"></a></div>
                          <dl class="xinxi">
-                             <dt><a href="#" class="name">${pro.pname}</a></dt>
+                             <dt><a href="javascript:void(0)" class="name">${pro.pname}</a></dt>
                              <dd><span class="Price"><b>￥</b>${pro.price}</span><span class="collect_Amount"><i class="iconfont icon-shoucang"></i>345</span></dd>
                          </dl>
                      </div>

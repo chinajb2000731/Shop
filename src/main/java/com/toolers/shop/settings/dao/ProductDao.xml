@@ -106,4 +106,16 @@
     <select id="getCountorder" resultType="int" >
          select count(*) from cart where cid=#{cid} and flag=#{flag}
     </select>
+
+    <select id="findallnogetorder" resultType="Cart">
+       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and ca.is_get=0;
+    </select>
+
+    <select id="findallnopayorder" resultType="Cart">
+       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and ca.is_pay=0 and ca.is_rent=0;
+    </select>
+
+    <select id="findallSuccessfultransactions" resultType="Cart">
+       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and ca.is_get=1;
+    </select>
 </mapper>

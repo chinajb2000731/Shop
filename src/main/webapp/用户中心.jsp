@@ -388,230 +388,26 @@
     <div class="right_user_recording">
     <div class="us_Record">
 	  <div id="Record_p" class="Record_p">
-	    <div class="title_name"><span class="name left">浏览历史</span><span class="pageState right"><span>1</span>/7</span></div>
+	    <div class="title_name"><span class="name left">广告区(西南交通大学)</span><span class="pageState right"><span>1</span>/7</span></div>
 	      <div class="hd"><a class="next">&lt;</a><a class="prev">&gt;</a></div>
             <div class="bd">
                 <ul >
                 <li class="clone">
                         <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_1.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
+                    <div class="pic"><a href="javascript:void(0)"><img src="userheadportrait/1.jpg"></a></div>
+                    <div class="title"><a href="javascript:void(0)">西南交通大学</a></div>
+                    <div class="Purchase_info"><span class="p_Price">百年学府</span> <a href="https://www.swjtu.edu.cn/" class="Purchase">立即加入</a></div>
                 </div>	
                     </li>
-                <li >
-                <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_12.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>		
-                </li>
-                    <li >
-                        <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_23.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>	
-                    </li>
-                    <li >
-                        <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_4.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>							
-                    </li>
-                    <li>
-                        <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_5.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>							
-                    </li>
-                        <li>
-                        <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_8.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>				
-                    </li>
-                        <li >
-                        <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_1.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>	
-                    </li>
-                        <li>
-                        <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_6.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>	
-                    </li>
-                    <li class="clone" >
-                <div class="p_width">
-                    <div class="pic"><a href=""><img src="Products/P_11.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="Purchase_info"><span class="p_Price">￥32.50</span> <a href="#" class="Purchase">立即购买</a></div>
-                </div>		
-                </li></ul></div>            
+                </ul>
+            </div>
          </div>
          <script type="text/javascript">jQuery("#Record_p").slide({ mainCell:".bd ul",effect:"leftLoop",vis:1,autoPlay:false });</script>
 	    </div>
        </div>      
      </div>
         <!--收藏商品-->
-     <div class="Collections_p">
-      <div class="slideGroups">
-        <div class="parHd">
-				<ul><li>收藏的商品</li><li>收藏的店铺</li></ul>
-			</div>
-            <div class="parBd">
-             <div class="Collect_Products">
-              <a class="sPrev" href="javascript:void(0)">&lt;</a>
-                <ul >
-              <li>
-                    <div class="pic"><a href=""><img src="Products/P_29.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>		
-                </li>
-                <li s>
-                    <div class="pic"><a href=""><img src="Products/P_19.jpg"></a></div>
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_37.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>							
-                </li>
-                <li>
-                    <div class="pic"><a href=""><img src="Products/P_24.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>								
-                </li>
-                    <li >
-                    <div class="pic"><a href=""><img src="Products/P_33.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>					
-                </li>
-                    <li >
-                    <div class="pic"><a href=""><img src="Products/P_29.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>		
-                </li>
-                    <li>
-                    <div class="pic"><a href=""><img src="Products/P_18.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>		
-                </li>
-                <li>
-                    <div class="pic"><a href=""><img src="Products/P_17.jpg"></a></div>
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_16.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>							
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_12.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>								
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_8.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>					
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_11.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="p_Price">￥32.50</div>		
-                </li>
-              </ul>
-              <a class="sNext" href="javascript:void(0)">&gt;</a>
-              <a href="#" class="more">更多收藏</a>
-             </div>
-             <div class="Collect_Products">
-             <a class="sPrev" href="javascript:void(0)">&lt;</a>
-              <ul >
-              <li>
-                    <div class="pic"><a href=""><img src="Products/P_29.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>		
-                </li>
-                <li s>
-                    <div class="pic"><a href=""><img src="Products/P_19.jpg"></a></div>
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                   <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>	
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_37.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>							
-                </li>
-                <li>
-                    <div class="pic"><a href=""><img src="Products/P_24.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>									
-                </li>
-                    <li >
-                    <div class="pic"><a href=""><img src="Products/P_33.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>						
-                </li>
-                    <li >
-                    <div class="pic"><a href=""><img src="Products/P_29.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>			
-                </li>
-                    <li>
-                    <div class="pic"><a href=""><img src="Products/P_18.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>			
-                </li>
-                <li>
-                    <div class="pic"><a href=""><img src="Products/P_17.jpg"></a></div>
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>	
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_16.jpg"></a></div>	
-                    <div class="title"><a href="#">金龙鱼 东北大米 蟹稻共生 盘锦大米5KG</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>								
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_12.jpg"></a></div>	
-                    <div class="title"><a href="#">三只松鼠旗舰店</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>									
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_8.jpg"></a></div>	
-                    <div class="title"><a href="#">三只松鼠旗舰店</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>						
-                </li>
-                <li >
-                    <div class="pic"><a href=""><img src="Products/P_11.jpg"></a></div>	
-                    <div class="title"><a href="#">店铺名称是什么</a></div>
-                    <div class="shop_name"><span>收藏：234</span><a href="#" >进入店铺</a></div>			
-                </li>
-              </ul>
-              <a class="sNext" href="javascript:void(0)">&gt;</a>
-              <a href="#" class="more">更多收藏</a>
-             </div>
-            </div>
-      </div>
-      <script type="text/javascript">
-			/* 内层图片无缝滚动 */
-			jQuery(".slideGroups .Collect_Products").slide({ mainCell:"ul",vis:5,prevCell:".sPrev",nextCell:".sNext",effect:"leftMarquee",interTime:50,autoPlay:true,trigger:"click"});
 
-			/* 外层tab切换 */
-			jQuery(".slideGroups").slide({titCell:".parHd li",mainCell:".parBd",trigger:"click"});
-
-		</script>			
-     </div>
    <!--结束-->       
     </div>
  

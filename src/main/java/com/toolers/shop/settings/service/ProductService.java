@@ -58,4 +58,10 @@ public interface ProductService {
     void deleteorder(String id);
 
     int getCountorder(String cid, String flag);
+
+    List<Cart> findallnogetorder(String cid, String flag);
+
+    List<Cart> findallnopayorder(String cid, String flag);
+
+    List<Cart> findallSuccessfultransactions(String cid, String flag);
 }

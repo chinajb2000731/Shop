@@ -180,4 +180,22 @@ public class ProductServiceImpl implements ProductService {
         return count;
     }
 
+    public List<Cart> findallnogetorder(String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Cart> shoporder=productDao.findallnogetorder(cid,flag);
+        return shoporder;
+    }
+
+    public List<Cart> findallnopayorder(String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Cart> shoporder=productDao.findallnopayorder(cid,flag);
+        return shoporder;
+    }
+
+    public List<Cart> findallSuccessfultransactions(String cid, String flag) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        List<Cart> shoporder=productDao.findallSuccessfultransactions(cid,flag);
+        return shoporder;
+    }
+
 }

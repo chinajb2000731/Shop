@@ -124,7 +124,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                        </c:otherwise>
                    </c:choose>
 
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+                   <a href="javascript:void(0)" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>
@@ -218,12 +218,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="title_style"><em></em>订单管理</div> 
    <div class="Order_form_style">
       <div class="Order_form_filter">
-       <a href="javascript:void(0)" class="on">全部订单（${ordercount}）</a>
-       <a href="javascript:void(0)" class="">代付款（0）</a>
-       <a href="javascript:void(0)" class="">代发货（0）</a>
-       <a href="javascript:void(0)" class="">待收货（0）</a>
-       <a href="javascript:void(0)" class="">退货/退款（0）</a>
-       <a href="javascript:void(0)" class="">交易成功（0）</a>
+       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=0" class="on">全部订单(${ordercount})</a>
+       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=1" class="">代付款</a>
+       <%--<a href="javascript:void(0)" class="">代发货</a>--%>
+       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=3" class="">待收货</a>
+       <%--<a href="javascript:void(0)" class="">退货/退款</a>--%>
+       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=5" class="">交易成功</a>
       <%-- <a href="#" class="">交易关闭（0）</a>--%>
       </div>
       <!-- <div class="Order_Operation"> -->

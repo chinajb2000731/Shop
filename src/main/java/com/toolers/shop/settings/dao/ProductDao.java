@@ -63,6 +63,12 @@ public interface ProductDao {
 
     int getCountorder(@Param("cid")String cid,@Param("flag") String flag);
 
+    List<Cart> findallnogetorder(@Param("cid")String cid, @Param("flag")String flag);
+
+    List<Cart> findallnopayorder(@Param("cid")String cid, @Param("flag")String flag);
+
+    List<Cart> findallSuccessfultransactions(@Param("cid")String cid,@Param("flag") String flag);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/
