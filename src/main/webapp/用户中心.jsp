@@ -322,7 +322,7 @@
      <div class="user_info">
       <ul class="">
        
-       <li class="Order_form"><a href="#"><img src="images/user_img_04.png" /><h4>订单：(5)</h4></a></li>
+       <li class="Order_form"><a href="user_order.jsp"><img src="images/user_img_04.png" /><h4>订单：(${ordercount})</h4></a></li>
       
       </ul>
      </div>
@@ -348,40 +348,36 @@
    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td class="img_link">
-    <a href="#" class="img"><img src="products/p_58.jpg" width="80" height="80"></a>
-	<a href="#" class="title">雅诗兰黛（Estee Lauder）弹性紧实柔肤眼霜15ml(又名弹性紧实眼霜)（提拉紧致 保湿补水 淡化细纹）</a>
-	</td>
-	<td>2</td>
-	<td>完成</td>
-	<td><a href="#" class="View">查看</a></td>
-   </tr>
-    <tr>
-    <td class="img_link">
-    <a href="#" class="img" title="山东红富士苹果"><img src="products/p_2.jpg" width="80" height="80"></a>
-     <i class="icon-copy"></i>
-    <a href="#" class="img" title="进口澳洲苹果"><img src="products/p_3.jpg" width="80" height="80"></a>
-     <i class="icon-copy"></i>
-    <a href="#" class="img" title="进口水果"><img src="products/p_4.jpg" width="80" height="80"></a>
-	</td>
-	<td>2</td>
-	<td>完成</td>
-	<td><a href="#" class="View">查看</a></td>
-   </tr>
-     <tr>
-    <td class="img_link">
-    <a href="#" class="img" title="山东红富士苹果"><img src="products/p_2.jpg" width="80" height="80"></a>
-     <i class="icon-copy"></i>
-    <a href="#" class="img" title="进口水果"><img src="products/p_24.jpg" width="80" height="80"></a>
-	</td>
-	<td>2</td>
-	<td>完成</td>
-	<td><a href="#" class="View">查看</a></td>
-   </tr>
+  <c:forEach items="${productcartList2}" var="shopcar">
+      <tr>
+          <td class="img_link">
+              <a href="javascript:void(0)" class="img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}" width="80" height="80"></a>
+              <a href="javascript:void(0)" class="title">${shopcar.pname}</a>
+          </td>
+          <td>${shopcar.pname}</td>
+          <c:choose>
+              <c:when test="${shopcar.is_get=='1'}">
+                  <td>完成</td>
+              </c:when>
+              <c:otherwise>
+                <c:choose>
+                    <c:when test="${shopcar.is_pay=='1' or shopcar.is_rent=='1'}">
+                        <td style="color: blue">待收货</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td style="color: red">待付款</td>
+                    </c:otherwise>
+                </c:choose>
+              </c:otherwise>
+          </c:choose>
+
+          <td><a href="user_order.jsp" class="View">查看</a></td>
+      </tr>
+  </c:forEach>
+
    </tbody>
   </table>
-   <div class="us_jls">共2条记录</div>
+   <div class="us_jls">共${ordercount}条记录</div>
   </div>
     </div>
       <!--右侧记录样式-->

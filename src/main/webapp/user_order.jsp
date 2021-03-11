@@ -218,12 +218,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="title_style"><em></em>订单管理</div> 
    <div class="Order_form_style">
       <div class="Order_form_filter">
-       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=0" class="on">全部订单(${ordercount})</a>
-       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=1" class="">代付款</a>
+          <c:choose>
+              <c:when test="${empty seller}">
+                  <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=0" class="on">全部订单(${ordercount})</a>
+              </c:when>
+              <c:otherwise>
+                  <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=0" class="on">全部订单(${ordercount})</a>
+              </c:otherwise>
+          </c:choose>
+
+          <c:choose>
+              <c:when test="${empty seller}">
+                  <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=1" class="">待付款</a>
+              </c:when>
+
+              <c:otherwise>
+                  <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=1" class="">待付款</a>
+              </c:otherwise>
+          </c:choose>
        <%--<a href="javascript:void(0)" class="">代发货</a>--%>
-       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=3" class="">待收货</a>
+          <c:choose>
+              <c:when test="${empty seller}">
+                  <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=3" class="">待收货</a>
+              </c:when>
+              <c:otherwise>
+                  <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=3" class="">待收货</a>
+              </c:otherwise>
+          </c:choose>
        <%--<a href="javascript:void(0)" class="">退货/退款</a>--%>
-       <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=5" class="">交易成功</a>
+          <c:choose>
+              <c:when test="${empty seller}">
+                  <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=5" class="">交易成功</a>
+              </c:when>
+              <c:otherwise>
+                  <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=5" class="">交易成功</a>
+              </c:otherwise>
+          </c:choose>
       <%-- <a href="#" class="">交易关闭（0）</a>--%>
       </div>
       <!-- <div class="Order_Operation"> -->
