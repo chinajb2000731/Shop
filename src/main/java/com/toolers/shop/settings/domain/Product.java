@@ -33,6 +33,8 @@ public class Product {
  private  String is_get;
  private  String is_rent;
  private  String id;
+ private  String check_flag;
+ private  String sell_flag;
 
     public String getPid() {
         return pid;
@@ -200,5 +202,21 @@ public class Product {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCheck_flag() {
+        return check_flag;
+    }
+
+    public void setCheck_flag(String check_flag) {
+        this.check_flag = check_flag;
+    }
+
+    public String getSell_flag() {
+        return sell_flag;
+    }
+
+    public void setSell_flag(String sell_flag) {
+        this.sell_flag = sell_flag;
     }
 }

@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+<%--<%
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>">--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,7 +22,7 @@
 
         }
     </script>
-<title>店铺专区</title>
+<title>商品专区</title>
 </head>
 
 <body>
@@ -30,26 +30,26 @@
  <div id="header_top">
   <div id="top">
     <div class="Inside_pages">
-      <div class="Collection">
-          <c:choose>
-              <c:when test="${empty user and empty seller}">
-                  <a href="登录.jsp" class="green">请登录</a>
-                  <a href="注册.jsp" class="green">免费注册</a>
-              </c:when>
-              <c:when test="${empty user and !empty seller}">
-                  <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green" >用户中心</a>&nbsp&nbsp
-                  <a href="店铺专区.jsp" class="green">店铺专区</a>
-              </c:when>
-              <c:otherwise>
-                  <span>欢迎:【${user.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>
-              </c:otherwise>
-          </c:choose>
-      </div>
+     <div class="Collection">
+         <c:choose>
+             <c:when test="${empty user and empty seller}">
+                 <a href="登录.jsp" class="green">请登录</a>
+                 <a href="注册.jsp" class="green">免费注册</a>
+             </c:when>
+             <c:when test="${empty user and !empty seller}">
+                 <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
+                 <a href="用户中心.jsp" class="green" >用户中心</a>&nbsp&nbsp
+                 <a href="店铺专区.jsp" class="green">店铺专区</a>
+             </c:when>
+             <c:otherwise>
+                 <span>欢迎:【${user.name}】</span>&nbsp&nbsp
+                 <a href="用户中心.jsp" class="green">用户中心</a>
+             </c:otherwise>
+         </c:choose>
+     </div>
 	<div class="hd_top_manu clearfix">
 	  <ul class="clearfix">
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
+          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="default.jsp">首页</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
           <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
@@ -58,26 +58,29 @@
     </div>
   </div>
   <div id="header"  class="header page_style">
-  <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
+  <div class="logo"><a href="default.jsp"><img src="images/logo.png" /></a></div>
   <!--结束图层-->
   <div class="Search">
         <div class="search_list">
             <ul>
                 <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
-                <!-- <li><a href="#">信息</a></li> -->
+                <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="keyword" class="search_box" type="text">
+           <input name="searchName" id="keyword" class="search_box"  type="text">
            <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a>
+       <i class="ci-right">&gt;</i>
+       <i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
+
        <c:choose>
            <c:when test="${empty productcartList}">
                <div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>
@@ -97,6 +100,7 @@
                                        <p class="Price">租用价格：￥${shopcar.rent*shopcar.buynum}   购买价格：￥${shopcar.price*shopcar.buynum}</p>
                                    </c:otherwise>
                                </c:choose>
+
                            </div>
                        </li>
                    </c:forEach>
@@ -111,17 +115,19 @@
                            <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                        </c:otherwise>
                    </c:choose>
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>
+
    </div>
  </div>
 </div>
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-		  < <li><a href="index.jsp">首页</a></li>
+             <li><a href="index.jsp">首页</a></li>
              <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
              <li><a href="#">热销活动</a></li>
              <li><a href="#">联系我们</a></li>
@@ -130,59 +136,100 @@
 	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
     </div>
 </head>
-<!--店铺专区样式-->
+<!--商品专区-->
 <div class="Inside_pages clearfix">
 <div class="left_style">
-  <!--列表-->
-  <div class="menu_styles">
+<!--列表-->
+  <div class="menu_style">
    <ul class="menu_list">
-    <li class="on"><em></em><a href="javascript:void(0)">店铺专区</a></li>
-    <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
+    <li><em></em><a href="店铺专区.jsp">店铺专区</a></li>
+    <li class="on"><em></em><a href="javascript:void(0)">商品专区</a></li>
     <li><em></em><a href="javascript:void(0)">订单专区</a></li>
     <li><em></em><a href="javascript:void(0)">发货管理</a></li>
     <li><em></em><a href="javascript:void(0)">收款账户</a></li>
-   <!--  <li><em></em><a href="我的报表.html">我的报表</a></li> -->
    </ul>
   </div>
 </div>
+<!--内容-->
 <div class="right_style">
   <!--内容详细-->
-   <div class="title_style"><em></em>店铺专区</div>
+   <div class="title_style"><em></em>商品专区</div>
    <div class="content_style">
-    <!--添加店铺-->
-   <!-- <div class="add_shops">
-     <h3>你好，目前你没有任何店铺！</h3>
-     <a href="#">添加店铺</a>
-    </div>-->
-    <div class="Add_shop_style"><a href="./店铺专区（添加店铺）.html" id="newShop" onclick="addShop()" class="New_Shop_btn">新增店铺</a></div>
-    <div class="shops_list">
-     <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核通过</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="edit_shops">编辑店铺</a><a href="店铺公告.html" class="shops_Bulletin">店铺公告</a></p>
-      </li>
-     </ul>
-      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核中</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a></p>
-      </li>
-     </ul>
-      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核失败</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="delete_shops">删除店铺</a></p>
-      </li>
-     </ul>
-    </div>
-   </div>
-</div>
+    <div class="Products_area_style">
+     <div class="Add_product_style"><a href="seller_onproduct.jsp" class="Add_btn">发布商品</a> <!-- <a href="#">公共商品库下载</a> --></div>
+
+     <div class="Products_list_style">
+      <table>
+       <thead>
+        <tr class="title">
+         <td class="checkbox_style"><input name="" type="checkbox" value="" /></td>
+         <td class="title_name">商品标题</td>
+         <td class="inventory">商品库存</td>
+         <td class="status">商品转态</td>
+         <td class="operating">操作</td>
+         </tr>
+        </thead>
+       <tbody>
+       <c:forEach items="${checkproductBean.list}" var="pro">
+           <tr>
+               <td><input name="" type="checkbox" value="" /></td>
+               <td><a href="#">${pro.pname}</a></td>
+               <td>${pro.inventory}</td>
+               <c:if test="${pro.check_flag=='0'}">
+                   <td style="color: blue">待审核</td>
+               </c:if>
+               <c:if test="${pro.check_flag=='1'}">
+                   <c:if test="${pro.sell_flag == '1'}">
+                       <td style="color: green">审核通过(已上架)</td>
+                   </c:if>
+                   <c:if test="${pro.sell_flag == '0'}">
+                       <td style="color: green">审核通过(未上架)</td>
+                   </c:if>
+               </c:if>
+               <c:if test="${pro.check_flag=='2'}">
+                   <td style="color: red">审核失败</td>
+               </c:if>
+               <td class="operating_btn relative">
+                   <div class="inventory_style">
+                       <input name="" type="text"  class="add_Number"/><input name="1"  type="submit" value="确认" class="confirm_btn" /> <a href="#" class="cancel"><em class="cancel-icon"></em></a>
+                   </div>
+                   <a href="javascript:void(0)" class="pjgl_btn">评价管理</a>
+                   <a href="#" class="szkc_btn">设置库存</a>
+                   <c:if test="${pro.check_flag=='0' or pro.check_flag=='2'}">
+                       <a href="settings/seller/deletesellproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}" class="sj_btn">删除</a>
+                   </c:if>
+                   <c:if test="${pro.check_flag=='1'and pro.sell_flag=='0'}">
+                       <a href="settings/seller/onsaleproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}&sellflag=1" class="sj_btn">上架</a>
+                   </c:if>
+                   <c:if test="${pro.check_flag=='1'and pro.sell_flag=='1'}">
+                       <a href="settings/seller/onsellproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}&sellflag=0" class="sj_btn">下架</a>
+                   </c:if>
+
+               </td>
+           </tr>
+       </c:forEach>
+
+       </tbody>
+      </table>
+      <div class="page_style">共${checkproductBean.totalPage}页 共${checkproductBean.totalcount}条，当前第${checkproductBean.currentPage}/${checkproductBean.totalPage}页
+          <c:if test="${checkproductBean.currentPage==1}">
+              <a href="javascript:void(0);">上一页</a>
+          </c:if>
+          <c:if test="${checkproductBean.currentPage!=1}">
+              <a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}&currentPage=${checkproductBean.currentPage-1}">上一页</a>
+          </c:if>
+
+          <c:if test="${checkproductBean.currentPage==checkproductBean.totalPage}">
+              <a href="javascript:void(0);">下一页</a>
+          </c:if>
+          <c:if test="${checkproductBean.currentPage!=checkproductBean.totalPage}">
+              <a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}&currentPage=${checkproductBean.currentPage+1}">下一页</a>
+          </c:if>
+      </div>
+     </div>
+    </div>  
+  </div>
+ </div>
 </div>
 <!--网站地图-->
 <div class="fri-link-bg clearfix">

@@ -2,10 +2,12 @@ package com.toolers.shop.settings.service.impl;
 
 import com.toolers.shop.exception.RegisterException;
 import com.toolers.shop.settings.dao.SellerDao;
+import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.domain.Seller;
 import com.toolers.shop.settings.domain.UserAddress;
 import com.toolers.shop.settings.service.SellerService;
 import com.toolers.shop.settings.vo.AddressBean;
+import com.toolers.shop.settings.vo.PageBean;
 import com.toolers.shop.untils.SqlSessionUtil;
 
 import javax.security.auth.login.LoginException;
@@ -15,11 +17,11 @@ import java.util.Map;
 
 public class SellerServiceImpl implements SellerService {
 
-    private SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+   /* private SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);*/
 
     public Seller register(Seller seller) throws RegisterException{
 
-
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         Seller seller1=sellerDao.registerSelect(seller);
         if (seller1!=null)
         {
@@ -30,7 +32,7 @@ public class SellerServiceImpl implements SellerService {
     }
 
     public Seller login(String loginAct, String loginPwd) throws LoginException{
-
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         Map<String,String> map=new HashMap<String,String>();
         map.put("loginAct",loginAct);
         map.put("loginPwd",loginPwd);
@@ -44,6 +46,7 @@ public class SellerServiceImpl implements SellerService {
 
     public Seller sellerinfo(Seller seller) {
 
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.sellerinfo(seller);
         Seller seller1=sellerDao.selectsellerinfo(seller);
         return seller1;
@@ -51,12 +54,14 @@ public class SellerServiceImpl implements SellerService {
 
     public Seller sellerheadportrait(Seller seller) {
 
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.sellerheadportrait(seller);
         Seller seller1=sellerDao. selectsellerheadportrait(seller);
         return seller1;
     }
 
     public AddressBean useraddress(UserAddress userAddress, String loginAct) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.useraddress(userAddress);
         AddressBean<UserAddress> addressBean=new AddressBean<UserAddress>();
         int currentPage=1;
@@ -84,6 +89,7 @@ public class SellerServiceImpl implements SellerService {
     }
 
     public AddressBean findselleraddress(String loginAct) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         //封装一个 AddressBean返回给web
         AddressBean<UserAddress> addressBean=new AddressBean<UserAddress>();
         int currentPage=1;
@@ -109,6 +115,7 @@ public class SellerServiceImpl implements SellerService {
     }
 
     public AddressBean deleteselleraddress(String aid, String loginAct) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.deleteselleraddress(aid);
         AddressBean<UserAddress> addressBean=new AddressBean<UserAddress>();
         int currentPage=1;
@@ -135,6 +142,7 @@ public class SellerServiceImpl implements SellerService {
 
     public AddressBean updateselleraddress(UserAddress userAddress, String loginAct) {
 
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.updateselleraddress(userAddress);
         AddressBean<UserAddress> addressBean=new AddressBean<UserAddress>();
         int currentPage=1;
@@ -158,5 +166,42 @@ public class SellerServiceImpl implements SellerService {
 
         return addressBean;
     }
+
+    public PageBean selectcheckproduct(String sid, int currentPage, int currentCount) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        PageBean<Product> pageBean=new PageBean<Product>();
+
+        pageBean.setCurrentPage(currentPage);
+        pageBean.setCurrentCount(currentCount);
+        int totalCount=sellerDao.getProudcutCount(sid);
+        pageBean.setTotalcount(totalCount);
+        int totalPage=(int) Math.ceil(1.0*totalCount/currentCount);
+        pageBean.setTotalPage(totalPage);
+        int index=(currentPage-1)*currentCount;
+        List<Product> list= sellerDao.selectcheckproduct(sid,index,currentCount);
+        pageBean.setList(list);
+        return pageBean;
+    }
+
+    public void onsellproduct(String sid, String pid,String sellflag) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.onsellproduct(sid,pid,sellflag);
+    }
+
+    public void deletesellproduct(String sid, String pid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.deletesellproduct(sid,pid);
+    }
+
+    public void addsellproduct(Product product) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.addsellproduct(product);
+    }
+
+    /*public List<Product> selectcheckproduct(String sid,int index,int currentCount) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        List<Product> productList=sellerDao.selectcheckproduct(sid,index,currentCount);
+        return productList;
+    }*/
 
 }

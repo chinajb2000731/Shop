@@ -1,10 +1,12 @@
 package com.toolers.shop.settings.web.control;
 
+import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.domain.Seller;
 import com.toolers.shop.settings.domain.UserAddress;
 import com.toolers.shop.settings.service.SellerService;
 import com.toolers.shop.settings.service.impl.SellerServiceImpl;
 import com.toolers.shop.settings.vo.AddressBean;
+import com.toolers.shop.settings.vo.PageBean;
 import com.toolers.shop.untils.CommonsUtils;
 import com.toolers.shop.untils.PrintJson;
 import com.toolers.shop.untils.ServiceFactory;
@@ -35,50 +37,155 @@ public class SellerController extends HttpServlet {
         String path=request.getServletPath();
         if("/settings/seller/register.do".equals(path))
         {
-            System.out.println("进入注册");
 
             register(request,response);
 
         }else if ("/settings/seller/login.do".equals(path))
         {
 
-             System.out.println("进入登录");
+
             login(request,response);
 
         }
         else if ("/settings/user/sellerinfo.do".equals(path))
         {
 
-            System.out.println("进入用户信息");
+
             sellerinfo(request,response);
 
         }
         else if("/settings/seller/sellerheadportrait.do".equals(path))
         {
-            System.out.println("进入头像信息");
+
             sellerheadportrait(request,response);
         }
         else if ("/settings/seller/selleraddress.do".equals(path))
         {
-            System.out.println("进入地址信息");
+
             selleraddress(request,response);
         }
         else if("/settings/seller/findselleraddress.do".equals(path))
         {
-            System.out.println("进入地址信息显示");
+
             findselleraddress(request,response);
         }
         else if("/settings/seller/deleteselleraddress.do".equals(path))
         {
-            System.out.println("进入商家地址信息删除显示");
+
             deleteselleraddress(request,response);
         }
         else if ("/settings/seller/updateselleraddress.do".equals(path))
         {
-            System.out.println("进入地址信息修改");
+
             updateselleraddress(request,response);
         }
+       else if("/settings/seller/selectcheckproduct.do".equals(path))
+        {
+            selectcheckproduct(request,response);
+        }
+        else if ("/settings/seller/onsellproduct.do".equals(path))
+        {
+            onsellproduct(request,response);
+        }
+       else if ("/settings/seller/deletesellproduct.do".equals(path))
+        {
+            deletesellproduct(request,response);
+        }
+        else if("/settings/seller/addsellproduct.do".equals(path))
+        {
+            addsellproduct(request,response);
+        }
+    }
 
+    private void addsellproduct(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        Product product=new Product();
+        Map<String,Object> map=new HashMap<String,Object>();
+        String sid=request.getParameter("sid");
+       /* String cid=request.getParameter("cid");
+        String pname=request.getParameter("pname");
+        String pdesc=request.getParameter("pdesc");
+        String pricestr=request.getParameter("price");
+
+        double price=Double.parseDouble(pricestr);
+        String rentstr=request.getParameter("rent");
+        double rent=Double.parseDouble(rentstr);*/
+        try {
+            DiskFileItemFactory factory=new DiskFileItemFactory();
+            ServletFileUpload upload=new ServletFileUpload(factory);
+            List<FileItem> parseRequest=upload.parseRequest(request);
+            for(FileItem item:parseRequest){
+                //判断是否是普通表单
+                boolean forField =item.isFormField();
+                if (forField)
+                {
+                    String fieldName=item.getFieldName();
+                    String fieldValue=item.getString("UTF-8");
+                    map.put(fieldName,fieldValue);
+                }
+                else{
+                    //文件上传
+                    String fileName=item.getName();
+                    String path=this.getServletContext().getRealPath("products");
+                    InputStream in=item.getInputStream();
+                    OutputStream out=new FileOutputStream(path+"/"+fileName);
+                    IOUtils.copy(in,out);
+                    in.close();
+                    out.close();
+                    item.delete();
+                    map.put("pimage","products/"+fileName);
+                }
+            }
+            BeanUtils.populate(product,map);
+            product.setPid(CommonsUtils.getUUid());
+            product.setSid(sid);
+            us.addsellproduct(product);
+            selectcheckproduct(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void deletesellproduct(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+        String pid=request.getParameter("pid");
+        us.deletesellproduct(sid,pid);
+        selectcheckproduct(request,response);
+    }
+
+    private void onsellproduct(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+        String pid=request.getParameter("pid");
+        String sellflag=request.getParameter("sellflag");
+         us.onsellproduct(sid,pid,sellflag);
+        selectcheckproduct(request,response);
+
+
+    }
+
+    private void selectcheckproduct(HttpServletRequest request, HttpServletResponse response) {
+
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+
+        String currentPageStr=request.getParameter("currentPage");
+        if(currentPageStr==null)
+        {
+            currentPageStr="1";
+        }
+
+        int currentPage=Integer.parseInt(currentPageStr);
+        int currentCount=4;
+        PageBean pageBean=us.selectcheckproduct(sid,currentPage,currentCount);
+        request.getSession().setAttribute("checkproductBean",pageBean);
+        try {
+            response.sendRedirect(request.getContextPath()+"/seller_product.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

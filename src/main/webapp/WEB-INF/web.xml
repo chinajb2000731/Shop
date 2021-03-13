@@ -40,6 +40,10 @@
         <url-pattern>/settings/seller/findselleraddress.do</url-pattern>
         <url-pattern>/settings/seller/deleteselleraddress.do</url-pattern>
         <url-pattern>/settings/seller/updateselleraddress.do</url-pattern>
+        <url-pattern>/settings/seller/selectcheckproduct.do</url-pattern>
+        <url-pattern>/settings/seller/onsellproduct.do</url-pattern>
+        <url-pattern>/settings/seller/deletesellproduct.do</url-pattern>
+        <url-pattern>/settings/seller/addsellproduct.do</url-pattern>
     </servlet-mapping>
 
 
@@ -65,6 +69,7 @@
         <url-pattern>/settings/product/productget.do</url-pattern>
         <url-pattern>/settings/product/deleteorder.do</url-pattern>
         <url-pattern>/settings/product/selectorder.do</url-pattern>
+
     </servlet-mapping>
 
     <filter>

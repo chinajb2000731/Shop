@@ -1,20 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
-<base href="<%=basePath%>">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery-labelauty.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
+<script src="js/jquery-labelauty.js" type="text/javascript"></script>
     <script type="text/javascript">
         function productsearch() {
             var keyword=$("#keyword").val();
@@ -22,7 +19,7 @@
 
         }
     </script>
-<title>店铺专区</title>
+<title>发布商品</title>
 </head>
 
 <body>
@@ -47,35 +44,36 @@
               </c:otherwise>
           </c:choose>
       </div>
-	<div class="hd_top_manu clearfix">
-	  <ul class="clearfix">
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
-          <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
-	  </ul>
-	</div>
+  <div class="hd_top_manu clearfix">
+    <ul class="clearfix">
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="index.jsp">首页</a></li>
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="settings/product/productlists.do?cid=1">商品分类</a></li>
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="#">消息中心</a></li>
+        <li class="hd_menu_tit" data-addclass="hd_menu_hover"><a href="user_order.jsp">我的购物车<b>(${totalcartnum})</b></a></li>
+    </ul>
+  </div>
     </div>
   </div>
   <div id="header"  class="header page_style">
-  <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
+  <div class="logo"><a href="default.jsp"><img src="images/logo.png" /></a></div>
   <!--结束图层-->
   <div class="Search">
         <div class="search_list">
             <ul>
                 <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
-                <!-- <li><a href="#">信息</a></li> -->
+                <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="keyword" class="search_box" type="text">
+           <input name="searchName" id="keyword" class="search_box" onkeydown="keyDownSearch()" type="text">
            <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+   <div class="s_cart"><a href="user_order.jsp">我的购物车</a>
+       <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>
@@ -97,6 +95,7 @@
                                        <p class="Price">租用价格：￥${shopcar.rent*shopcar.buynum}   购买价格：￥${shopcar.price*shopcar.buynum}</p>
                                    </c:otherwise>
                                </c:choose>
+
                            </div>
                        </li>
                    </c:forEach>
@@ -111,79 +110,96 @@
                            <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                        </c:otherwise>
                    </c:choose>
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>
+
    </div>
  </div>
 </div>
 <!--菜单栏-->
-	<div class="Navigation" id="Navigation">
-		 <ul class="Navigation_name">
-		  < <li><a href="index.jsp">首页</a></li>
-             <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
-             <li><a href="#">热销活动</a></li>
-             <li><a href="#">联系我们</a></li>
-		 </ul>			 
-		</div>
-	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
+  <div class="Navigation" id="Navigation">
+     <ul class="Navigation_name">
+         <li><a href="index.jsp">首页</a></li>
+         <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
+         <li><a href="#">热销活动</a></li>
+         <li><a href="#">联系我们</a></li>
+     </ul>       
+    </div>
+  <script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
     </div>
 </head>
-<!--店铺专区样式-->
+<!--发布商品样式-->
 <div class="Inside_pages clearfix">
-<div class="left_style">
-  <!--列表-->
-  <div class="menu_styles">
+ <div class="left_style">
+<!--列表-->
+  <div class="menu_style">
    <ul class="menu_list">
-    <li class="on"><em></em><a href="javascript:void(0)">店铺专区</a></li>
-    <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
+    <li ><em></em><a href="店铺专区.jsp">店铺专区</a></li>
+    <li class="on"><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
     <li><em></em><a href="javascript:void(0)">订单专区</a></li>
     <li><em></em><a href="javascript:void(0)">发货管理</a></li>
     <li><em></em><a href="javascript:void(0)">收款账户</a></li>
-   <!--  <li><em></em><a href="我的报表.html">我的报表</a></li> -->
+   <!--  <li><em></em><a href="#">我的报表</a></li> -->
    </ul>
   </div>
 </div>
 <div class="right_style">
   <!--内容详细-->
-   <div class="title_style"><em></em>店铺专区</div>
-   <div class="content_style">
-    <!--添加店铺-->
-   <!-- <div class="add_shops">
-     <h3>你好，目前你没有任何店铺！</h3>
-     <a href="#">添加店铺</a>
-    </div>-->
-    <div class="Add_shop_style"><a href="./店铺专区（添加店铺）.html" id="newShop" onclick="addShop()" class="New_Shop_btn">新增店铺</a></div>
-    <div class="shops_list">
-     <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核通过</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="edit_shops">编辑店铺</a><a href="店铺公告.html" class="shops_Bulletin">店铺公告</a></p>
-      </li>
-     </ul>
-      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核中</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a></p>
-      </li>
-     </ul>
-      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核失败</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="delete_shops">删除店铺</a></p>
-      </li>
-     </ul>
+   <div class="title_style"><em></em>发布商品</div>
+    <div class="content_style">
+     <div class="Release_product_style">
+     <form action="settings/seller/addsellproduct.do?sid=${seller.sid}" method="post" id="product" enctype="multipart/form-data">
+     <table cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td class="label">商家名称：</td>
+       <td>江苏业祥股份有限公司</td>
+     </tr> 
+       <tr>
+        <td class="label">商品名字：</td>
+        <td>
+        <input name="pname" type="text"  class="addtext"  style=" width:500px;"/>
+      </td>
+    </tr>
+       <tr><td class="label">设置商品分类：</td><td> 
+       <span>商品分类：</span>
+           <select name="cid" size="1">
+           <c:forEach items="${categoryList}" var="category">
+               <option value="${category.cid}">${category.cname}</option>
+           </c:forEach>
+      </select>
+       
+    </td>
+  </tr>
+       <tr><td class="label">商品销售价格：</td><td><input name="price" type="text"  class="addtext" style=" width:200px;"/></td></tr>
+       <tr><td class="label">商品租赁价格：</td><td><input name="rent" type="text"  class="addtext" style=" width:200px;" placeholder="不填则视为不支持租赁" /></td></tr>
+       <tr>
+        <td class="label">商品介绍：</td><td><textarea name="pdesc" cols="" rows="" placeholder="商品的介绍。该介绍将出现在商品名称下方。" class="textarea">
+          
+        </textarea></td></tr>
+       <tr><td class="label">商品宣传图片：</td><td>
+       <table class="Publicize_img_style">
+         <tr>
+           <td colspan="2">
+            <input type="file" value="添加" name="productimage" class="Add_btn"/>
+          </td>
+        </tr>
+        </table>
+       </td></tr>
+     </table>
+     <a href="javascript:void(0)" class="Next_btn" onclick="document:product.submit()" >提交商品资料</a>
+     </form>
+     </div>
     </div>
-   </div>
+  </div>
 </div>
-</div>
+<script type="text/javascript">
+$(function(){
+  $(':input').labelauty();
+});
+</script>
 <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">
@@ -193,55 +209,55 @@
         </div>
        <div class="">
     <dl>
-	 <dt>新手上路</dt>
-	 <dd><a href="#">售后流程</a></dd>
+   <dt>新手上路</dt>
+   <dd><a href="#">售后流程</a></dd>
      <dd><a href="#">购物流程</a></dd>
      <dd><a href="#">订购方式</a> </dd>
      <dd><a href="#">隐私声明 </a></dd>
      <dd><a href="#">推荐分享说明 </a></dd>
-	</dl>
-	<dl>
-	 <dt>配送与支付</dt>
-	 <dd><a href="#">保险需求测试</a></dd>
+  </dl>
+  <dl>
+   <dt>配送与支付</dt>
+   <dd><a href="#">保险需求测试</a></dd>
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>
-	<dl>
-	 <dt>售后保障</dt>
-	 <dd><a href="#">保险需求测试</a></dd>
+  </dl>
+  <dl>
+   <dt>售后保障</dt>
+   <dd><a href="#">保险需求测试</a></dd>
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>
-	<dl>
-	 <dt>支付方式</dt>
-	 <dd><a href="#">保险需求测试</a></dd>
+  </dl>
+  <dl>
+   <dt>支付方式</dt>
+   <dd><a href="#">保险需求测试</a></dd>
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>	
+  </dl> 
     <dl>
-	 <dt>帮助中心</dt>
-	 <dd><a href="#">保险需求测试</a></dd>
+   <dt>帮助中心</dt>
+   <dd><a href="#">保险需求测试</a></dd>
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>
+  </dl>
      <dl>
-	 <dt>帮助中心</dt>
-	 <dd><a href="#">保险需求测试</a></dd>
+   <dt>帮助中心</dt>
+   <dd><a href="#">保险需求测试</a></dd>
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>
+  </dl>
      <dl>
-	 <dt>帮助中心</dt>
-	 <dd><a href="#">保险需求测试</a></dd>
+   <dt>帮助中心</dt>
+   <dd><a href="#">保险需求测试</a></dd>
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>	   
+  </dl>    
    </div>
     </div>
 </div>

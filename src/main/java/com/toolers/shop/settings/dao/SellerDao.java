@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.dao;
 
+import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.domain.Seller;
 import com.toolers.shop.settings.domain.UserAddress;
 import org.apache.ibatis.annotations.Param;
@@ -31,6 +32,16 @@ public interface SellerDao {
     void deleteselleraddress(String aid);
 
     void updateselleraddress(UserAddress userAddress);
+
+    List<Product> selectcheckproduct(@Param("sid")String sid, @Param("index")int index, @Param("currentCount")int currentCount);
+
+    int getProudcutCount(String sid);
+
+    void onsellproduct(@Param("sid")String sid,@Param("pid") String pid,@Param("sellflag") String sellflag);
+
+    void deletesellproduct(@Param("sid")String sid,@Param("pid") String pid);
+
+    void addsellproduct(Product product);
 
 
 /*

@@ -52,4 +52,25 @@
     <update id="updateselleraddress">
         update useraddress set consignee=#{consignee},address=#{address},postcode=#{postcode},phone=#{phone} where aid=#{aid}
     </update>
+
+    <select id="selectcheckproduct" resultType="product">
+        select * from product where sid=#{sid} limit ${index},${currentCount}
+</select>
+    <select id="getProudcutCount" resultType="int">
+        select count(*) from product where sid=#{sid}
+    </select>
+
+    <update id="onsellproduct">
+        update product set sell_flag=#{sellflag} where sid=#{sid} and pid=#{pid}
+    </update>
+
+    <delete id="deletesellproduct">
+        delete from product where sid=#{sid} and pid=#{pid}
+    </delete>
+
+
+    <insert id="addsellproduct">
+       insert into product(pid,cid,sid,pname,rent,price,pimage,pdesc,is_new,is_sale,is_group,is_essence,is_fast,inventory,check_flag,sell_flag)values
+       (#{pid},#{cid},#{sid},#{pname},#{rent},#{price},#{pimage},#{pdesc},0,0,0,0,0,0,0,0)
+   </insert>
 </mapper>

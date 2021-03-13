@@ -118,4 +118,6 @@
     <select id="findallSuccessfultransactions" resultType="Cart">
        select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and ca.is_get=1;
     </select>
+
+
 </mapper>

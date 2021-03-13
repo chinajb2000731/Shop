@@ -67,7 +67,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="product_lists.jsp">产品</a></li>
+                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
