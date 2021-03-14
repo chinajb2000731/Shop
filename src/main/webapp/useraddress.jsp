@@ -332,7 +332,14 @@
       <dt class="transaction_manage"><em class="icon_1"></em>订单管理</dt>
       <dd>
         <ul>
-          <li> <a href="user_order.jsp">我的订单</a></li>
+            <c:choose>
+                <c:when test="${empty seller}">
+                    <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=0" class="on">全部订单(${ordercount})</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=0" class="on">全部订单(${ordercount})</a>
+                </c:otherwise>
+            </c:choose>
           <li> <a href="useraddress.jsp">收货地址</a></li>
           <li> <a href="#">缺货登记</a></li>
           <li><a href="#">跟踪包裹</a></li>

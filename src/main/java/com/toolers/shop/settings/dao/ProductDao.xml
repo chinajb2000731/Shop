@@ -4,23 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toolers.shop.settings.dao.ProductDao">
     <select id="findNewProductList" resultType="product">
-        select * from product where is_new=1 limit 0,4
+        select * from product where is_new=1
     </select>
 
     <select id="findSaleProductList" resultType="product">
-        select * from product where is_sale=1 limit 0,4
+        select * from product where is_sale=1
     </select>
 
     <select id="findGroProductList" resultType="product">
-        select * from product where is_group=1 limit 0,4
+        select * from product where is_group=1
     </select>
 
     <select id="findEssenceProductList" resultType="product">
-        select * from product where is_essence=1 limit 0,4
+        select * from product where is_essence=1
     </select>
 
     <select id="findFastProductList" resultType="product">
-        select * from product where is_fast=1 limit 0,4
+        select * from product where is_fast=1
     </select>
 
     <select id="findAllcategory" resultType="category">
@@ -58,7 +58,7 @@
         update cart set buynum=#{i} where id=#{id}
     </update>
     <insert id="addcart">
-       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get,is_rent)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0,0)
+       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get,is_rent,is_deliver)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0,0,0)
    </insert>
 
 

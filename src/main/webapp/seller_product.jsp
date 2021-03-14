@@ -144,7 +144,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
    <ul class="menu_list">
     <li><em></em><a href="店铺专区.jsp">店铺专区</a></li>
     <li class="on"><em></em><a href="javascript:void(0)">商品专区</a></li>
-    <li><em></em><a href="javascript:void(0)">订单专区</a></li>
+    <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
     <li><em></em><a href="javascript:void(0)">发货管理</a></li>
     <li><em></em><a href="javascript:void(0)">收款账户</a></li>
    </ul>
@@ -199,7 +199,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                        <a href="settings/seller/deletesellproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}" class="sj_btn">删除</a>
                    </c:if>
                    <c:if test="${pro.check_flag=='1'and pro.sell_flag=='0'}">
-                       <a href="settings/seller/onsaleproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}&sellflag=1" class="sj_btn">上架</a>
+                       <a href="settings/seller/onsellproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}&sellflag=1" class="sj_btn">上架</a>
                    </c:if>
                    <c:if test="${pro.check_flag=='1'and pro.sell_flag=='1'}">
                        <a href="settings/seller/onsellproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}&sellflag=0" class="sj_btn">下架</a>

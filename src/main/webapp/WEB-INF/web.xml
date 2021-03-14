@@ -44,6 +44,10 @@
         <url-pattern>/settings/seller/onsellproduct.do</url-pattern>
         <url-pattern>/settings/seller/deletesellproduct.do</url-pattern>
         <url-pattern>/settings/seller/addsellproduct.do</url-pattern>
+        <url-pattern>/settings/seller/sellerorder.do</url-pattern>
+        <url-pattern>/settings/seller/sellconfirmdeliver.do</url-pattern>
+        <url-pattern>/settings/seller/selectsellorder.do</url-pattern>
+        <url-pattern>/settings/seller/deletesellorder.do</url-pattern>
     </servlet-mapping>
 
 

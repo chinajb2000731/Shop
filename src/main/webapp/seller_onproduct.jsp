@@ -139,7 +139,7 @@
    <ul class="menu_list">
     <li ><em></em><a href="店铺专区.jsp">店铺专区</a></li>
     <li class="on"><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
-    <li><em></em><a href="javascript:void(0)">订单专区</a></li>
+    <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
     <li><em></em><a href="javascript:void(0)">发货管理</a></li>
     <li><em></em><a href="javascript:void(0)">收款账户</a></li>
    <!--  <li><em></em><a href="#">我的报表</a></li> -->

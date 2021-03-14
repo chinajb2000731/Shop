@@ -73,4 +73,28 @@
        insert into product(pid,cid,sid,pname,rent,price,pimage,pdesc,is_new,is_sale,is_group,is_essence,is_fast,inventory,check_flag,sell_flag)values
        (#{pid},#{cid},#{sid},#{pname},#{rent},#{price},#{pimage},#{pdesc},0,0,0,0,0,0,0,0)
    </insert>
+
+    <select id="selectsellerorder" resultType="cart">
+          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and p.sid=#{sid};
+    </select>
+
+    <select id="findProductByPid" resultType="product">
+        select * from product where  pid=#{pid2}
+    </select>
+
+    <update id="sellconfirmdeliver">
+        update cart set is_deliver=1 where id=#{id}
+    </update>
+
+    <select id="selectsellerordernodeliver" resultType="cart">
+          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=0 and p.sid=#{sid} ;
+    </select>
+
+    <select id="selectsellonget" resultType="cart">
+          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and ca.is_get=0 and p.sid=#{sid} ;
+    </select>
+
+    <select id="selectsellordercomplete" resultType="cart">
+          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and ca.is_get=1 and p.sid=#{sid} ;
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.web.control;
 
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.domain.Seller;
 import com.toolers.shop.settings.domain.UserAddress;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,6 +97,122 @@ public class SellerController extends HttpServlet {
         {
             addsellproduct(request,response);
         }
+        else if("/settings/seller/sellerorder.do".equals(path))
+        {
+            sellerorder(request,response);
+        }
+        else if("/settings/seller/sellconfirmdeliver.do".equals(path))
+        {
+            sellconfirmdeliver(request,response);
+        }
+        else if("/settings/seller/selectsellorder.do".equals(path))
+        {
+            selectsellorder(request,response);
+        }
+    }
+
+
+
+    private void selectsellorder(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String orderflagstr=request.getParameter("orderflag");
+        int orderflag=Integer.parseInt(orderflagstr);
+        String sid=request.getParameter("sid");
+        List<Cart> cartList=new ArrayList<Cart>();
+        List<Product> productcartList3=new ArrayList<Product>();
+        Product product=null;
+        if(orderflag==0)
+        {
+           cartList=us.selectsellerorder(sid);
+        }
+        else if(orderflag==1)
+        {
+            cartList= us.selectsellerordernodeliver(sid);
+        }
+        else if (orderflag==2)
+        {
+            cartList=us.selectsellonget(sid);
+        }
+        else if(orderflag==4)
+        {
+            cartList=us.selectsellordercomplete(sid);
+        }
+        if (cartList==null)
+        {
+                request.getSession().setAttribute("productcartList3", productcartList3);
+                try {
+                    response.sendRedirect(request.getContextPath()+"/seller_order.jsp");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+
+        else {
+                for (Cart c : cartList) {
+                    String pid2 = c.getPid();
+                    product = us.findProductByPid(pid2);
+                    product.setBuynum(c.getBuynum());
+                    product.setIs_pay(c.getIs_pay());
+                    product.setIs_get(c.getIs_get());
+                    product.setIs_rent(c.getIs_rent());
+                    product.setId(c.getId());
+                    product.setIs_deliver(c.getIs_deliver());
+                    productcartList3.add(product);
+                }
+            }
+            request.getSession().setAttribute("productcartList3", productcartList3);
+            try {
+                response.sendRedirect(request.getContextPath()+"/seller_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+    }
+
+    private void sellconfirmdeliver(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String id=request.getParameter("id");
+        us.sellconfirmdeliver(id);
+        sellerorder(request,response);
+
+    }
+
+    private void sellerorder(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+        List<Cart> cartList=us.selectsellerorder(sid);
+        List<Product> productcartList3=new ArrayList<Product>();
+        Product product=null;
+        if (cartList==null)
+        {
+            request.getSession().setAttribute("productcartList3", productcartList3);
+            try {
+                response.sendRedirect(request.getContextPath()+"/seller_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : cartList) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
+                productcartList3.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList3", productcartList3);
+        try {
+            response.sendRedirect(request.getContextPath()+"/seller_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void addsellproduct(HttpServletRequest request, HttpServletResponse response) {
@@ -160,7 +278,7 @@ public class SellerController extends HttpServlet {
         String sid=request.getParameter("sid");
         String pid=request.getParameter("pid");
         String sellflag=request.getParameter("sellflag");
-         us.onsellproduct(sid,pid,sellflag);
+        us.onsellproduct(sid,pid,sellflag);
         selectcheckproduct(request,response);
 
 

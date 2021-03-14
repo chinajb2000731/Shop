@@ -1,5 +1,6 @@
 package com.toolers.shop.settings.dao;
 
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.domain.Seller;
 import com.toolers.shop.settings.domain.UserAddress;
@@ -42,6 +43,20 @@ public interface SellerDao {
     void deletesellproduct(@Param("sid")String sid,@Param("pid") String pid);
 
     void addsellproduct(Product product);
+
+    List<Cart> selectsellerorder(String sid);
+
+    Product findProductByPid(String pid2);
+
+    void sellconfirmdeliver(String id);
+
+    List<Cart> selectsellerordernodeliver(String sid);
+
+    List<Cart> selectsellonget(String sid);
+
+    List<Cart> selectsellordercomplete(String sid);
+
+
 
 
 /*

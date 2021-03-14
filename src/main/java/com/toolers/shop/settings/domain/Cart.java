@@ -9,6 +9,7 @@ public class Cart {
     private  String is_pay;
     private  String is_get;
     private  String is_rent;
+    private String  is_deliver;
     private  Product product;
 
     public String getId() {
@@ -81,5 +82,13 @@ public class Cart {
 
     public void setIs_rent(String is_rent) {
         this.is_rent = is_rent;
+    }
+
+    public String getIs_deliver() {
+        return is_deliver;
+    }
+
+    public void setIs_deliver(String is_deliver) {
+        this.is_deliver = is_deliver;
     }
 }

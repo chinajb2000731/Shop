@@ -120,6 +120,7 @@ public class ProductController extends HttpServlet {
                     product.setIs_get(c.getIs_get());
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
+                    product.setIs_deliver(c.getIs_deliver());
                     productcartList2.add(product);
                 }
             }
@@ -157,6 +158,7 @@ public class ProductController extends HttpServlet {
                     product.setIs_get(c.getIs_get());
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
+                    product.setIs_deliver(c.getIs_deliver());
                     productcartList2.add(product);
                 }
             }
@@ -193,6 +195,7 @@ public class ProductController extends HttpServlet {
                     product.setIs_get(c.getIs_get());
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
+                    product.setIs_deliver(c.getIs_deliver());
                     productcartList2.add(product);
                 }
             }
@@ -229,6 +232,7 @@ public class ProductController extends HttpServlet {
                     product.setIs_get(c.getIs_get());
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
+                    product.setIs_deliver(c.getIs_deliver());
                     productcartList2.add(product);
                 }
             }
@@ -279,6 +283,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList.add(product);
             }
         }
@@ -302,6 +307,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList2.add(product);
             }
         }
@@ -355,6 +361,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList.add(product);
             }
         }
@@ -378,6 +385,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList2.add(product);
             }
         }
@@ -432,6 +440,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList.add(product);
             }
         }
@@ -455,6 +464,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList2.add(product);
             }
         }
@@ -510,6 +520,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList.add(product);
             }
         }
@@ -533,6 +544,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList2.add(product);
             }
         }
@@ -631,6 +643,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList.add(product);
             }
         }
@@ -653,6 +666,7 @@ public class ProductController extends HttpServlet {
                 product.setIs_get(c.getIs_get());
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
                 productcartList2.add(product);
             }
         }

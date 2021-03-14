@@ -1,20 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
-<base href="<%=basePath%>">
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="skins/all.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
+<script src="js/iCheck.js" type="text/javascript"></script>
+<script src="js/custom.js" type="text/javascript"></script>
     <script type="text/javascript">
         function productsearch() {
             var keyword=$("#keyword").val();
@@ -22,9 +20,56 @@
 
         }
     </script>
-<title>店铺专区</title>
+<title>订单管理</title>
 </head>
-
+<script type="text/javascript">
+$(document).ready(function () {
+	
+	$('#CheckedAll').on('ifChecked', function(event){
+		$('input').iCheck('check');
+	});
+	$('#CheckedAll').on('ifUnchecked', function(event){
+		$('input').iCheck('uncheck');
+	});
+   //全选
+//   $("#CheckedAll").click(function () {
+//	   if (this.checked) {                 //如果当前点击的多选框被选中
+//		   $('ifChecked').attr("check", true);
+//	   } else {
+//		   $('ifUnchecked').attr("uncheck", false);
+//	   }
+//   });
+//   $('input[type=checkbox][name=checkitems]').click(function () {
+//	   var flag = true;
+//	   $('input[type=checkbox][name=checkitems]').each(function () {
+//		   if (!this.checked) {
+//			   flag = false;
+//		   }
+//	   });
+//
+//	   if (flag) {
+//		   $('#CheckedAll').attr('checked', true);
+//	   } else {
+//		   $('#CheckedAll').attr('checked', false);
+//	   }
+//   });
+   //输出值
+   $("#send").click(function () {
+	      if($("input[type='checkbox'][name='checkitems']:checked").attr("checked")){
+	   var str = "批量确认收货订单：\r\n";
+	   $('input[type=checkbox][name=checkitems]:checked').each(function () {
+		   str += $(this).val() + "\r\n";
+	   })
+	   alert(str);
+		  }
+		  else{
+			   var str = "你未选中任何商品，请选择后在操作！"; 
+			   alert(str);
+       }
+	   	    
+   });
+})
+</script>
 <body>
 <head>
  <div id="header_top">
@@ -58,24 +103,27 @@
     </div>
   </div>
   <div id="header"  class="header page_style">
-  <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
+      <div class="logo"><a href="default.jsp"><img src="images/logo.png" /></a></div>
   <!--结束图层-->
   <div class="Search">
         <div class="search_list">
             <ul>
-                <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
-                <!-- <li><a href="#">信息</a></li> -->
+                 <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
+                <li><a href="javascript:void(0)">信息</a></li>
             </ul>
         </div>
         <div class="clear search_cur">
-           <input name="searchName" id="keyword" class="search_box" type="text">
-           <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
+            <input name="searchName" id="keyword" class="search_box" onkeydown="keyDownSearch()" type="text">
+            <input name="" type="button" value="搜 索"  class="Search_btn" onclick="productsearch()"/>
         </div>
         <div class="clear hotword">热门搜索词：香醋&nbsp;&nbsp;&nbsp;茶叶&nbsp;&nbsp;&nbsp;草莓&nbsp;&nbsp;&nbsp;葡萄&nbsp;&nbsp;&nbsp;菜油</div>
 </div>
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
-   <div class="s_cart"><a href="user_order.jsp">我的购物车</a> <i class="ci-right">&gt;</i><i class="ci-count" id="shopping-amount">${totalcartnum}</i></div>
+     <div class="s_cart"><a href="user_order.jsp">我的购物车</a>
+       <i class="ci-right">&gt;</i>
+       <i class="ci-count" id="shopping-amount">${totalcartnum}</i>
+   </div>
    <div class="dorpdown-layer">
     <div class="spacer"></div>
        <c:choose>
@@ -97,6 +145,7 @@
                                        <p class="Price">租用价格：￥${shopcar.rent*shopcar.buynum}   购买价格：￥${shopcar.price*shopcar.buynum}</p>
                                    </c:otherwise>
                                </c:choose>
+
                            </div>
                        </li>
                    </c:forEach>
@@ -111,17 +160,19 @@
                            <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                        </c:otherwise>
                    </c:choose>
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
-       </c:choose>
+       </c:choose>>
+
    </div>
  </div>
 </div>
 <!--菜单栏-->
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
-		  < <li><a href="index.jsp">首页</a></li>
+             <li><a href="index.jsp">首页</a></li>
              <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
              <li><a href="#">热销活动</a></li>
              <li><a href="#">联系我们</a></li>
@@ -130,60 +181,133 @@
 	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
     </div>
 </head>
-<!--店铺专区样式-->
 <div class="Inside_pages clearfix">
-<div class="left_style">
-  <!--列表-->
-  <div class="menu_styles">
+ <div class="left_style">
+<!--列表-->
+  <div class="menu_style">
    <ul class="menu_list">
-    <li class="on"><em></em><a href="javascript:void(0)">店铺专区</a></li>
+    <li ><em></em><a href="店铺专区.jsp">店铺专区</a></li>
     <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
-    <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
+    <li class="on"><em></em><a href="javascript:void(0)">订单专区</a></li>
     <li><em></em><a href="javascript:void(0)">发货管理</a></li>
     <li><em></em><a href="javascript:void(0)">收款账户</a></li>
-   <!--  <li><em></em><a href="我的报表.html">我的报表</a></li> -->
+    <!-- li><em></em><a href="我的报表.html">我的报表</a></li> -->
    </ul>
   </div>
 </div>
 <div class="right_style">
   <!--内容详细-->
-   <div class="title_style"><em></em>店铺专区</div>
-   <div class="content_style">
-    <!--添加店铺-->
-   <!-- <div class="add_shops">
-     <h3>你好，目前你没有任何店铺！</h3>
-     <a href="#">添加店铺</a>
-    </div>-->
-    <div class="Add_shop_style"><a href="./店铺专区（添加店铺）.html" id="newShop" onclick="addShop()" class="New_Shop_btn">新增店铺</a></div>
-    <div class="shops_list">
-     <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核通过</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="edit_shops">编辑店铺</a><a href="店铺公告.html" class="shops_Bulletin">店铺公告</a></p>
-      </li>
-     </ul>
-      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核中</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a></p>
-      </li>
-     </ul>
-      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核失败</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="delete_shops">删除店铺</a></p>
-      </li>
-     </ul>
+   <div class="title_style"><em></em>发布商品</div>
+    <div class="content_style">
+    <!--订单管理-->
+     <div class="Order_form_style">
+      <div class="Order_form_filter">
+       <a href="settings/seller/selectsellorder.do?sid=${seller.sid}&orderflag=0" class="on">全部订单</a>
+       <a href="settings/seller/selectsellorder.do?sid=${seller.sid}&orderflag=1" class="">代发货</a>
+       <a href="settings/seller/selectsellorder.do?sid=${seller.sid}&orderflag=2" class="">待收货</a>
+       <a href="#" class="">退货/退款</a>
+       <a href="settings/seller/selectsellorder.do?sid=${seller.sid}&orderflag=4" class="">交易成功</a>
+      </div>
+      <div class="Order_form_list">
+         <table>
+         <thead>
+          <tr><td class="list_name_title0">商品</td>
+          <td class="list_name_title1">单价(元)</td>
+          <td class="list_name_title2">数量</td>
+          <td class="list_name_title4">购买价格(元)</td>
+          <td class="list_name_title4">租赁价格(元)</td>
+          <td class="list_name_title5">订单状态</td>
+          <td class="list_name_title6">操作</td>
+         </tr>
+         </thead>
+         <tbody>
+         <c:forEach items="${productcartList3}" var="shopcar" >
+           <tr class="Order_info"><td colspan="7" class="Order_form_time"><input name="checkitems" type="checkbox" value="天然绿色多汁香甜无污染水蜜桃"  class=""/>下单时间：2015-12-3 | 订单号：445454654654654 <em></em></td></tr>
+           <tr class="Order_Details">
+           <td colspan="3">
+           <table class="Order_product_style">
+                   <tbody>
+                   <tr>
+                       <td>
+                           <div class="product_name clearfix">
+                               <a href="#" class="product_img">
+                                   <img src="${pageContext.request.contextPath}/${shopcar.pimage}" width="80px" height="80px">
+                               </a>
+                               <a href="#">${shopcar.pname}</a>
+                           </div>
+                       </td>
+                       <c:choose>
+                           <c:when test="${shopcar.rent==''}">
+                               <td>租:不支持</br>买:${shopcar.price}(元)</td>
+                           </c:when>
+                           <c:otherwise>
+                               <td>租:${shopcar.rent}(元)</br>买:${shopcar.price}(元)</td>
+                           </c:otherwise>
+                       </c:choose>
+                       <td>${shopcar.buynum}</td>
+                   </tr>
+                   </tbody></table>
+           </td>
+               <td class="split_line">${shopcar.price*shopcar.buynum}</td>
+
+               <c:choose>
+                   <c:when test="${shopcar.rent==''}">
+                       <td class="split_line">不支持租赁</td>
+                   </c:when>
+                   <c:otherwise>
+                       <td class="split_line">${shopcar.rent*shopcar.buynum}</td>
+                   </c:otherwise>
+               </c:choose>
+
+               <c:if test="${shopcar.is_deliver=='0'and shopcar.is_rent=='1'}">
+                   <td class="split_line"><p style="color:blue">买家已租用,等待发货</p></td>
+               </c:if>
+               <c:if test="${shopcar.is_deliver=='0'and shopcar.is_pay=='1'}">
+                   <td class="split_line"><p style="color:blue">买家已购买,等待发货</p></td>
+               </c:if>
+               <c:if test="${shopcar.is_deliver=='1'and shopcar.is_get=='0'}">
+                   <td class="split_line"><p style="color:red;">已发货，待收货</p></td>
+               </c:if>
+               <c:if test="${shopcar.is_deliver=='1' and shopcar.is_get=='1'}">
+                   <td class="split_line"><p style="color:green">买家已收货,交易完成</p></td>
+               </c:if>
+               <td class="operating">
+                   <c:if test="${shopcar.is_deliver=='0'}">
+                       <a href="#">查看订单</a>
+                       <a href="#">联系管理员</a>
+                       <a href="settings/seller/sellconfirmdeliver.do?id=${shopcar.id}&sid=${seller.sid}" class="Delivery_btn">确认发货</a>
+                   </c:if>
+                   <c:if test="${shopcar.is_deliver=='1'}">
+                       <a href="#">查看订单</a>
+                       <a href="#">联系管理员</a>
+                       <a href="#">查看物流</a>
+                   </c:if>
+                   <c:if test="${shopcar.is_get=='1' and shopcar.is_deliver=='1' and shopcar.is_rent=='1'}">
+                       <a href="#" class="Delivery_btn">收到退租并退押金</a>
+                   </c:if>
+<%--
+                   <a href="#">查看物流</a>
+
+                   <a href="#">删除</a>--%>
+               </td>
+           </tr>
+         </tbody>
+               </c:forEach>
+          </table>
     </div>
+     </div>
+     </form>
    </div>
+  </div>
 </div>
-</div>
+   <script>
+            $(document).ready(function(){
+              $('.Order_form_style input').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+              });
+            });
+            </script>
 <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">

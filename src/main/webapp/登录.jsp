@@ -104,7 +104,7 @@ function sellerlogin() {
             if(data.success)
 
             {
-                location.href="settings/product/showcart.do?flag=1&loginAct="+loginAct;
+                location.href="settings/product/showcart.do?flag=1&tloginAc="+loginAct;
 
             }else {
 
@@ -147,7 +147,7 @@ function sellerlogin() {
 <div class="l_main">
     <div class="l_bttitle2"> 
         <!-- <h2>登录</h2>-->
-        <h2><a href="#">< 返回首页</a></h2>
+        <h2><a href="default.jsp">< 返回首页</a></h2>
     </div>
     <div class="loginbox fl">
         <div class="tab">

@@ -32,6 +32,7 @@ public class Product {
  private  String is_pay;
  private  String is_get;
  private  String is_rent;
+ private  String is_deliver;
  private  String id;
  private  String check_flag;
  private  String sell_flag;
@@ -218,5 +219,13 @@ public class Product {
 
     public void setSell_flag(String sell_flag) {
         this.sell_flag = sell_flag;
+    }
+
+    public String getIs_deliver() {
+        return is_deliver;
+    }
+
+    public void setIs_deliver(String is_deliver) {
+        this.is_deliver = is_deliver;
     }
 }

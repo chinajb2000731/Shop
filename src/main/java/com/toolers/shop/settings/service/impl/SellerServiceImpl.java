@@ -2,6 +2,7 @@ package com.toolers.shop.settings.service.impl;
 
 import com.toolers.shop.exception.RegisterException;
 import com.toolers.shop.settings.dao.SellerDao;
+import com.toolers.shop.settings.domain.Cart;
 import com.toolers.shop.settings.domain.Product;
 import com.toolers.shop.settings.domain.Seller;
 import com.toolers.shop.settings.domain.UserAddress;
@@ -197,6 +198,45 @@ public class SellerServiceImpl implements SellerService {
         SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.addsellproduct(product);
     }
+
+    public List<Cart> selectsellerorder(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        List<Cart> cartList=sellerDao.selectsellerorder(sid);
+
+        return cartList;
+    }
+
+    public Product findProductByPid(String pid2) {
+
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        Product product=sellerDao.findProductByPid(pid2);
+        return product;
+    }
+
+    public void sellconfirmdeliver(String id) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.sellconfirmdeliver(id);
+    }
+
+    public List<Cart> selectsellerordernodeliver(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        List<Cart> cartList=sellerDao.selectsellerordernodeliver(sid);
+        return cartList;
+    }
+
+    public List<Cart> selectsellonget(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        List<Cart> cartList=sellerDao.selectsellonget(sid);
+        return cartList;
+    }
+
+    public List<Cart> selectsellordercomplete(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        List<Cart> cartList=sellerDao.selectsellordercomplete(sid);
+        return cartList;
+    }
+
+
 
     /*public List<Product> selectcheckproduct(String sid,int index,int currentCount) {
         SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);

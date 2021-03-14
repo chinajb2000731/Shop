@@ -161,9 +161,9 @@
 				<ul>
 					<li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat; background-position:center; width:100%; height:450px;"></div></a></li>
 					<li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat; background-position:center ; width:100%; height:450px;"></div></a></li>
-					<li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
-                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat #f7ddea; background-position:center; width:100%; height:450px;"></div></a></li>
-                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat  #F60; background-position:center; width:100%; height:450px;"></div></a></li>
+					<li><a href="#" target="_blank"><div style="background:url(AD/ad-3.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
+                  <%--  <li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat #f7ddea; background-position:center; width:100%; height:450px;"></div></a></li>
+                    <li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat  #F60; background-position:center; width:100%; height:450px;"></div></a></li>--%>
 				</ul>
 			</div>
 			<!-- 下面是前/后按钮-->
@@ -187,7 +187,7 @@
 		<c:forEach items="${categoryList}" var="category">
 			<li class="name">
 				<div class="Menu_name"><a href="settings/product/productlists.do?cid=${category.cid}" >${category.cname}</a><span>&lt;</span></div>
-				<div class="link_name">
+				<%--<div class="link_name">
 					<p>
 						<a href="#">茅台</a> |
 						<a href="#">五粮液</a> |
@@ -198,8 +198,8 @@
 						<a href="#">郎酒</a> |
 						<a href="#">剑南春</a>
 					</p>
-				</div>
-				<div class="menv_Detail">
+				</div>--%>
+				<%--<div class="menv_Detail">
 					<div class="cat_pannel clearfix">
 						<div class="hd_sort_list">
 							<dl class="clearfix" data-tpc="1">
@@ -235,9 +235,9 @@
 						</dl>
 						</div><div class="Brands">
 					</div>
-					</div>
+					</div>--%>
 					<!--品牌-->
-				</div>
+			<%--	</div>--%>
 			</li>
 		</c:forEach>
     </ul>
