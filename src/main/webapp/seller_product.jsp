@@ -21,6 +21,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             location.href="settings/product/productsearch.do?keyword="+keyword;
 
         }
+
     </script>
 <title>商品专区</title>
 </head>
@@ -133,7 +134,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              <li><a href="#">联系我们</a></li>
 		 </ul>			 
 		</div>
-	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
+	<script>
+        $("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});
+    </script>
     </div>
 </head>
 <!--商品专区-->
@@ -191,10 +194,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                </c:if>
                <td class="operating_btn relative">
                    <div class="inventory_style">
-                       <input name="" type="text"  class="add_Number"/><input name="1"  type="submit" value="确认" class="confirm_btn" /> <a href="#" class="cancel"><em class="cancel-icon"></em></a>
+                       <form action="settings/seller/setproductinventory.do">
+                       <input  name="inventory" type="text" value="${pro.inventory}" class="add_Number"/>
+                       <input  name="currentPage" type="hidden" value="${checkproductBean.currentPage}"/>
+                       <input  name="pid" type="hidden" value="${pro.pid}"/>
+                           <input  name="sid" type="hidden" value="${seller.sid}"/>
+                       <input   type="submit" value="确认" class="confirm_btn"/>
+                       <a href="javascript:void(0)" class="cancel"><em class="cancel-icon"></em></a>
+                       </form>
                    </div>
                    <a href="javascript:void(0)" class="pjgl_btn">评价管理</a>
-                   <a href="#" class="szkc_btn">设置库存</a>
+                   <a href="javascript:void(0)" class="szkc_btn">设置库存</a>
                    <c:if test="${pro.check_flag=='0' or pro.check_flag=='2'}">
                        <a href="settings/seller/deletesellproduct.do?sid=${seller.sid}&pid=${pro.pid}&currentPage=${checkproductBean.currentPage}" class="sj_btn">删除</a>
                    </c:if>

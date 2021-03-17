@@ -68,19 +68,19 @@
 
 
     <select id="getProudcutCount" resultType="int" >
-         select count(*) from product where cid=#{cid}
+         select count(*) from product where cid=#{cid} and check_flag=1 and sell_flag=1
     </select>
 
     <select id="findProductByPage" resultType="product" >
-          select * from product where cid=#{cid} limit ${index},${currentCount}
+          select * from product where cid=#{cid} and check_flag=1 and sell_flag=1 limit ${index},${currentCount}
     </select>
 
     <select id="getProductCountByKeyword" resultType="int" >
-         select count(*) from product where pname like '%' #{keyword} '%'
+         select count(*) from product where pname like '%' #{keyword} '%' and check_flag=1 and sell_flag=1
     </select>
 
     <select id="findProductByKeyword" resultType="product" >
-          select * from product where pname like '%' #{keyword} '%' limit ${index},${currentCount}
+          select * from product where pname like '%' #{keyword} '%' and check_flag=1 and sell_flag=1 limit ${index},${currentCount}
     </select>
 
     <select id="findallshoporder" resultType="Cart">

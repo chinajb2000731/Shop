@@ -38,9 +38,9 @@ public interface SellerDao {
 
     int getProudcutCount(String sid);
 
-    void onsellproduct(@Param("sid")String sid,@Param("pid") String pid,@Param("sellflag") String sellflag);
+    void onsellproduct(@Param("sid")String sid,@Param("pid")String pid,@Param("sellflag")String sellflag);
 
-    void deletesellproduct(@Param("sid")String sid,@Param("pid") String pid);
+    void deletesellproduct(@Param("sid")String sid,@Param("pid")String pid);
 
     void addsellproduct(Product product);
 
@@ -55,6 +55,8 @@ public interface SellerDao {
     List<Cart> selectsellonget(String sid);
 
     List<Cart> selectsellordercomplete(String sid);
+
+    void setproductinventory(@Param("sid")String sid,@Param("pid")String pid,@Param("inventory")String inventory);
 
 
 

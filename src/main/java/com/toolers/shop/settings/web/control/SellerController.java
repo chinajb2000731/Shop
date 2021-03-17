@@ -109,9 +109,26 @@ public class SellerController extends HttpServlet {
         {
             selectsellorder(request,response);
         }
+        else if("/settings/seller/setproductinventory.do".equals(path))
+        {
+            setproductinventory(request,response);
+        }
+            
     }
 
-
+    private void setproductinventory(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+         String sid=request.getParameter("sid");
+        String pid=request.getParameter("pid");
+        String inventory=request.getParameter("inventory");
+       /* System.out.println(sid);
+        System.out.println("=======================");
+        System.out.println(pid);
+        System.out.println("=======================");
+        System.out.println(inventory);*/
+        us.setproductinventory(sid,pid,inventory);
+        selectcheckproduct(request,response);
+    }
 
     private void selectsellorder(HttpServletRequest request, HttpServletResponse response) {
         SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());

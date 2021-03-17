@@ -48,6 +48,7 @@
         <url-pattern>/settings/seller/sellconfirmdeliver.do</url-pattern>
         <url-pattern>/settings/seller/selectsellorder.do</url-pattern>
         <url-pattern>/settings/seller/deletesellorder.do</url-pattern>
+        <url-pattern>/settings/seller/setproductinventory.do</url-pattern>
     </servlet-mapping>
 
 

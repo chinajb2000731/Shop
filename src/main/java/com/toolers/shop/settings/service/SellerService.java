@@ -48,6 +48,8 @@ public interface SellerService {
 
     List<Cart> selectsellordercomplete(String sid);
 
+    void setproductinventory(String sid, String pid, String inventory);
+
 
 
     /*List<Product> selectcheckproduct(String sid,int index,int currentCount);*/

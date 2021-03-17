@@ -97,4 +97,8 @@
     <select id="selectsellordercomplete" resultType="cart">
           select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and ca.is_get=1 and p.sid=#{sid} ;
     </select>
+
+    <update id="setproductinventory">
+        update product set inventory=#{inventory} where sid=#{sid} and pid=#{pid}
+    </update>
 </mapper>

@@ -155,7 +155,7 @@
      <table cellpadding="0" cellspacing="0" width="100%">
       <tr>
        <td class="label">商家名称：</td>
-       <td>江苏业祥股份有限公司</td>
+       <td>${seller.name}</td>
      </tr> 
        <tr>
         <td class="label">商品名字：</td>

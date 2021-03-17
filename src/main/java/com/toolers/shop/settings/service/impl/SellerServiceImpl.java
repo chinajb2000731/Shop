@@ -236,6 +236,11 @@ public class SellerServiceImpl implements SellerService {
         return cartList;
     }
 
+    public void setproductinventory(String sid, String pid, String inventory) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.setproductinventory(sid,pid,inventory);
+    }
+
 
 
     /*public List<Product> selectcheckproduct(String sid,int index,int currentCount) {
