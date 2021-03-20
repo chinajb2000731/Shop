@@ -149,7 +149,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <li class="on"><em></em><a href="javascript:void(0)">商品专区</a></li>
     <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
     <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">发货管理</a></li>
-    <li><em></em><a href="javascript:void(0)">收款账户</a></li>
+    <li><em></em><a href="收款账号.jsp">收款账户</a></li>
    </ul>
   </div>
 </div>

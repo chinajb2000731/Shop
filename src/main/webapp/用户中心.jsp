@@ -170,7 +170,8 @@
                 </c:otherwise>
             </c:choose>
             <li> <a href="useraddress.jsp" onclick="">收货地址</a></li>
-          <li> <a href="#">产品预租</a></li>
+          <li> <a href="javascript:void(0)">产品预租</a></li>
+            <li><a href="javascript:void(0)">跟踪包裹</a></li>
         </ul>
       </dd>
     </dl>
@@ -197,7 +198,6 @@
       <dd>
        <ul>
         <li><a href="javascript:void(0)">消费记录</a></li>
-       <li><a href="javascript:void(0)">跟踪包裹</a></li>
       </ul>
      </dd>
     </dl>

@@ -218,7 +218,7 @@
     <li><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
     <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
     <li class="on"><em></em><a href="javascript:void(0)">发货管理</a></li>
-    <li><em></em><a href="javascript:void(0)">收款账户</a></li>
+    <li><em></em><a href="收款账号.jsp">收款账户</a></li>
 
    </ul>
   </div>
@@ -315,7 +315,7 @@
             </tbody>
              </table>           
            </div>
-           <a  href="javascript:(0)"class="AddTemplate_btn" id="test">新增运费模板</a><!--局部刷新显新增运费模板示文本-->
+           <a  href="javascript:void (0)" class="AddTemplate_btn" id="test">新增运费模板</a><!--局部刷新显新增运费模板示文本-->
          <script type="text/javascript">
          //弹出一个iframe层
 $('#test').on('click', function(){
@@ -325,9 +325,10 @@ $('#test').on('click', function(){
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area : ['900px' , '650px'],
-        content: '发货管理-运费模板.html'
+        content:'发货管理-运费模版.jsp'
     });
-});</script>
+});
+         </script>
          </div>
          <div class="Case_style">
           <div class="case_title"><h2 class="left">参考范例：</h2><span>（以下模板仅供参考）</span></div>

@@ -164,7 +164,7 @@
                            <div class="p-total">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  共计租用<strong>￥${totalrentprice} </strong></div>
                        </c:otherwise>
                    </c:choose>
-                   <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+                   <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
        </c:choose>
@@ -341,8 +341,8 @@
                 </c:otherwise>
             </c:choose>
           <li> <a href="useraddress.jsp">收货地址</a></li>
-          <li> <a href="#">缺货登记</a></li>
-          <li><a href="#">跟踪包裹</a></li>
+            <li> <a href="javascript:void(0)">产品预租</a></li>
+            <li><a href="javascript:void(0)">跟踪包裹</a></li>
         </ul>
       </dd>
     </dl>

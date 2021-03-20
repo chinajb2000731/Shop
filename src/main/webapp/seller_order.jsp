@@ -189,8 +189,8 @@ $(document).ready(function () {
     <li ><em></em><a href="店铺专区.jsp">店铺专区</a></li>
     <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
     <li class="on"><em></em><a href="javascript:void(0)">订单专区</a></li>
-    <li><em></em><a href="seller_address.jsp">发货管理</a></li>
-    <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">收款账户</a></li>
+    <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">发货管理</a></li>
+    <li><em></em><a href="收款账号.jsp">收款账户</a></li>
     <!-- li><em></em><a href="我的报表.html">我的报表</a></li> -->
    </ul>
   </div>

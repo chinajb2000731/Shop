@@ -185,7 +185,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <ul>
             <li> <a href="user_order.jsp">我的订单</a></li>
             <li> <a href="useraddress.jsp">收货地址</a></li>
-            <li> <a href="#">缺货登记</a></li>
+            <li> <a href="javascript:void(0)">产品预租</a></li>
+            <li><a href="javascript:void(0)">跟踪包裹</a></li>
         </ul>
       </dd>
     </dl>
@@ -204,8 +205,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <dt class="transaction_manage"><em class="icon_3"></em>账户管理</dt>
       <dd>
        <ul>
-        <li><a href="用户中心-消费记录.html">消费记录</a></li>   
-       <li><a href="#">跟踪包裹</a></li>
+        <li><a href="javascript:void(0)">消费记录</a></li>
       </ul>
      </dd>
     </dl>
