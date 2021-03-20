@@ -49,6 +49,10 @@
         <url-pattern>/settings/seller/selectsellorder.do</url-pattern>
         <url-pattern>/settings/seller/deletesellorder.do</url-pattern>
         <url-pattern>/settings/seller/setproductinventory.do</url-pattern>
+        <url-pattern>/settings/seller/adddeliveryaddress.do</url-pattern>
+        <url-pattern>/settings/seller/selectdeliveryaddress.do</url-pattern>
+        <url-pattern>/settings/seller/deletedeliveryaddress.do</url-pattern>
+        <url-pattern>/settings/seller/updatedeliveryaddress.do</url-pattern>
     </servlet-mapping>
 
 

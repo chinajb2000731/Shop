@@ -2,10 +2,7 @@ package com.toolers.shop.settings.service.impl;
 
 import com.toolers.shop.exception.RegisterException;
 import com.toolers.shop.settings.dao.SellerDao;
-import com.toolers.shop.settings.domain.Cart;
-import com.toolers.shop.settings.domain.Product;
-import com.toolers.shop.settings.domain.Seller;
-import com.toolers.shop.settings.domain.UserAddress;
+import com.toolers.shop.settings.domain.*;
 import com.toolers.shop.settings.service.SellerService;
 import com.toolers.shop.settings.vo.AddressBean;
 import com.toolers.shop.settings.vo.PageBean;
@@ -239,6 +236,34 @@ public class SellerServiceImpl implements SellerService {
     public void setproductinventory(String sid, String pid, String inventory) {
         SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.setproductinventory(sid,pid,inventory);
+    }
+
+    public void adddeliveryaddress(SellerDelivery sellerDelivery) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.adddeliveryaddress(sellerDelivery);
+    }
+
+    public List<SellerDelivery> selectdeliveryaddress(String sid) {
+
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        List<SellerDelivery> sellerDeliveryList=sellerDao.selectdeliveryaddress(sid);
+        return sellerDeliveryList;
+    }
+
+    public int selectdeliverycount(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        int count=sellerDao.getdeliverycount(sid);
+        return count;
+    }
+
+    public void deletedeliveryaddress(String id) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.deletedeliveryaddress(id);
+    }
+
+    public void updatedeliveryaddress(SellerDelivery sellerDelivery) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.updatedeliveryaddress(sellerDelivery);
     }
 
 

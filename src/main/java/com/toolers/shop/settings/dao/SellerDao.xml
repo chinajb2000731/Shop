@@ -101,4 +101,25 @@
     <update id="setproductinventory">
         update product set inventory=#{inventory} where sid=#{sid} and pid=#{pid}
     </update>
+
+
+    <insert id="adddeliveryaddress">
+       insert into sellerdelivery(id,sid,consignee,area,streetaddress,postcode,phone,remarks)values (#{id},#{sid},#{consignee},#{area},#{streetaddress},#{postcode},#{phone},#{remarks})
+   </insert>
+
+    <select id="selectdeliveryaddress" resultType="sellerdelivery">
+          select * from sellerdelivery where sid=#{sid}
+    </select>
+
+    <select id="getdeliverycount" resultType="int">
+        select count(*) from sellerdelivery where sid=#{sid}
+    </select>
+
+    <delete id="deletedeliveryaddress">
+        delete from sellerdelivery where id=#{id}
+    </delete>
+
+    <update id="updatedeliveryaddress">
+        update sellerdelivery set consignee=#{consignee},area=#{area},streetaddress=#{streetaddress},postcode=#{postcode},phone=#{phone},remarks=#{remarks} where id=#{id}
+    </update>
 </mapper>

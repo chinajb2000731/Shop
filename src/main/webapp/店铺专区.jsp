@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<%--<%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>">--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -139,9 +139,8 @@
     <li class="on"><em></em><a href="javascript:void(0)">店铺专区</a></li>
     <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
     <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
-    <li><em></em><a href="javascript:void(0)">发货管理</a></li>
+    <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">发货管理</a></li>
     <li><em></em><a href="javascript:void(0)">收款账户</a></li>
-   <!--  <li><em></em><a href="我的报表.html">我的报表</a></li> -->
    </ul>
   </div>
 </div>

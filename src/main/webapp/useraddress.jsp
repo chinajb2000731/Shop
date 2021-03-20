@@ -334,10 +334,10 @@
         <ul>
             <c:choose>
                 <c:when test="${empty seller}">
-                    <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=0" class="on">全部订单(${ordercount})</a>
+                  <li> <a href="settings/product/selectorder.do?cid=${user.loginAct}&flag=0&orderflag=0" >全部订单</a></li>
                 </c:when>
                 <c:otherwise>
-                    <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=0" class="on">全部订单(${ordercount})</a>
+                  <li> <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=0">全部订单</a></li>
                 </c:otherwise>
             </c:choose>
           <li> <a href="useraddress.jsp">收货地址</a></li>

@@ -1,9 +1,6 @@
 package com.toolers.shop.settings.dao;
 
-import com.toolers.shop.settings.domain.Cart;
-import com.toolers.shop.settings.domain.Product;
-import com.toolers.shop.settings.domain.Seller;
-import com.toolers.shop.settings.domain.UserAddress;
+import com.toolers.shop.settings.domain.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -57,6 +54,16 @@ public interface SellerDao {
     List<Cart> selectsellordercomplete(String sid);
 
     void setproductinventory(@Param("sid")String sid,@Param("pid")String pid,@Param("inventory")String inventory);
+
+    void adddeliveryaddress(SellerDelivery sellerDelivery);
+
+    List<SellerDelivery> selectdeliveryaddress(String sid);
+
+    int getdeliverycount(String sid);
+
+    void deletedeliveryaddress(String id);
+
+    void updatedeliveryaddress(SellerDelivery sellerDelivery);
 
 
 

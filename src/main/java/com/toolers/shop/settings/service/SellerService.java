@@ -1,10 +1,7 @@
 package com.toolers.shop.settings.service;
 
 import com.toolers.shop.exception.RegisterException;
-import com.toolers.shop.settings.domain.Cart;
-import com.toolers.shop.settings.domain.Product;
-import com.toolers.shop.settings.domain.Seller;
-import com.toolers.shop.settings.domain.UserAddress;
+import com.toolers.shop.settings.domain.*;
 import com.toolers.shop.settings.vo.AddressBean;
 import com.toolers.shop.settings.vo.PageBean;
 
@@ -49,6 +46,16 @@ public interface SellerService {
     List<Cart> selectsellordercomplete(String sid);
 
     void setproductinventory(String sid, String pid, String inventory);
+
+    void adddeliveryaddress(SellerDelivery sellerDelivery);
+
+    List<SellerDelivery> selectdeliveryaddress(String sid);
+
+    int selectdeliverycount(String sid);
+
+    void deletedeliveryaddress(String id);
+
+    void updatedeliveryaddress(SellerDelivery sellerDelivery);
 
 
 

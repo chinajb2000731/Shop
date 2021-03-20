@@ -1,9 +1,6 @@
 package com.toolers.shop.settings.web.control;
 
-import com.toolers.shop.settings.domain.Cart;
-import com.toolers.shop.settings.domain.Product;
-import com.toolers.shop.settings.domain.Seller;
-import com.toolers.shop.settings.domain.UserAddress;
+import com.toolers.shop.settings.domain.*;
 import com.toolers.shop.settings.service.SellerService;
 import com.toolers.shop.settings.service.impl.SellerServiceImpl;
 import com.toolers.shop.settings.vo.AddressBean;
@@ -113,7 +110,110 @@ public class SellerController extends HttpServlet {
         {
             setproductinventory(request,response);
         }
+        else if("/settings/seller/adddeliveryaddress.do".equals(path))
+        {
+            adddeliveryaddress(request,response);
+        }
+        else if("/settings/seller/selectdeliveryaddress.do".equals(path))
+        {
+            selectdeliveryaddress(request,response);
+        }
+        else if("/settings/seller/deletedeliveryaddress.do".equals(path))
+        {
+            deletedeliveryaddress(request,response);
+        }
+        else if("/settings/seller/updatedeliveryaddress.do".equals(path))
+        {
+            updatedeliveryaddress(request,response);
+        }
             
+    }
+
+    private void updatedeliveryaddress(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String id=request.getParameter("id");
+        String sid=request.getParameter("sid");
+        String consignee=request.getParameter("consignee");
+        String area=request.getParameter("area");
+        String streetaddress=request.getParameter("streetaddress");
+        String postcode=request.getParameter("postcode");
+        String phone=request.getParameter("phone");
+        String remarks=request.getParameter("remarks");
+      /*  System.out.println(id);
+        System.out.println(sid);
+        System.out.println(consignee);
+        System.out.println(area);
+        System.out.println(streetaddress);
+        System.out.println(postcode);
+        System.out.println(phone);
+        System.out.println(remarks);*/
+        SellerDelivery sellerDelivery=new SellerDelivery();
+        sellerDelivery.setId(id);
+        sellerDelivery.setSid(sid);
+        sellerDelivery.setConsignee(consignee);
+        sellerDelivery.setArea(area);
+        sellerDelivery.setStreetaddress(streetaddress);
+        sellerDelivery.setPostcode(postcode);
+        sellerDelivery.setPhone(phone);
+        sellerDelivery.setRemarks(remarks);
+        us.updatedeliveryaddress(sellerDelivery);
+        selectdeliveryaddress(request,response);
+
+    }
+
+    private void deletedeliveryaddress(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String id=request.getParameter("id");
+        us.deletedeliveryaddress(id);
+        selectdeliveryaddress(request,response);
+
+    }
+
+    private void selectdeliveryaddress(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+        int count=us.selectdeliverycount(sid);
+        List<SellerDelivery> sellerDeliveryList= us.selectdeliveryaddress(sid);
+        request.getSession().setAttribute("sellerDeliveryList",sellerDeliveryList);
+        request.getSession().setAttribute("sellerdeliverycount",count);
+        try {
+            response.sendRedirect(request.getContextPath()+"/seller_address.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void adddeliveryaddress(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+        String consginee=request.getParameter("consginee");
+        String area=request.getParameter("area");
+        String streetaddress=request.getParameter("streetaddress");
+        String postcode=request.getParameter("postcode");
+        String phone=request.getParameter("phone");
+        String remarks=request.getParameter("remarks");
+        SellerDelivery sellerDelivery=new SellerDelivery();
+        sellerDelivery.setId(CommonsUtils.getUUid());
+        sellerDelivery.setSid(sid);
+        sellerDelivery.setConsignee(consginee);
+        sellerDelivery.setArea(area);
+        sellerDelivery.setStreetaddress(streetaddress);
+        sellerDelivery.setPostcode(postcode);
+        sellerDelivery.setPhone(phone);
+        sellerDelivery.setRemarks(remarks);
+        int count=us.selectdeliverycount(sid);
+        if (count>=20)
+        {
+            selectdeliveryaddress(request,response);
+        }
+        else {
+            us.adddeliveryaddress(sellerDelivery);
+            selectdeliveryaddress(request,response);
+        }
+
+
+
     }
 
     private void setproductinventory(HttpServletRequest request, HttpServletResponse response) {
