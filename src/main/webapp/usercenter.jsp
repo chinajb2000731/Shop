@@ -17,6 +17,36 @@
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
 <script src="layer/layer.js" type="text/javascript"></script>
+    <script language="javascript">
+        function get_time()
+        {
+            var date=new Date();
+            var year="",month="",day="",week="",hour="",minute="",second="";
+            year=date.getFullYear();
+            month=add_zero(date.getMonth()+1);
+            day=add_zero(date.getDate());
+            week=date.getDay();
+            switch (date.getDay()) {
+                case 0:val="周日";break
+                case 1:val="周一";break
+                case 2:val="周二";break
+                case 3:val="周三";break
+                case 4:val="周四";break
+                case 5:val="周五";break
+                case 6:val="周六";break
+            }
+            hour=add_zero(date.getHours());
+            minute=add_zero(date.getMinutes());
+            second=add_zero(date.getSeconds());
+            document.getElementById("timetable").innerHTML="访问时间:"+" "+year+"-"+month+"-"+day+" "+val;
+        }
+        function add_zero(temp)
+        {
+            if(temp<10) return "0"+temp;
+            else return temp;
+        }
+        setInterval("get_time()",1000);
+    </script>
 <title>用户中心</title>
 </head>
 
@@ -33,12 +63,12 @@
               </c:when>
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>&nbsp&nbsp
+                  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green">用户中心</a>&nbsp&nbsp
                   <a href="店铺专区.jsp" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>
+                  <a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class="green">用户中心</a>
               </c:otherwise>
           </c:choose>
       </div>
@@ -117,9 +147,8 @@
 		 <ul class="Navigation_name">
 			<li><a href="index.jsp">首页</a></li>
 			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
-      <li><a href="javascript:void(0)">半小时生活圈</a></li>
 			<li><a href="javascript:void(0)">限时折扣</a></li>
-      <li><a href="javascript:void(0)">联系我们</a></li>
+            <li><a href="javascript:void(0)">联系我们</a></li>
 		 </ul>			 
 		</div>
 	<script>$("#Navigation").slide({titCell:".Navigation_name li",trigger:"click"});</script>
@@ -130,7 +159,7 @@
  <div class="user_center clearfix">
  <div class="left_style">
      <div class="menu_style">
-     <div class="user_title"><a href="用户中心.jsp">用户中心</a></div>
+     <div class="user_title"><a href="usercenter.jsp">用户中心</a></div>
      <div class="user_Head">
      <div class="user_portrait">
          <c:choose>
@@ -152,7 +181,7 @@
               <p><span class="name">${seller.name}</span><a href="#">[修改密码]</a></p>
           </c:otherwise>
           </c:choose>
-       <p>访问时间：2016-1-21 10:23</p>
+          <p id="timetable"></p>
        </div>           
      </div>
      <div class="sideMen">

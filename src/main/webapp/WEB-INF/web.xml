@@ -78,6 +78,7 @@
         <url-pattern>/settings/product/productget.do</url-pattern>
         <url-pattern>/settings/product/deleteorder.do</url-pattern>
         <url-pattern>/settings/product/selectorder.do</url-pattern>
+        <url-pattern>/settings/product/selectusercenterorder.do</url-pattern>
 
     </servlet-mapping>
 

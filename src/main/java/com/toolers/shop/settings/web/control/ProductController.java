@@ -86,6 +86,50 @@ public class ProductController extends HttpServlet {
         {
             selectorder(request,response);
         }
+        else if("/settings/product/selectusercenterorder.do".equals(path))
+        {
+            selectusercenterorder(request,response);
+        }
+    }
+
+    private void selectusercenterorder(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String cid=request.getParameter("cid");
+        String flag=request.getParameter("flag");
+        List<Cart> shoporders=us.findallshoporder(cid,flag);
+        List<Product> productcartList2=new ArrayList<Product>();
+        int ordercount=us.getCountorder(cid,flag);
+        Product product=null;
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
+            try {
+                response.sendRedirect(request.getContextPath()+"/usercenter.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("ordercount",ordercount);
+        try {
+            response.sendRedirect(request.getContextPath()+"/usercenter.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void selectorder(HttpServletRequest request, HttpServletResponse response) {
@@ -98,13 +142,14 @@ public class ProductController extends HttpServlet {
 
         if(orderflag==0)
         {
-            System.out.println("00000000000");
             List<Cart> shoporders=us.findallshoporder(cid,flag);
             List<Product> productcartList2=new ArrayList<Product>();
+            int ordercount=us.getCountorder(cid,flag);
             Product product=null;
             if (shoporders==null)
             {
                 request.getSession().setAttribute("productcartList2", productcartList2);
+                request.getSession().setAttribute("ordercount",ordercount);
                 try {
                     response.sendRedirect(request.getContextPath()+"/user_order.jsp");
                 } catch (IOException e) {
@@ -125,6 +170,7 @@ public class ProductController extends HttpServlet {
                 }
             }
             request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
             try {
                 response.sendRedirect(request.getContextPath()+"/user_order.jsp");
             } catch (IOException e) {

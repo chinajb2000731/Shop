@@ -35,12 +35,12 @@
               </c:when>
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green" >用户中心</a>&nbsp&nbsp
+                  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
                   <a href="店铺专区.jsp" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>
+                  <a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class="green">用户中心</a>
               </c:otherwise>
           </c:choose>
       </div>
@@ -61,7 +61,7 @@
         <div class="search_list">
             <ul>
                 <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
-                <li><a href="javascript:void(0)">信息</a></li>
+                <%--<li><a href="javascript:void(0)">信息</a></li>--%>
             </ul>
         </div>
         <div class="clear search_cur">

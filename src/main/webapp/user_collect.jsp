@@ -26,6 +26,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
         }
     </script>
+    <script language="javascript">
+        function get_time()
+        {
+            var date=new Date();
+            var year="",month="",day="",week="",hour="",minute="",second="";
+            year=date.getFullYear();
+            month=add_zero(date.getMonth()+1);
+            day=add_zero(date.getDate());
+            week=date.getDay();
+            switch (date.getDay()) {
+                case 0:val="周日";break
+                case 1:val="周一";break
+                case 2:val="周二";break
+                case 3:val="周三";break
+                case 4:val="周四";break
+                case 5:val="周五";break
+                case 6:val="周六";break
+            }
+            hour=add_zero(date.getHours());
+            minute=add_zero(date.getMinutes());
+            second=add_zero(date.getSeconds());
+            document.getElementById("timetable").innerHTML="访问时间:"+" "+year+"-"+month+"-"+day+" "+val;
+        }
+        function add_zero(temp)
+        {
+            if(temp<10) return "0"+temp;
+            else return temp;
+        }
+        setInterval("get_time()",1000);
+    </script>
 <title>会员中心-我的收藏</title>
 </head>
 
@@ -42,12 +72,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               </c:when>
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green" >用户中心</a>&nbsp&nbsp
+                  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
                   <a href="店铺专区.jsp" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>
+                  <a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class="green">用户中心</a>
               </c:otherwise>
           </c:choose>
       </div>
@@ -163,7 +193,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <p><span class="name">${seller.name}</span><a href="#">[修改密码]</a></p>
               </c:otherwise>
           </c:choose>
-       <p>访问时间：2016-1-21 10:23</p>
+       <p id="timetable"></p>
 
        </div>           
      </div>

@@ -5,7 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <base href="<%=basePath%>">--%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,6 +27,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
         }
     </script>
+    <script language="javascript">
+        function get_time()
+        {
+            var date=new Date();
+            var year="",month="",day="",week="",hour="",minute="",second="";
+            year=date.getFullYear();
+            month=add_zero(date.getMonth()+1);
+            day=add_zero(date.getDate());
+            week=date.getDay();
+            switch (date.getDay()) {
+                case 0:val="周日";break
+                case 1:val="周一";break
+                case 2:val="周二";break
+                case 3:val="周三";break
+                case 4:val="周四";break
+                case 5:val="周五";break
+                case 6:val="周六";break
+            }
+            hour=add_zero(date.getHours());
+            minute=add_zero(date.getMinutes());
+            second=add_zero(date.getSeconds());
+            document.getElementById("timetable").innerHTML="访问时间:"+" "+year+"-"+month+"-"+day+" "+val;
+        }
+        function add_zero(temp)
+        {
+            if(temp<10) return "0"+temp;
+            else return temp;
+        }
+        setInterval("get_time()",1000);
+    </script>
 <title>订单管理</title>
 </head>
 
@@ -43,12 +73,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               </c:when>
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>&nbsp&nbsp
+                  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green">用户中心</a>&nbsp&nbsp
                   <a href="店铺专区.jsp" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
-                  <a href="用户中心.jsp" class="green">用户中心</a>
+                  <a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class="green">用户中心</a>
               </c:otherwise>
           </c:choose>
       </div>
@@ -69,7 +99,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="search_list">
             <ul>
                 <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
-                <li><a href="javascript:void(0)">信息</a></li>
+             <%--   <li><a href="javascript:void(0)">信息</a></li>--%>
             </ul>
         </div>
         <div class="clear search_cur">
@@ -137,7 +167,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<div class="Navigation" id="Navigation">
 		 <ul class="Navigation_name">
 			<li><a href="index.jsp">首页</a></li>
-			<li><a href="#">预租专区</a><em class="hot_icon"></em></li>
 			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
             <li><a href="#">限时折扣</a></li>
 			<li><a href="#">联系我们</a></li>
@@ -150,7 +179,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
  <div class="user_center clearfix">
    <div class="left_style">
      <div class="menu_style">
-     <div class="user_title"><a href="用户中心.jsp">用户中心</a></div>
+     <div class="user_title"><a href="usercenter.jsp">用户中心</a></div>
      <div class="user_Head">
      <div class="user_portrait">
 
@@ -174,7 +203,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <p><span class="name">${seller.name}</span><a href="#">[修改密码]</a></p>
               </c:otherwise>
           </c:choose>
-       <p>访问时间：2016-1-21 10:23</p>
+          <p id="timetable"></p>
        </div>           
      </div>
      <div class="sideMen">

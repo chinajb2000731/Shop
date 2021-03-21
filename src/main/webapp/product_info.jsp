@@ -183,12 +183,12 @@ document.getElementById(bg_div).style.display='none';
                     </c:when>
                     <c:when test="${empty user and !empty seller}">
                         <li><span>欢迎:【${seller.name}】</span>&nbsp&nbsp</li>
-                        <li><a href="用户中心.jsp"class=" colororange">用户中心</a></li>
+                        <li><a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class=" colororange">用户中心</a></li>
                         <li><a href="店铺专区.jsp">店铺专区</a></li>
                     </c:when>
                     <c:otherwise>
                         <li><span>欢迎:【${user.name}】</span>&nbsp&nbsp</li>
-                        <li><a href="用户中心.jsp"class=" colororange">用户中心</a></li>
+                        <li><a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class=" colororange">用户中心</a></li>
                     </c:otherwise>
                 </c:choose>
 
@@ -221,7 +221,7 @@ document.getElementById(bg_div).style.display='none';
         <div class="search_list">
             <ul>
                 <li class="current"><a href="settings/product/productlists.do?cid=1">产品</a></li>
-                <li><a href="javascript:void(0)">信息</a></li>
+                <%--<li><a href="javascript:void(0)">信息</a></li>--%>
             </ul>
         </div>
         <div class="clear search_cur">
