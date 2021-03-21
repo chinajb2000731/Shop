@@ -298,13 +298,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <td class="list_name_title4">购买价格(元)</td>
           <td class="list_name_title4">租赁价格(元)</td>
           <td class="list_name_title5">订单状态</td>
+              <td class="list_name_title5">剩余租赁天数</td>
           <td class="list_name_title6">操作</td>
          </tr>
          </thead> 
             <c:forEach items="${productcartList2}" var="shopcar">
                 <tbody>
                 <tr class="Order_info">
-                    <td colspan="7" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td>
+                    <td colspan="8" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td>
                 </tr>
                 <tr class="Order_Details" >
                     <td colspan="3">
@@ -338,18 +339,46 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <td class="split_line">${shopcar.rent*shopcar.buynum}</td>
                         </c:otherwise>
                     </c:choose>
-                        <c:if test="${shopcar.is_pay=='0' and shopcar.is_rent=='0'}">
+                        <c:if test="${shopcar.is_pay=='0' and shopcar.is_rent=='0' and shopcar.is_eviction=='0'}">
                             <td class="split_line">等待付款</td>
                         </c:if>
-                        <c:if test="${shopcar.is_get=='0' and shopcar.is_deliver=='0' and (shopcar.is_pay=='1' or shopcar.is_rent=='1')}">
+                        <c:if test="${shopcar.is_get=='0' and shopcar.is_deliver=='0'and shopcar.is_eviction=='0' and (shopcar.is_pay=='1' or shopcar.is_rent=='1')}">
                         <td class="split_line"><p style="color:#F33">买家已付款，等待买家发货</p></td>
                         </c:if>
-                        <c:if test="${shopcar.is_get=='0' and shopcar.is_deliver=='1'}">
+                        <c:if test="${shopcar.is_get=='0' and shopcar.is_deliver=='1' and shopcar.is_eviction=='0'}">
                             <td class="split_line"><p style="color:#F33">卖家已发货,等待收货</p></td>
                         </c:if>
-                        <c:if test="${shopcar.is_get=='1' and shopcar.is_deliver=='1'}">
+                        <c:if test="${shopcar.is_get=='1' and shopcar.is_deliver=='1' and shopcar.is_eviction=='0'}">
                             <td class="split_line"><p style="color:#F33">交易完成</p></td>
                         </c:if>
+                         <c:if test="${shopcar.is_eviction=='1'}">
+                             <td class="split_line"><p style="color:orange">已经退租，等待卖家收货</p></td>
+                         </c:if>
+                    <c:if test="${shopcar.is_eviction=='2'}">
+                        <td class="split_line"><p style="color:#F33">退租完成交易完成</p></td>
+                    </c:if>
+
+                    <c:if test="${shopcar.is_pay=='0' and shopcar.is_rent=='0'}">
+                        <td class="split_line">等待付款</td>
+                    </c:if>
+
+                    <c:if test="${shopcar.is_pay=='1'}">
+                        <td class="split_line">已购买</td>
+                    </c:if>
+
+                    <c:if test="${shopcar.is_rent=='1' and shopcar.is_get=='0' and shopcar.is_deliver=='0'}">
+                        <td class="split_line"><p style="color:#F33">买家已付款，等待买家发货</p></td>
+                    </c:if>
+
+                    <c:if test="${shopcar.is_rent=='1' and shopcar.is_get=='0' and shopcar.is_deliver=='1'}">
+                        <td class="split_line"><p style="color:#F33">卖家已发货,等待收货</p></td>
+                    </c:if>
+
+                    <c:if test="${shopcar.is_rent=='1' and shopcar.is_get=='1' and shopcar.is_deliver=='1'}">
+                        <td class="split_line"><p style="color:blue">${shopcar.rentday}</p></td>
+                    </c:if>
+
+
                     <td class="operating">
                         <c:choose>
                             <c:when test="${shopcar.is_pay=='0' and shopcar.is_rent=='0'}">
@@ -405,59 +434,66 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             </c:when>
                         </c:choose>
 
-                        <c:choose>
+                       <%-- <c:choose>
                             <c:when test="${shopcar.is_get=='1'}">
                                <c:choose>
                                    <c:when test="${shopcar.is_pay=='1'}">
                                        <a href="#">申请售后</a>
                                    </c:when>
                                    <c:otherwise>
-                                       <a href="#">申请售后</a>
-                                       <a href="#">退租</a>
+                                       <c:choose>
+                                           <c:when test="${empty seller}">
+                                               <a href="settings/product/updaterentday.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">续租</a>
+                                           </c:when>
+                                           <c:otherwise>
+                                               <a href="settings/product/updaterentday.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">续租</a>
+                                           </c:otherwise>
+                                       </c:choose>
+                                       <a href="settings/product/eviction.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">退租</a>
                                    </c:otherwise>
                                </c:choose>
                             </c:when>
-
-                        </c:choose>
-                   <%--     <c:choose>
-                            <c:when test="${(shopcar.is_pay=='0') and (shopcar.is_rent=='0')}">
-                                <c:choose>
-                                    <c:when test="${empty seller}">
-                                        <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">删除</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">删除</a>
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </c:when>
-                            <c:otherwise>
-                                <c:choose>
-                                    <c:when test="${shopcar.is_get=='0' and shopcar.is_deliver=='1'}">
-                                        <c:choose>
-                                            <c:when test="${empty seller}">
-                                                <a href="settings/product/productget.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0" class="Delivery_btn">确认收货</a>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <a href="settings/product/productget.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1" class="Delivery_btn">确认收货</a>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:choose>
-                                            <c:when test="${empty seller}">
-                                                <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">删除</a>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">删除</a>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </c:otherwise>
                         </c:choose>--%>
+
+                        <c:if test="${shopcar.is_get=='1' and shopcar.is_pay=='1'}">
+                            <a href="#">申请售后</a>
+                        </c:if>
+                        <c:if test="${shopcar.is_get=='1' and shopcar.is_rent=='1' and shopcar.is_eviction=='0'}">
+                            <c:choose>
+                                <c:when test="${empty seller}">
+                                    <a href="settings/product/updaterentday.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">续租</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="settings/product/updaterentday.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">续租</a>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${empty seller}">
+                                    <a href="settings/product/eviction.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">退租</a>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <a href="settings/product/eviction.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">退租</a>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </c:if>
+
+                        <c:if test="${shopcar.is_get=='1' and shopcar.is_rent=='1' and shopcar.is_eviction=='1'}">
+                            <a href="#">查看物流</a>
+                        </c:if>
+
+                        <c:if test="${shopcar.is_get=='1' and shopcar.is_rent=='1' and shopcar.is_eviction=='2'}">
+                            <c:choose>
+                                <c:when test="${empty seller}">
+                                    <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${user.loginAct}&flag=0">删除</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="settings/product/deleteorder.do?id=${shopcar.id}&loginAct=${seller.loginAct}&flag=1">删除</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <c:if test="${(shopcar.is_pay=='0') and (shopcar.is_rent=='0')}">
                             <c:choose>
                                 <c:when test="${empty seller}">
@@ -468,6 +504,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </c:otherwise>
                             </c:choose>
                         </c:if>
+
                         <c:if test="${(shopcar.is_pay=='1' or shopcar.is_rent=='1') and shopcar.is_deliver=='1' and shopcar.is_get=='0'}">
                             <c:choose>
                                 <c:when test="${empty seller}">

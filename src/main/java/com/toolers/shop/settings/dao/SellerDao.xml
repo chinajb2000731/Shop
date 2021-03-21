@@ -91,11 +91,11 @@
     </select>
 
     <select id="selectsellonget" resultType="cart">
-          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and ca.is_get=0 and p.sid=#{sid} ;
+          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and (ca.is_get=0 or ca.is_eviction=1)and p.sid=#{sid} ;
     </select>
 
     <select id="selectsellordercomplete" resultType="cart">
-          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and ca.is_get=1 and p.sid=#{sid} ;
+          select * from cart as ca,product as p where p.pid=ca.pid and (ca.is_pay=1 or ca.is_rent=1) and ca.is_deliver=1 and ca.is_get=1 and (ca.is_eviction=0 or ca.is_eviction=2) and p.sid=#{sid} ;
     </select>
 
     <update id="setproductinventory">
@@ -121,5 +121,9 @@
 
     <update id="updatedeliveryaddress">
         update sellerdelivery set consignee=#{consignee},area=#{area},streetaddress=#{streetaddress},postcode=#{postcode},phone=#{phone},remarks=#{remarks} where id=#{id}
+    </update>
+
+    <update id="updateeviction">
+        update cart set is_eviction=2 where id=#{id}
     </update>
 </mapper>

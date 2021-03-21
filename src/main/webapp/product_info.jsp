@@ -331,7 +331,7 @@ document.getElementById(bg_div).style.display='none';
                     <div class="pro_detail_act margin-t20 fl"><span class="margin-r20">此商品不支持租赁</span><span style="font-size:26px; font-weight:bold; color:#dd514c;"></span></div>
                 </c:when>
                 <c:otherwise>
-                    <div class="pro_detail_act margin-t20 fl"><span class="margin-r20">出租</span><span style="font-size:26px; font-weight:bold; color:#dd514c;">￥${product.rent}</span></div>
+                    <div class="pro_detail_act margin-t20 fl"><span class="margin-r20">出租</span><span style="font-size:26px; font-weight:bold; color:#dd514c;">￥${product.rent}/7天</span></div>
                 </c:otherwise>
             </c:choose>
             <div class="clear"></div>

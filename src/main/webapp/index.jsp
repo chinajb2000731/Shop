@@ -84,7 +84,16 @@
  <!--购物车样式-->
  <div class="hd_Shopping_list" id="Shopping_list">
    <div class="s_cart">
-       <a href="user_order.jsp">我的购物车</a>
+	   <c:choose>
+		   <c:when test="${empty seller and empty user}">
+			   <a href="登录.jsp">我的购物车</a>
+		   </c:when>
+
+		   <c:otherwise>
+			   <a href="user_order.jsp">我的购物车</a>
+		   </c:otherwise>
+	   </c:choose>
+
 	   <i class="ci-right">&gt;</i>
 	   <i class="ci-count" id="shopping-amount">${totalcartnum}</i>
    </div>
@@ -675,10 +684,14 @@
   <ul class="fixedBoxList">
       <li class="fixeBoxLi user"><a href="#"> <span class="fixeBoxSpan"></span> <strong>消息中心</strong></a> </li>
     <li class="fixeBoxLi cart_bd" style="display:block;" id="cartboxs1">
-		<p class="good_cart">9</p>
-			<span class="fixeBoxSpan"></span> <strong>购物车</strong>
-			<div class="cartBox">
-       		<div class="bjfff"></div><div class="message">购物车内暂无商品，赶紧选购吧</div>    </div></li>
+		<p class="good_cart">${totalcartnum}</p>
+		<a href="user_order.jsp"><span class="fixeBoxSpan"></span></a> <strong>购物车</strong>
+			<%--<div class="cartBox">
+       		<div class="bjfff"></div>
+				&lt;%&ndash;
+				<div class="message">购物车内暂无商品，赶紧选购吧</div>&ndash;%&gt;
+			</div>--%>
+	</li>
     <li class="fixeBoxLi Service "> <span class="fixeBoxSpan"></span> <strong>客服</strong>
       <div class="ServiceBox">
         <div class="bjfffs"></div>

@@ -33,6 +33,8 @@ public class Product {
  private  String is_get;
  private  String is_rent;
  private  String is_deliver;
+ private  int rentday;
+ private   String is_eviction;
  private  String id;
  private  String check_flag;
  private  String sell_flag;
@@ -227,5 +229,21 @@ public class Product {
 
     public void setIs_deliver(String is_deliver) {
         this.is_deliver = is_deliver;
+    }
+
+    public int getRentday() {
+        return rentday;
+    }
+
+    public void setRentday(int rentday) {
+        this.rentday = rentday;
+    }
+
+    public String getIs_eviction() {
+        return is_eviction;
+    }
+
+    public void setIs_eviction(String is_eviction) {
+        this.is_eviction = is_eviction;
     }
 }

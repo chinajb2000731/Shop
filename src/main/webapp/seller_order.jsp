@@ -83,7 +83,7 @@ $(document).ready(function () {
               </c:when>
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
-                  <a href=settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
+                  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
                   <a href="店铺专区.jsp" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
@@ -268,8 +268,20 @@ $(document).ready(function () {
                <c:if test="${shopcar.is_deliver=='1'and shopcar.is_get=='0'}">
                    <td class="split_line"><p style="color:red;">已发货，待收货</p></td>
                </c:if>
-               <c:if test="${shopcar.is_deliver=='1' and shopcar.is_get=='1'}">
+               <c:if test="${shopcar.is_deliver=='1' and shopcar.is_get=='1' and shopcar.is_rent=='1' and shopcar.is_eviction=='0'}">
+                   <td class="split_line"><p style="color:green">买家已收货,租赁开始</p></td>
+               </c:if>
+
+               <c:if test="${shopcar.is_deliver=='1' and shopcar.is_get=='1' and shopcar.is_pay=='1'}">
                    <td class="split_line"><p style="color:green">买家已收货,交易完成</p></td>
+               </c:if>
+
+               <c:if test="${shopcar.is_deliver=='1' and shopcar.is_get=='1' and shopcar.is_rent=='1' and shopcar.is_eviction=='1' }">
+                   <td class="split_line"><p style="color:orange">买家已发货,等待收货</p></td>
+               </c:if>
+
+               <c:if test="${shopcar.is_deliver=='1' and shopcar.is_get=='1' and shopcar.is_rent=='1' and shopcar.is_eviction=='2' }">
+                   <td class="split_line"><p style="color:blueviolet">租赁交易完成</p></td>
                </c:if>
                <td class="operating">
                    <c:if test="${shopcar.is_deliver=='0'}">
@@ -282,8 +294,8 @@ $(document).ready(function () {
                        <a href="#">联系管理员</a>
                        <a href="#">查看物流</a>
                    </c:if>
-                   <c:if test="${shopcar.is_get=='1' and shopcar.is_deliver=='1' and shopcar.is_rent=='1'}">
-                       <a href="#" class="Delivery_btn">收到退租并退押金</a>
+                   <c:if test="${shopcar.is_get=='1' and shopcar.is_deliver=='1' and shopcar.is_rent=='1' and shopcar.is_eviction!='2'}">
+                       <a href="settings/seller/updateeviction.do?id=${shopcar.id}&sid=${seller.sid}" class="Delivery_btn">收到退租并退押金</a>
                    </c:if>
 <%--
                    <a href="#">查看物流</a>

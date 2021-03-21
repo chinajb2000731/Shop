@@ -69,6 +69,10 @@ public interface ProductDao {
 
     List<Cart> findallSuccessfultransactions(@Param("cid")String cid,@Param("flag") String flag);
 
+    void updaterentday(String id);
+
+    void eviction(String id);
+
 
 
     /* List<Product> findcollectProductList(@Param("loginAct")String loginAct,@Param("flag") String flag);*/

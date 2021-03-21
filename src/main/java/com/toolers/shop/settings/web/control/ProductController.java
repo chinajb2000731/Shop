@@ -90,6 +90,105 @@ public class ProductController extends HttpServlet {
         {
             selectusercenterorder(request,response);
         }
+        else if("/settings/product/updaterentday.do".equals(path))
+        {
+            updaterentday(request,response);
+        }
+        else if("/settings/product/eviction.do".equals(path))
+        {
+            eviction(request,response);
+        }
+    }
+
+    private void eviction(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("xxxxxxxxxxxxxxxxxxxx");
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String id=request.getParameter("id");
+        String cid=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        us.eviction(id);
+        List<Cart> shoporders=us.findallshoporder(cid,flag);
+        List<Product> productcartList2=new ArrayList<Product>();
+        int ordercount=us.getCountorder(cid,flag);
+        Product product=null;
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("ordercount",ordercount);
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updaterentday(HttpServletRequest request, HttpServletResponse response) {
+        ProductService us=(ProductService) ServiceFactory.getService(new ProductServiceImpl());
+        String id=request.getParameter("id");
+        String cid=request.getParameter("loginAct");
+        String flag=request.getParameter("flag");
+        us.updaterentday(id);
+        List<Cart> shoporders=us.findallshoporder(cid,flag);
+        List<Product> productcartList2=new ArrayList<Product>();
+        int ordercount=us.getCountorder(cid,flag);
+        Product product=null;
+        if (shoporders==null)
+        {
+            request.getSession().setAttribute("productcartList2", productcartList2);
+            request.getSession().setAttribute("ordercount",ordercount);
+            try {
+                response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            for (Cart c : shoporders) {
+                String pid2 = c.getPid();
+                product = us.findProductByPid(pid2);
+                product.setBuynum(c.getBuynum());
+                product.setIs_pay(c.getIs_pay());
+                product.setIs_get(c.getIs_get());
+                product.setIs_rent(c.getIs_rent());
+                product.setId(c.getId());
+                product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
+                productcartList2.add(product);
+            }
+        }
+        request.getSession().setAttribute("productcartList2", productcartList2);
+        request.getSession().setAttribute("ordercount",ordercount);
+        try {
+            response.sendRedirect(request.getContextPath()+"/user_order.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void selectusercenterorder(HttpServletRequest request, HttpServletResponse response) {
@@ -120,6 +219,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList2.add(product);
             }
         }
@@ -166,6 +267,8 @@ public class ProductController extends HttpServlet {
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
                     product.setIs_deliver(c.getIs_deliver());
+                    product.setRentday(c.getRentday());
+                    product.setIs_eviction(c.getIs_eviction());
                     productcartList2.add(product);
                 }
             }
@@ -182,7 +285,7 @@ public class ProductController extends HttpServlet {
 
         else if (orderflag==3)
         {
-            System.out.println("33333333");
+
             List<Cart> shoporders=us.findallnogetorder(cid,flag);
             List<Product> productcartList2=new ArrayList<Product>();
             Product product=null;
@@ -205,6 +308,8 @@ public class ProductController extends HttpServlet {
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
                     product.setIs_deliver(c.getIs_deliver());
+                    product.setRentday(c.getRentday());
+                    product.setIs_eviction(c.getIs_eviction());
                     productcartList2.add(product);
                 }
             }
@@ -242,6 +347,8 @@ public class ProductController extends HttpServlet {
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
                     product.setIs_deliver(c.getIs_deliver());
+                    product.setRentday(c.getRentday());
+                    product.setIs_eviction(c.getIs_eviction());
                     productcartList2.add(product);
                 }
             }
@@ -279,6 +386,8 @@ public class ProductController extends HttpServlet {
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
                     product.setIs_deliver(c.getIs_deliver());
+                    product.setRentday(c.getRentday());
+                    product.setIs_eviction(c.getIs_eviction());
                     productcartList2.add(product);
                 }
             }
@@ -330,6 +439,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList.add(product);
             }
         }
@@ -354,6 +465,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList2.add(product);
             }
         }
@@ -408,6 +521,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList.add(product);
             }
         }
@@ -432,6 +547,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList2.add(product);
             }
         }
@@ -487,6 +604,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList.add(product);
             }
         }
@@ -511,6 +630,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList2.add(product);
             }
         }
@@ -567,6 +688,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList.add(product);
             }
         }
@@ -591,6 +714,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList2.add(product);
             }
         }
@@ -690,6 +815,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList.add(product);
             }
         }
@@ -713,6 +840,8 @@ public class ProductController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setRentday(c.getRentday());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList2.add(product);
             }
         }

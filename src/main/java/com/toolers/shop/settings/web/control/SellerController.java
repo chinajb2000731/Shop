@@ -126,7 +126,18 @@ public class SellerController extends HttpServlet {
         {
             updatedeliveryaddress(request,response);
         }
+        else if ("/settings/seller/updateeviction.do".equals(path))
+        {
+            updateeviction(request,response);
+        }
             
+    }
+
+    private void updateeviction(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String id=request.getParameter("id");
+        us.updateeviction(id);
+        sellerorder(request,response);
     }
 
     private void updatedeliveryaddress(HttpServletRequest request, HttpServletResponse response) {
@@ -274,6 +285,7 @@ public class SellerController extends HttpServlet {
                     product.setIs_rent(c.getIs_rent());
                     product.setId(c.getId());
                     product.setIs_deliver(c.getIs_deliver());
+                    product.setIs_eviction(c.getIs_eviction());
                     productcartList3.add(product);
                 }
             }
@@ -320,6 +332,7 @@ public class SellerController extends HttpServlet {
                 product.setIs_rent(c.getIs_rent());
                 product.setId(c.getId());
                 product.setIs_deliver(c.getIs_deliver());
+                product.setIs_eviction(c.getIs_eviction());
                 productcartList3.add(product);
             }
         }

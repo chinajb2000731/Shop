@@ -198,4 +198,14 @@ public class ProductServiceImpl implements ProductService {
         return shoporder;
     }
 
+    public void updaterentday(String id) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.updaterentday(id);
+    }
+
+    public void eviction(String id) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.eviction(id);
+    }
+
 }

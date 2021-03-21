@@ -58,7 +58,7 @@
         update cart set buynum=#{i} where id=#{id}
     </update>
     <insert id="addcart">
-       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get,is_rent,is_deliver)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0,0,0)
+       insert into cart(id,pid,cid,buynum,flag,is_pay,is_get,is_rent,is_deliver,rentday,is_eviction)values (#{id},#{pid},#{cid},#{buynum},#{flag},0,0,0,0,0,0)
    </insert>
 
 
@@ -92,7 +92,7 @@
     </update>
 
     <update id="productconfirmorderrent">
-        update cart set is_rent=1 where cid=#{loginAct} and pid=#{pid} and flag=#{flag}
+        update cart set is_rent=1,rentday=rentday+7 where cid=#{loginAct} and pid=#{pid} and flag=#{flag}
     </update>
 
     <update id="productget">
@@ -108,7 +108,7 @@
     </select>
 
     <select id="findallnogetorder" resultType="Cart">
-       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and ca.is_get=0;
+       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and (ca.is_get=0 or ca.is_eviction=1) ;
     </select>
 
     <select id="findallnopayorder" resultType="Cart">
@@ -116,8 +116,15 @@
     </select>
 
     <select id="findallSuccessfultransactions" resultType="Cart">
-       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and ca.is_get=1;
+       select * from cart as ca,product as p where p.pid=ca.pid and ca.cid=#{cid} and ca.flag=#{flag} and (ca.is_pay=1 or ca.is_rent=1) and (ca.is_eviction=0 or ca.is_eviction=2)and ca.is_get=1;
     </select>
 
+    <update id="updaterentday">
+        update cart set rentday=rentday+7 where id=#{id}
+    </update>
+
+    <update id="eviction">
+        update cart set is_eviction=1,rentday=0 where id=#{id}
+    </update>
 
 </mapper>

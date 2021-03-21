@@ -266,6 +266,11 @@ public class SellerServiceImpl implements SellerService {
         sellerDao.updatedeliveryaddress(sellerDelivery);
     }
 
+    public void updateeviction(String id) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.updateeviction(id);
+    }
+
 
 
     /*public List<Product> selectcheckproduct(String sid,int index,int currentCount) {

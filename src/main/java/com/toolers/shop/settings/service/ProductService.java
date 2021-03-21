@@ -64,4 +64,8 @@ public interface ProductService {
     List<Cart> findallnopayorder(String cid, String flag);
 
     List<Cart> findallSuccessfultransactions(String cid, String flag);
+
+    void updaterentday(String id);
+
+    void eviction(String id);
 }

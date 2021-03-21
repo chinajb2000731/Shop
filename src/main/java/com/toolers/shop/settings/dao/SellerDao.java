@@ -65,6 +65,8 @@ public interface SellerDao {
 
     void updatedeliveryaddress(SellerDelivery sellerDelivery);
 
+    void updateeviction(String id);
+
 
 
 

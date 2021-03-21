@@ -57,6 +57,8 @@ public interface SellerService {
 
     void updatedeliveryaddress(SellerDelivery sellerDelivery);
 
+    void updateeviction(String id);
+
 
 
     /*List<Product> selectcheckproduct(String sid,int index,int currentCount);*/
