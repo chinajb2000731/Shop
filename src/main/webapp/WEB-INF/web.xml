@@ -24,6 +24,7 @@
         <url-pattern>/settings/user/finduseraddress.do</url-pattern>
         <url-pattern>/settings/user/deleteuseraddress.do</url-pattern>
         <url-pattern>/settings/user/updateuseraddress.do</url-pattern>
+        <url-pattern>/settings/user/logout.do</url-pattern>
     </servlet-mapping>
 
     <servlet>

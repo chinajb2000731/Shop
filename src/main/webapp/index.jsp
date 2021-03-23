@@ -1,11 +1,11 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
+<%--<%
 	String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>">--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,11 +39,13 @@
 			  <c:when test="${empty user and !empty seller}">
 				  <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
 				  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
-				  <a href="店铺专区.jsp" class="green">店铺专区</a>
+				  <a href="店铺专区.jsp" class="green">店铺专区</a> &nbsp&nbsp
+				  <a href="settings/user/logout.do">退出</a>
 			  </c:when>
 			  <c:otherwise>
 				  <span>欢迎:【${user.name}】</span>&nbsp&nbsp
-				  <a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class="green">用户中心</a>
+				  <a href="settings/product/selectusercenterorder.do?cid=${user.loginAct}&flag=0" class="green">用户中心</a>&nbsp&nbsp
+				  <a href="settings/user/logout.do">退出</a>
 			  </c:otherwise>
 		  </c:choose>
 	  </div>

@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -76,13 +77,28 @@ public class UserController extends HttpServlet {
             System.out.println("进入地址信息修改");
             updateuseraddress(request,response);
         }
-        else if ("/xxx.do".equals(path))
+        else if ("/settings/user/logout.do".equals(path))
         {
-
+            logout(request,response);
         }
 
 
 
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session=request.getSession();
+        session.removeAttribute("seller");
+        session.removeAttribute("user");
+        session.removeAttribute("productcartList");
+        session.removeAttribute("totalrentprice");
+        session.removeAttribute("totalcartnum");
+        session.removeAttribute("totalcartprice");
+        try {
+            response.sendRedirect(request.getContextPath()+"/index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateuseraddress(HttpServletRequest request, HttpServletResponse response) {
