@@ -177,7 +177,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          <td class="checkbox_style"><input name="" type="checkbox" value="" /></td>
          <td class="title_name">商品标题</td>
          <td class="inventory">商品库存</td>
-         <td class="status">商品转态</td>
+         <td class="status">商品状态</td>
          <td class="operating">操作</td>
          </tr>
         </thead>

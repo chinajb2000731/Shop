@@ -208,4 +208,19 @@ public class ProductServiceImpl implements ProductService {
         productDao.eviction(id);
     }
 
+    public void productconfirmorder2(String id) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.productconfirmorder2(id);
+    }
+
+    public void productconfirmorderrent2(String id) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.productconfirmorderrent2(id);
+    }
+
+    public void productget2(String id) {
+        ProductDao productDao=SqlSessionUtil.getSqlSession().getMapper(ProductDao.class);
+        productDao.productget2(id);
+    }
+
 }

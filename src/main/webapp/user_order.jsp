@@ -319,7 +319,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                             <p class="specification" style="color: red;font-size: 15px">此商品无押金</p>
                                         </c:if>
                                         <c:if test="${shopcar.deposit!=''}">
-                                            <p class="specification" style="color: red;font-size: 15px">押金:${shopcar.deposit*shopcar.buynum}元</p>
+                                            <c:if test="${shopcar.is_pay!='1'}">
+                                                <p class="specification" style="color: red;font-size: 15px">押金:${shopcar.deposit*shopcar.buynum}元</p>
+                                            </c:if>
+                                            <c:if test="${shopcar.is_pay=='1'}">
+                                                <p class="specification" style="color: red;font-size: 15px">已购买</p>
+                                            </c:if>
                                         </c:if>
                                     </div>
                                 </td>
@@ -389,10 +394,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <c:when test="${shopcar.is_pay=='0' and shopcar.is_rent=='0'}">
                                 <c:choose>
                                     <c:when test="${empty seller}">
-                                        <a href="settings/product/productorder.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0&pay=${shopcar.price*shopcar.buynum}">去购买付款</a>
+                                        <a href="settings/product/productorder.do?id=${shopcar.id}&loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0&pay=${shopcar.price*shopcar.buynum}">去购买付款</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="settings/product/productorder.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1&pay=${shopcar.price*shopcar.buynum}">去购买付款</a>
+                                        <a href="settings/product/productorder.do?id=${shopcar.id}&loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1&pay=${shopcar.price*shopcar.buynum}">去购买付款</a>
                                     </c:otherwise>
                                 </c:choose>
 
@@ -417,10 +422,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     <c:when test="${shopcar.is_pay=='0' and shopcar.is_rent=='0' }">
                                         <c:choose>
                                             <c:when test="${empty seller}">
-                                                <a href="settings/product/productorderent.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0&pay=${shopcar.rent*shopcar.buynum}">去租赁付款</a>
+                                                <a href="settings/product/productorderent.do?id=${shopcar.id}&loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0&pay=${shopcar.rent*shopcar.buynum}">去租赁付款</a>
                                             </c:when>
                                             <c:otherwise>
-                                                <a href="settings/product/productorderent.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1&pay=${shopcar.rent*shopcar.buynum}">去租赁付款</a>
+                                                <a href="settings/product/productorderent.do?id=${shopcar.id}&loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1&pay=${shopcar.rent*shopcar.buynum}">去租赁付款</a>
                                             </c:otherwise>
                                         </c:choose>
 
@@ -513,10 +518,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <c:if test="${(shopcar.is_pay=='1' or shopcar.is_rent=='1') and shopcar.is_deliver=='1' and shopcar.is_get=='0'}">
                             <c:choose>
                                 <c:when test="${empty seller}">
-                                    <a href="settings/product/productget.do?loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0" class="Delivery_btn">确认收货</a>
+                                    <a href="settings/product/productget.do?id=${shopcar.id}&loginAct=${user.loginAct}&pid=${shopcar.pid}&flag=0" class="Delivery_btn">确认收货</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="settings/product/productget.do?loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1" class="Delivery_btn">确认收货</a>
+                                    <a href="settings/product/productget.do?id=${shopcar.id}&loginAct=${seller.loginAct}&pid=${shopcar.pid}&flag=1" class="Delivery_btn">确认收货</a>
                                 </c:otherwise>
                             </c:choose>
                         </c:if>

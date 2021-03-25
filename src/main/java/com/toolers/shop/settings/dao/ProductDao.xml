@@ -127,4 +127,16 @@
         update cart set is_eviction=1,rentday=0 where id=#{id}
     </update>
 
+    <update id="productconfirmorder2">
+        update cart set is_pay=1 where id=#{id}
+    </update>
+
+    <update id="productconfirmorderrent2">
+        update cart set is_rent=1,rentday=rentday+7 where id=#{id}
+    </update>
+    <update id="productget2">
+        update cart set is_get=1 where id=#{id}
+    </update>
+
+
 </mapper>

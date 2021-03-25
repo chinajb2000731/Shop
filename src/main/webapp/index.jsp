@@ -306,7 +306,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${groupro.pid}" ><img src="${pageContext.request.contextPath}/${groupro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${groupro.pid}"  class="name">${groupro.pname}</a>
-										<h3><b>租用</b>${groupro.rent}</h3>
+										<h3><b>租用￥</b>${groupro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -321,7 +321,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${essencepro.pid}"><img src="${pageContext.request.contextPath}/${essencepro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${essencepro.pid}" class="name">${essencepro.pname}</a>
-										<h3><b>租用</b>${essencepro.rent}</h3>
+										<h3><b>租用￥</b>${essencepro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -336,7 +336,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${fastpro.pid}" ><img src="${pageContext.request.contextPath}/${fastpro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${fastpro.pid}"  class="name">${fastpro.pname}</a>
-										<h3><b>租用</b>${fastpro.rent}</h3>
+										<h3><b>租用￥</b>${fastpro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>

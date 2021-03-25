@@ -345,12 +345,12 @@ document.getElementById(bg_div).style.display='none';
                 <div class="clear"></div>
             </div>
             <div class="guige">
-                <div class="margin-r20 float-lt" style="line-height:25px;">规格</div>
-                <ul>
+               <%-- <div class="margin-r20 float-lt" style="line-height:25px;">规格</div>--%>
+                <%--<ul>
                     <li class="guige-cur">规格一</li>
                     <li>规格二</li>
                     <li>规格三</li>
-                </ul>
+                </ul>--%>
                 <div class="clear"></div>
             </div>
             <div class="pro_detail_number margin-t20">
@@ -395,7 +395,7 @@ document.getElementById(bg_div).style.display='none';
                     <ul>
                         <li class="cur">
                             <input name="RadioGroup1" type="radio" value="" checked="checked" id="RadioGroup1_0" />
-                            全部（9）</li>
+                            全部（5）</li>
                         <li>
                             <input name="RadioGroup1" type="radio" value="" id="RadioGroup1_1" />
                             好评（0）</li>

@@ -488,7 +488,9 @@ public class ProductController extends HttpServlet {
         String loginAct=request.getParameter("loginAct");
         String pid=request.getParameter("pid");
         String flag=request.getParameter("flag");
-        us.productconfirmorderrent(loginAct,pid,flag);
+        String id=request.getParameter("id");
+      /*  us.productconfirmorderrent(loginAct,pid,flag);*/
+        us.productconfirmorderrent2(id);
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
@@ -571,7 +573,9 @@ public class ProductController extends HttpServlet {
         String loginAct=request.getParameter("loginAct");
         String pid=request.getParameter("pid");
         String flag=request.getParameter("flag");
-        us.productget(loginAct,pid,flag);
+        String id=request.getParameter("id");
+       /* us.productget(loginAct,pid,flag);*/
+        us.productget2(id);
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;
@@ -655,7 +659,11 @@ public class ProductController extends HttpServlet {
         String loginAct=request.getParameter("loginAct");
         String pid=request.getParameter("pid");
         String flag=request.getParameter("flag");
-        us.productconfirmorder(loginAct,pid,flag);
+        String id=request.getParameter("id");
+      /*  us.productconfirmorder(loginAct,pid,flag);*/
+        us.productconfirmorder2(id);
+        /*us.productconfirmorder(loginAct,pid,flag);*/
+        System.out.println(id);
         double totalprice=0;
         double totalnum=0;
         double totalrentprice=0;

@@ -171,9 +171,9 @@ function sellerregister() {
                    <div class="fl res-text">确认密码：</div><div><input type="password" class="loginuser" id="registerPwd2"></div>
                 </p>
                 <p>
-                   <div class="fl res-text">验证码：</div>
+                  <%-- <div class="fl res-text">验证码：</div>
                    <div class="fl"><input type="password" class="loginuser2"></div>
-                   <div class="fl same-code">获取验证码</div>
+                   <div class="fl same-code">获取验证码</div>--%>
                    <!--<div class="fl same-code2">60秒后重新获取</div>-->
                 </p>
                 <p>
@@ -193,9 +193,9 @@ function sellerregister() {
                    <div class="fl res-text">确认密码：</div><div><input type="password" class="loginuser" id="sellerPwd2"></div>
                 </p>
                 <p>
-                   <div class="fl res-text">验证码：</div>
+                  <%-- <div class="fl res-text">验证码：</div>
                    <div class="fl"><input type="password" class="loginuser2"></div>
-                   <div class="fl same-code">获取验证码</div>
+                   <div class="fl same-code">获取验证码</div>--%>
                    <!--<div class="fl same-code2">60秒后重新获取</div>-->
                 </p>
                 <p>

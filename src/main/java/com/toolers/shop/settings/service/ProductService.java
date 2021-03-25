@@ -68,4 +68,10 @@ public interface ProductService {
     void updaterentday(String id);
 
     void eviction(String id);
+
+    void productconfirmorder2(String id);
+
+    void productconfirmorderrent2(String id);
+
+    void productget2(String id);
 }

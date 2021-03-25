@@ -19,7 +19,7 @@
 </select>
 
     <select id="register" resultType="user">
-    insert into purchaser(loginAct,loginPwd)values (#{registerAct},#{registerPwd})
+    insert into purchaser(loginAct,loginPwd,name)values (#{registerAct},#{registerPwd},'新用户')
     </select>
 
     <update id="userinfo">

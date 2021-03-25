@@ -166,29 +166,29 @@
     <div class="Add_shop_style"><a href="./店铺专区（添加店铺）.html" id="newShop" onclick="addShop()" class="New_Shop_btn">新增店铺</a></div>
     <div class="shops_list">
      <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核通过</span></li>
+      <li class="img_link"><a href="#"><img src="userheadportrait/1.jpg" /></a><span class="status">审核通过</span></li>
       <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
+       <a href="#" class="title">西南交通大学</a>
+       <p class="Introduction">学校创建于1896年，前身为山海关北洋铁路官学堂，是中国第一所工程高等学府。建校以来，学校先后定名交通大学唐山工（程）学院、国立交通大学贵州分校、中国交通大学、北方交通大学、唐山铁道学院等。1952年全国高等学校院系调整，学校部分系科师资调入清华大学、天津大学等兄弟院校，1964年根据中央建设“大三线”精神内迁四川，1972年更名西南交通大学，1989年迁成都。</p>
        <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="edit_shops">编辑店铺</a><a href="店铺公告.html" class="shops_Bulletin">店铺公告</a></p>
       </li>
      </ul>
-      <ul class="list_style">
+     <%-- <ul class="list_style">
       <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核中</span></li>
       <li class="shopscontent">
        <a href="#" class="title">江苏业祥科技股份有限公司</a>
        <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
        <p class="shops_operating"><a href="#" class="View_info">查看详情</a></p>
       </li>
-     </ul>
-      <ul class="list_style">
+     </ul>--%>
+    <%--  <ul class="list_style">
       <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核失败</span></li>
       <li class="shopscontent">
        <a href="#" class="title">江苏业祥科技股份有限公司</a>
        <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
        <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="delete_shops">删除店铺</a></p>
       </li>
-     </ul>
+     </ul>--%>
     </div>
    </div>
 </div>

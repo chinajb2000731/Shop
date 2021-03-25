@@ -249,7 +249,12 @@ $(document).ready(function () {
                                    <p class="specification" style="color: red;font-size: 15px">此商品无押金</p>
                                </c:if>
                                <c:if test="${shopcar.deposit!=''}">
-                                   <p class="specification" style="color: red;font-size: 15px">押金:${shopcar.deposit*shopcar.buynum}元</p>
+                                   <c:if test="${shopcar.is_pay!='1'}">
+                                       <p class="specification" style="color: red;font-size: 15px">押金:${shopcar.deposit*shopcar.buynum}元</p>
+                                   </c:if>
+                                   <c:if test="${shopcar.is_pay=='1'}">
+                                       <p class="specification" style="color: red;font-size: 15px">已购买</p>
+                                   </c:if>
                                </c:if>
                            </div>
                        </td>

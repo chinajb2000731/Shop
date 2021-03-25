@@ -254,7 +254,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <div class="right_style">
   <div class="title_style"><em></em>我的收藏</div> 
   <div class="Favorites_slideTxtBox">
-     <div class="hd"><ul><li>收藏的商品</li><li>收藏的店铺</li></ul></div>
+     <div class="hd"><ul><li>收藏的商品</li><%--<li>收藏的店铺</li>--%></ul></div>
      <div class="bd">
         <ul class="commodity_list clearfix">
          <div class="Number_Favorites">共收藏：${pageBean.totalcount}条</div>
@@ -274,7 +274,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                          <div class="img_link"> <a href="javascript:void(0)" class="center "><img src="${pageContext.request.contextPath}/${pro.pimage}"></a></div>
                          <dl class="xinxi">
                              <dt><a href="javascript:void(0)" class="name">${pro.pname}</a></dt>
-                             <dd><span class="Price"><b>￥</b>${pro.price}</span><span class="collect_Amount"><i class="iconfont icon-shoucang"></i>345</span></dd>
+                             <dd>
+                                 <c:if test="${pro.rent!=''}">
+                                     <span class="Price"><b>租用￥</b>${pro.rent}</span><span class="collect_Amount"><i class="iconfont icon-shoucang"></i></span></dd>
+                                 </c:if>
+                                 <c:if test="${pro.rent==''}">
+                                 <span class="Price"><b>购买￥</b>${pro.price}</span><span class="collect_Amount"><i class="iconfont icon-shoucang"></i></span></dd>
+                                 </c:if>
+
                          </dl>
                      </div>
                  </li>
