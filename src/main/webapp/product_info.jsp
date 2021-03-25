@@ -341,7 +341,7 @@ document.getElementById(bg_div).style.display='none';
                 <div class="margin-r20 float-lt">数量</div>
                 <div class=""> <i class="jian"></i>
                     <input type="text" id="quantity" name="quantity" value="1" class="float-lt choose_input"/>
-                    <i class="jia"></i> <span>&nbsp;盒</span> <span>（库存${product.inventory}盒）</span> </div>
+                    <i class="jia"></i> <span>&nbsp;</span> <span>（库存${product.inventory}）</span> </div>
                 <div class="clear"></div>
             </div>
             <div class="guige">
@@ -395,80 +395,52 @@ document.getElementById(bg_div).style.display='none';
                     <ul>
                         <li class="cur">
                             <input name="RadioGroup1" type="radio" value="" checked="checked" id="RadioGroup1_0" />
-                            全部（100）</li>
+                            全部（9）</li>
                         <li>
                             <input name="RadioGroup1" type="radio" value="" id="RadioGroup1_1" />
-                            好评（80）</li>
+                            好评（0）</li>
                         <li>
                             <input name="RadioGroup1" type="radio" value="" id="RadioGroup1_2" />
-                            中评（10）</li>
+                            中评（0）</li>
                         <li>
                             <input name="RadioGroup1" type="radio" value="" id="RadioGroup1_3" />
-                            差评（10）</li>
+                            差评（0）</li>
                     </ul>
                     <table width="100%" border="0">
                         <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
+                            <td width="80" align="left"><a href="" rel="userheadportrait/1.png" class="preview"><img src="userheadportrait/1.png" width="60" height="60" class="border_gry" /></a></td>
+                            <td>非常喜欢！包装也很精致，下次还来买！好评！<br />
                                 <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
+                               <%-- <span class="pro_judge_time">2014.1.3</span></td>--%>
+                            <td>蒋滨</td>
                         </tr>
                         <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
+                            <td width="80" align="left"><a href="" rel="userheadportrait/1.png" class="preview"><img src="userheadportrait/1.png" width="60" height="60" class="border_gry" /></a></td>
+                            <td>非常喜欢！包装也很精致，下次还来买！好评！<br />
                                 <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
+                                <%--<span class="pro_judge_time">2014.1.3</span></td>--%>
+                            <td>蒋弘瑞</td>
                         </tr>
                         <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
+                            <td width="80" align="left"><a href="" rel="userheadportrait/1.png" class="preview"><img src="userheadportrait/1.png" width="60" height="60" class="border_gry" /></a></td>
+                            <td>非常喜欢！下次还来买！好评！<br />
                                 <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
+                                <%--<span class="pro_judge_time">2014.1.3</span></td>--%>
+                            <td>何万丰</td>
                         </tr>
                         <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
+                            <td width="80" align="left"><a href="" rel="userheadportrait/1.png" class="preview"><img src="userheadportrait/1.png" width="60" height="60" class="border_gry" /></a></td>
+                            <td>下次还来买！好评！<br />
                                 <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
+                                <%--<span class="pro_judge_time">2014.1.3</span></td>--%>
+                            <td>刘朝博</td>
                         </tr>
                         <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
+                            <td width="80" align="left"><a href="" rel="userheadportrait/1.png" class="preview"><img src="userheadportrait/1.png" width="60" height="60" class="border_gry" /></a></td>
+                            <td>好评！<br />
                                 <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
-                        </tr>
-                        <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
-                                <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
-                        </tr>
-                        <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
-                                <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
-                        </tr>
-                        <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
-                                <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
-                        </tr>
-                        <tr>
-                            <td width="80" align="left"><a href="" rel="images/01_mid.jpg" class="preview"><img src="images/01_mid.jpg" width="60" height="60" class="border_gry" /></a></td>
-                            <td>茶泡出来颜色很好！味道很清香！非常喜欢！包装也很精致，下次还来买！好评！<br />
-                                <br />
-                                <span class="pro_judge_time">2014.1.3</span></td>
-                            <td>张三</td>
+                               <%-- <span class="pro_judge_time">2014.1.3</span></td>--%>
+                            <td>耿有朋</td>
                         </tr>
                     </table>
                 </div>
@@ -480,34 +452,34 @@ document.getElementById(bg_div).style.display='none';
         <div class="hotpro_box">
             <div class="pro-view-hot">
                 <ul>
-                    <li class="pro-img"><a href="#"><img src="images/pro-1.jpg" /></a></li>
-                    <li class="price"><strong>￥ 36.00</strong><span>已销售227</span></li>
-                    <li><a href="#" class="title">恒顺蜂蜜醋  10ml*24支 纯粮酿造 镇江香醋 江苏特产 礼盒礼品 </a></li>
+                    <li class="pro-img"><a href="settings/product/productinfo.do?pid=6472522e-8ea6-4803-84df-ee5ea41be339"><img src="products/u=3895995738,3266159354&fm=11&gp=0.jpg" /></a></li>
+                    <li class="price"><strong>租用￥:125</strong><span>已销售600</span></li>
+                    <li><a href="settings/product/productinfo.do?pid=6472522e-8ea6-4803-84df-ee5ea41be339" class="title">台式电脑</a></li>
                 </ul>
                 <ul>
-                    <li class="pro-img"><a href="#"><img src="images/pro-1.jpg" /></a></li>
-                    <li class="price"><strong>￥ 36.00</strong><span>已销售227</span></li>
-                    <li><a href="#" class="title">恒顺蜂蜜醋  10ml*24支 纯粮酿造 镇江香醋 江苏特产 礼盒礼品 </a></li>
+                    <li class="pro-img"><a href="settings/product/productinfo.do?pid=6e0c3fd8-87d1-46ff-8aad-c42f885c0797"><img src="products/27.jpg" /></a></li>
+                    <li class="price"><strong>租用￥:6000</strong><span>已销售250</span></li>
+                    <li><a href="settings/product/productinfo.do?pid=6e0c3fd8-87d1-46ff-8aad-c42f885c0797" class="title">心电仪</a></li>
                 </ul>
                 <ul>
-                    <li class="pro-img"><a href="#"><img src="images/pro-1.jpg" /></a></li>
-                    <li class="price"><strong>￥ 36.00</strong><span>已销售227</span></li>
-                    <li><a href="#" class="title">恒顺蜂蜜醋  10ml*24支 纯粮酿造 镇江香醋 江苏特产 礼盒礼品 </a></li>
+                    <li class="pro-img"><a href="settings/product/productinfo.do?pid=f0aace74-0545-4aed-8893-893eb42b7eba"><img src="products/26.jpg" /></a></li>
+                    <li class="price"><strong>租用￥:3000</strong><span>已销售602</span></li>
+                    <li><a href="settings/product/productinfo.do?pid=f0aace74-0545-4aed-8893-893eb42b7eba" class="title">超声诊断设备</a></li>
                 </ul>
                 <ul>
-                    <li class="pro-img"><a href="#"><img src="images/pro-1.jpg" /></a></li>
-                    <li class="price"><strong>￥ 36.00</strong><span>已销售227</span></li>
-                    <li><a href="#" class="title">恒顺蜂蜜醋  10ml*24支 纯粮酿造 镇江香醋 江苏特产 礼盒礼品 </a></li>
+                    <li class="pro-img"><a href="settings/product/productinfo.do?pid=8a297d14-63ac-4aac-b979-1966f160df06"><img src="products/25.jpg" /></a></li>
+                    <li class="price"><strong>租用￥:1500</strong><span>已销售580</span></li>
+                    <li><a href="settings/product/productinfo.do?pid=8a297d14-63ac-4aac-b979-1966f160df06" class="title">心电测试仪</a></li>
                 </ul>
                 <ul>
-                    <li class="pro-img"><a href="#"><img src="images/pro-1.jpg" /></a></li>
-                    <li class="price"><strong>￥ 36.00</strong><span>已销售227</span></li>
-                    <li><a href="#" class="title">恒顺蜂蜜醋  10ml*24支 纯粮酿造 镇江香醋 江苏特产 礼盒礼品 </a></li>
+                    <li class="pro-img"><a href="settings/product/productinfo.do?pid=9177d0cc-ade5-4296-8adc-3c33718c9ec1"><img src="products/17.jpg" /></a></li>
+                    <li class="price"><strong>租用￥:12</strong><span>已销售700</span></li>
+                    <li><a href="settings/product/productinfo.do?pid=9177d0cc-ade5-4296-8adc-3c33718c9ec1" class="title">中学英语教材配套影碟</a></li>
                 </ul>
                 <ul style="margin-right:0;">
-                    <li class="pro-img"><a href="#"><img src="images/pro-1.jpg" /></a></li>
-                    <li class="price"><strong>￥ 36.00</strong><span>已销售227</span></li>
-                    <li><a href="#" class="title">恒顺蜂蜜醋  10ml*24支 纯粮酿造 镇江香醋 江苏特产 礼盒礼品 </a></li>
+                    <li class="pro-img"><a href="settings/product/productinfo.do?pid=95fc661e-01a0-4249-ac19-2ee1c897c364"><img src="products/15.jpg" /></a></li>
+                    <li class="price"><strong>租用￥:25</strong><span>已销售1000</span></li>
+                    <li><a href="settings/product/productinfo.do?pid=95fc661e-01a0-4249-ac19-2ee1c897c364" class="title">建设工程管</a></li>
                 </ul>
             </div>
         </div>

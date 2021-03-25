@@ -70,8 +70,8 @@
 
 
     <insert id="addsellproduct">
-       insert into product(pid,cid,sid,pname,rent,price,pimage,pdesc,is_new,is_sale,is_group,is_essence,is_fast,inventory,check_flag,sell_flag)values
-       (#{pid},#{cid},#{sid},#{pname},#{rent},#{price},#{pimage},#{pdesc},0,0,0,0,0,0,0,0)
+       insert into product(pid,cid,sid,pname,rent,price,deposit,pimage,pdesc,is_new,is_sale,is_group,is_essence,is_fast,inventory,check_flag,sell_flag)values
+       (#{pid},#{cid},#{sid},#{pname},#{rent},#{price},#{deposit},#{pimage},#{pdesc},0,0,0,0,0,0,0,0)
    </insert>
 
     <select id="selectsellerorder" resultType="cart">

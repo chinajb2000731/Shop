@@ -185,7 +185,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        <c:forEach items="${checkproductBean.list}" var="pro">
            <tr>
                <td><input name="" type="checkbox" value="" /></td>
-               <td><a href="#">${pro.pname}</a></td>
+               <td><a href="settings/product/productinfo.do?pid=${pro.pid}">${pro.pname}</a></td>
                <td>${pro.inventory}</td>
                <c:if test="${pro.check_flag=='0'}">
                    <td style="color: blue">待审核</td>

@@ -140,7 +140,7 @@ function sellerlogin() {
 <body>
 <div class="login-top">
     <div class="wrapper">
-        <div class="fl font30">LOGO</div>
+        <div class="fl font30">易小租</div>
         <div class="fr">您好，欢迎为生活充电在线！</div>
     </div>
 </div>

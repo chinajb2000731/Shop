@@ -296,7 +296,6 @@ function productsearch() {
 
                            </c:otherwise>
                        </c:choose>
-                       <a href="#" class="p-o-btn shop_cart"><em></em>联系我们</a>
                    </div>
                </div>
            </li>

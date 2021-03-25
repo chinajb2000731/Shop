@@ -305,7 +305,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <c:forEach items="${productcartList2}" var="shopcar">
                 <tbody>
                 <tr class="Order_info">
-                    <td colspan="8" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>下单时间：2015-12-3 | 订单号：445454654654654</td>
+                    <td colspan="8" class="Order_form_time"><input name="" type="checkbox" value=""  class="checkbox"/>订单号:${shopcar.id}</td>
                 </tr>
                 <tr class="Order_Details" >
                     <td colspan="3">
@@ -315,7 +315,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     <div class="product_name clearfix">
                                         <a href="#" class="product_img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}" width="80px" height="80px"></a>
                                         <a href="#" class="p_name">${shopcar.pname}</a>
-                                        <%--<p class="specification">礼盒装20个/盒</p>--%>
+                                        <c:if test="${shopcar.deposit==''}">
+                                            <p class="specification" style="color: red;font-size: 15px">此商品无押金</p>
+                                        </c:if>
+                                        <c:if test="${shopcar.deposit!=''}">
+                                            <p class="specification" style="color: red;font-size: 15px">押金:${shopcar.deposit*shopcar.buynum}元</p>
+                                        </c:if>
                                     </div>
                                 </td>
                                 <c:choose>

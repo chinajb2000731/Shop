@@ -151,8 +151,8 @@
 		 <ul class="Navigation_name">
 			<li><a href="javascript:void(0)">首页</a></li>
             <li class="hour"><a href="半小时圈主页.jsp">半小时生活圈</a></li>
+			 <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 			<li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>
-			<li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 			<li><a href="javascript:void(0)">热销活动</a></li>
 			<li><a href="javascript:void(0)">联系我们</a></li>
 		 </ul>			 
@@ -169,9 +169,9 @@
 			</div>
 			<div class="bd">
 				<ul>
-					<li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat; background-position:center; width:100%; height:450px;"></div></a></li>
-					<li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat; background-position:center ; width:100%; height:450px;"></div></a></li>
-					<li><a href="#" target="_blank"><div style="background:url(AD/ad-3.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
+					<li><a href="javascript:void(0);"><div style="background:url(AD/ad-1.jpg) no-repeat; background-position:center; width:100%; height:450px;"></div></a></li>
+					<li><a href="javascript:void(0);" ><div style="background:url(AD/ad-2.jpg) no-repeat; background-position:center ; width:100%; height:450px;"></div></a></li>
+					<li><a href="javascript:void(0);" ><div style="background:url(AD/ad-3.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
                   <%--  <li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat #f7ddea; background-position:center; width:100%; height:450px;"></div></a></li>
                     <li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat  #F60; background-position:center; width:100%; height:450px;"></div></a></li>--%>
 				</ul>
@@ -274,7 +274,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${newpro.pid}" ><img src="${pageContext.request.contextPath}/${newpro.pimage}"/></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${newpro.pid}" class="name">${newpro.pname}</a>
-										<h3><b>￥</b>${newpro.price}</h3>
+										<h3><b>租用￥</b>${newpro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -290,7 +290,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${salepro.pid}" ><img src="${pageContext.request.contextPath}/${salepro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${salepro.pid}"  class="name">${salepro.pname}</a>
-										<h3><b>￥</b>${salepro.price}</h3>
+										<h3><b>租用￥</b>${salepro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -306,7 +306,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${groupro.pid}" ><img src="${pageContext.request.contextPath}/${groupro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${groupro.pid}"  class="name">${groupro.pname}</a>
-										<h3><b>￥</b>${groupro.price}</h3>
+										<h3><b>租用</b>${groupro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -321,7 +321,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${essencepro.pid}"><img src="${pageContext.request.contextPath}/${essencepro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${essencepro.pid}" class="name">${essencepro.pname}</a>
-										<h3><b>￥</b>${essencepro.price}</h3>
+										<h3><b>租用</b>${essencepro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -336,7 +336,7 @@
 									<div class="pic"><a href="settings/product/productinfo.do?pid=${fastpro.pid}" ><img src="${pageContext.request.contextPath}/${fastpro.pimage}" /></a></div>
 									<div class="title">
 										<a href="settings/product/productinfo.do?pid=${fastpro.pid}"  class="name">${fastpro.pname}</a>
-										<h3><b>￥</b>${fastpro.price}</h3>
+										<h3><b>租用</b>${fastpro.rent}</h3>
 									</div>
 								</li>
 							</c:forEach>
@@ -354,7 +354,11 @@
 			jQuery(".slideGroup").slide({titCell:".parHd li",mainCell:".parBd"});
 		</script>
         <!--广告样式-->
-        <div class="Ads_style"><a href="#"><img src="images/AD_03.png"  width="318"/></a><a href="#"><img src="images/AD_04.png" width="318"/></a><a href="#"><img src="images/AD_06.png" width="318"/></a></div>
+        <div class="Ads_style">
+			<a href="settings/product/productinfo.do?pid=2161b21f-411a-43e1-9f2f-3f7d2cb1aaf9"><img src="products/33.png"  width="318"/></a>
+			<a href="settings/product/productinfo.do?pid=515985f3-28c6-4460-844b-3ebecf17c2ee"><img src="products/34.jpg" width="318"/></a>
+			<a href="settings/product/productinfo.do?pid=57bd3f64-2705-4a89-b5c7-9e323cee4d8f"><img src="products/35.jpg" width="318"/></a>
+		</div>
   </div>
  </div>
  <!--板块栏目样式-->
@@ -362,17 +366,21 @@
   <div class="Plate_column Plate_column_left">
     <div class="Plate_name">
     <h2>产品名称</h2>
-    <div class="Sort_link"><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a></div>
-    <a href="#" class="Plate_link"> <img src="images/bk_img_14.png" /></a>
+    <div class="Sort_link">
+		<c:forEach items="${categoryList}" var="category">
+			<a href="settings/product/productlists.do?cid=${category.cid}" class="name">${category.cname}</a>
+		</c:forEach>
+	</div>
+    <a href="javascript:void(0)" class="Plate_link"> <img src="images/bk_img_14.png" /></a>
    
     </div>
     <div class="Plate_product">
     <ul id="lists1">
      <li class="product_display">
-     <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_44.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=6472522e-8ea6-4803-84df-ee5ea41be339" class="Collect"><em></em>收藏</a>
+     <a href="settings/product/productinfo.do?pid=6472522e-8ea6-4803-84df-ee5ea41be339" class="img_link"><img src="products/u=3895995738,3266159354&fm=11&gp=0.jpg"  width="140" height="140"/></a>
+     <a href="#" class="name">台式电脑</a>
+     <h3><b>租用￥:</b>125</h3>
     <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -381,9 +389,9 @@
      </li>
      <li class="product_display">
       <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_43.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=6e0c3fd8-87d1-46ff-8aad-c42f885c0797" class="img_link"><img src="products/27.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=6e0c3fd8-87d1-46ff-8aad-c42f885c0797" class="name">心电仪</a>
+     <h3><b>租用￥:</b>6000</h3>
       <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -392,9 +400,9 @@
      </li>
      <li class="product_display">
       <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_41.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=f0aace74-0545-4aed-8893-893eb42b7eba" class="img_link"><img src="products/26.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=f0aace74-0545-4aed-8893-893eb42b7eba" class="name">超声诊断设备</a>
+     <h3><b>租用￥:</b>3000</h3>
        <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -403,9 +411,9 @@
      </li>
      <li class="product_display">
       <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_42.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=8a297d14-63ac-4aac-b979-1966f160df06" class="img_link"><img src="products/25.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=8a297d14-63ac-4aac-b979-1966f160df06" class="name">心电测试仪</a>
+     <h3><b>租用￥:</b>1500</h3>
      <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -419,17 +427,21 @@
     <div class="Plate_column Plate_column_right">
     <div class="Plate_name">
     <h2>产品名称</h2>
-    <div class="Sort_link"><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a></div>
-    <a href="#" class="Plate_link"> <img src="images/bk_img_19.png" /></a>
+    <div class="Sort_link">
+		<c:forEach items="${categoryList}" var="category">
+			<a href="settings/product/productlists.do?cid=${category.cid}" class="name">${category.cname}</a>
+		</c:forEach>
+	</div>
+    <a href="javascript:void(0)" class="Plate_link"> <img src="images/bk_img_19.png" /></a>
    
     </div>
     <div class="Plate_product">
     <ul id="lists2">
      <li class="product_display">
      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_15.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=9177d0cc-ade5-4296-8adc-3c33718c9ec1" class="img_link"><img src="products/17.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=9177d0cc-ade5-4296-8adc-3c33718c9ec1" class="name">中学英语教材配套影碟</a>
+     <h3><b>租用￥:</b>12</h3>
     <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -438,9 +450,9 @@
      </li>
      <li class="product_display">
       <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_13.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=d77bf95b-6817-400d-a2fb-7c45f27298e9" class="img_link"><img src="products/16.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=d77bf95b-6817-400d-a2fb-7c45f27298e9" class="name">英语教程</a>
+     <h3><b>租用￥:</b>10</h3>
       <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -449,9 +461,9 @@
      </li>
      <li class="product_display">
       <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_12.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=95fc661e-01a0-4249-ac19-2ee1c897c364" class="img_link"><img src="products/15.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=95fc661e-01a0-4249-ac19-2ee1c897c364" class="name">建设工程管</a>
+     <h3><b>租用￥:</b>25</h3>
        <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -460,9 +472,9 @@
      </li>
      <li class="product_display">
       <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_11.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=bf70d5cd-a007-4963-a5a0-ba27be87bad6" class="img_link"><img src="products/19.jpg"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=bf70d5cd-a007-4963-a5a0-ba27be87bad6" class="name">婴语密码</a>
+     <h3><b>租用￥:</b>10</h3>
      <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
@@ -475,56 +487,29 @@
    <div class="Plate_column Plate_column_left">
     <div class="Plate_name">
     <h2>产品名称</h2>
-    <div class="Sort_link"><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a></div>
-    <a href="#" class="Plate_link"> <img src="images/bk_img_22.png" /></a>
+    <div class="Sort_link">
+		<c:forEach items="${categoryList}" var="category">
+			<a href="settings/product/productlists.do?cid=${category.cid}" class="name">${category.cname}</a>
+		</c:forEach>
+	</div>
+    <a href="javascript:void(0)" class="Plate_link"> <img src="images/bk_img_22.png" /></a>
    
     </div>
     <div class="Plate_product">
     <ul id="lists3">
+		<c:forEach items="${newProductList}" var="newpro">
      <li class="product_display">
      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_21.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=${newpro.pid}" class="img_link"><img src="${pageContext.request.contextPath}/${newpro.pimage}"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=${newpro.pid}" class="name">${newpro.pname}</a>
+     <h3><b>租用￥:</b>${newpro.rent}</h3>
     <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
 		  </div>
 	   </div>
      </li>
-     <li class="product_display">
-      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_25.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
-      <div class="Detailed">
-	   <div class="content">
-		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
-		  </div>
-	   </div>
-     </li>
-     <li class="product_display">
-      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_22.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
-       <div class="Detailed">
-	   <div class="content">
-		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
-		  </div>
-	   </div>
-     </li>
-     <li class="product_display">
-      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_24.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
-     <div class="Detailed">
-	   <div class="content">
-		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
-		  </div>
-	   </div>
-     </li>
+		</c:forEach>
     </ul>
     </div>
   </div>
@@ -532,56 +517,29 @@
     <div class="Plate_column Plate_column_right">
     <div class="Plate_name">
     <h2>产品名称</h2>
-    <div class="Sort_link"><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a><a href="#" class="name">分类名称</a></div>
-    <a href="#" class="Plate_link"> <img src="images/bk_img_14.png" /></a>
+    <div class="Sort_link">
+		<c:forEach items="${categoryList}" var="category">
+			<a href="settings/product/productlists.do?cid=${category.cid}" class="name">${category.cname}</a>
+		</c:forEach>
+	</div>
+    <a href="javascript:void(0)" class="Plate_link"> <img src="images/bk_img_14.png" /></a>
    
     </div>
     <div class="Plate_product">
     <ul id="list">
+		<c:forEach items="${saleProductList}" var="salepro">
      <li class="product_display">
      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_31.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
+     <a href="settings/product/productinfo.do?pid=${salepro.pid}" class="img_link"><img src="${pageContext.request.contextPath}/${salepro.pimage}"  width="140" height="140"/></a>
+     <a href="settings/product/productinfo.do?pid=${salepro.pid}" class="name">${salepro.pname}</a>
+     <h3><b>租用￥:</b>${salepro.rent}</h3>
     <div class="Detailed">
 	   <div class="content">
 		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
 		  </div>
 	   </div>
      </li>
-     <li class="product_display">
-      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_32.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
-      <div class="Detailed">
-	   <div class="content">
-		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
-		  </div>
-	   </div>
-     </li>
-     <li class="product_display">
-      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_33.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
-       <div class="Detailed">
-	   <div class="content">
-		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
-		  </div>
-	   </div>
-     </li>
-     <li class="product_display">
-      <a href="" class="Collect"><em></em>收藏</a>
-     <a href="#" class="img_link"><img src="products/p_37.jpg"  width="140" height="140"/></a>
-     <a href="#" class="name">墨西哥原装进口 科罗娜啤酒 科罗娜啤酒</a>
-     <h3><b>￥</b>34.00</h3>
-     <div class="Detailed">
-	   <div class="content">
-		  <p class="center"><a href="#" class="Buy_btn">立即购买</a></p>
-		  </div>
-	   </div>
-     </li>
+		</c:forEach>
     </ul>
     </div>
   </div>

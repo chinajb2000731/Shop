@@ -130,11 +130,13 @@ $(document).ready(function () {
                  <a href="user_order.jsp">我的购物车</a>
              </c:otherwise>
          </c:choose>>
-       <i class="ci-right">&gt;</i>
+       <i class="ci-right"></i>
        <i class="ci-count" id="shopping-amount">${totalcartnum}</i>
    </div>
    <div class="dorpdown-layer">
-    <div class="spacer"></div>
+    <div class="spacer">
+
+    </div>
        <c:choose>
            <c:when test="${empty productcartList}">
                <div class="prompt"></div><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div>
@@ -173,7 +175,7 @@ $(document).ready(function () {
                    <a href="user_order.jsp" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
                </div>
            </c:otherwise>
-       </c:choose>>
+       </c:choose>
 
    </div>
  </div>
@@ -231,7 +233,7 @@ $(document).ready(function () {
          </thead>
          <tbody>
          <c:forEach items="${productcartList3}" var="shopcar" >
-           <tr class="Order_info"><td colspan="7" class="Order_form_time"><input name="checkitems" type="checkbox" value="天然绿色多汁香甜无污染水蜜桃"  class=""/>下单时间：2015-12-3 | 订单号：445454654654654 <em></em></td></tr>
+           <tr class="Order_info"><td colspan="7" class="Order_form_time"><input name="checkitems" type="checkbox" value="天然绿色多汁香甜无污染水蜜桃"  class=""/> 订单号:${shopcar.id} <em></em></td></tr>
            <tr class="Order_Details">
            <td colspan="3">
            <table class="Order_product_style">
@@ -243,6 +245,12 @@ $(document).ready(function () {
                                    <img src="${pageContext.request.contextPath}/${shopcar.pimage}" width="80px" height="80px">
                                </a>
                                <a href="#">${shopcar.pname}</a>
+                               <c:if test="${shopcar.deposit==''}">
+                                   <p class="specification" style="color: red;font-size: 15px">此商品无押金</p>
+                               </c:if>
+                               <c:if test="${shopcar.deposit!=''}">
+                                   <p class="specification" style="color: red;font-size: 15px">押金:${shopcar.deposit*shopcar.buynum}元</p>
+                               </c:if>
                            </div>
                        </td>
                        <c:choose>

@@ -184,6 +184,7 @@
   </tr>
        <tr><td class="label">商品销售价格：</td><td><input name="price" type="text"  class="addtext" style=" width:200px;"/></td></tr>
        <tr><td class="label">商品租赁价格：</td><td><input name="rent" type="text"  class="addtext" style=" width:200px;" placeholder="不填则视为不支持租赁" /></td></tr>
+         <tr><td class="label">商品押金：</td><td><input name="deposit" type="text"  class="addtext" style=" width:200px;" placeholder="不填则视为无押金" /></td></tr>
        <tr>
         <td class="label">商品介绍：</td><td><textarea name="pdesc" cols="" rows="" placeholder="商品的介绍。该介绍将出现在商品名称下方。" class="textarea">
           

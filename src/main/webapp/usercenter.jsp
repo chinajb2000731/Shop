@@ -406,7 +406,7 @@
               <a href="javascript:void(0)" class="img"><img src="${pageContext.request.contextPath}/${shopcar.pimage}" width="80" height="80"></a>
               <a href="javascript:void(0)" class="title">${shopcar.pname}</a>
           </td>
-          <td>${shopcar.pname}</td>
+          <td>${shopcar.buynum}</td>
           <c:choose>
               <c:when test="${shopcar.is_get=='1'}">
                   <td>完成</td>
