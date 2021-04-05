@@ -152,8 +152,8 @@ function sellerlogin() {
     <div class="loginbox fl">
         <div class="tab">
             <ul>
-                <li class="on">我是买家</li>
-                <li>我是卖家</li>
+                <li class="on">我是用户</li>
+                <li>我是商家</li>
             </ul>
         </div>
         <div class="conlist">

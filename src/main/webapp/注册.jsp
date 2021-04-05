@@ -155,8 +155,8 @@ function sellerregister() {
         <div class="tab">
             <span id="msg" style="color: red"></span>
             <ul>
-                <li class="on">我是买家</li>
-                <li>我是卖家</li>
+                <li class="on">我是用户</li>
+                <li>我是商家</li>
             </ul>
         </div>
         <div class="conlist">

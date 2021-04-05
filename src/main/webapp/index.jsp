@@ -39,7 +39,7 @@
 			  <c:when test="${empty user and !empty seller}">
 				  <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
 				  <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
-				  <a href="店铺专区.jsp" class="green">店铺专区</a> &nbsp&nbsp
+				  <a href="settings/seller/selectsellershop.do?sid=${seller.sid}" class="green">店铺专区</a> &nbsp&nbsp
 				  <a href="settings/user/logout.do">退出</a>
 			  </c:when>
 			  <c:otherwise>
@@ -152,7 +152,7 @@
 			<li><a href="javascript:void(0)">首页</a></li>
             <li class="hour"><a href="半小时圈主页.jsp">半小时生活圈</a></li>
 			 <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
-			<li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>
+			<%--<li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>--%>
 			<li><a href="javascript:void(0)">热销活动</a></li>
 			<li><a href="javascript:void(0)">联系我们</a></li>
 		 </ul>			 
@@ -171,7 +171,7 @@
 				<ul>
 					<li><a href="javascript:void(0);"><div style="background:url(AD/ad-1.jpg) no-repeat; background-position:center; width:100%; height:450px;"></div></a></li>
 					<li><a href="javascript:void(0);" ><div style="background:url(AD/ad-2.jpg) no-repeat; background-position:center ; width:100%; height:450px;"></div></a></li>
-					<li><a href="javascript:void(0);" ><div style="background:url(AD/ad-3.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
+					<li><a href="javascript:void(0);" ><div style="background:url(AD/ad-7.jpg) no-repeat rgb(226, 155, 197); background-position:center; width:100%; height:475px;"></div></a></li>
                   <%--  <li><a href="#" target="_blank"><div style="background:url(AD/ad-2.jpg) no-repeat #f7ddea; background-position:center; width:100%; height:450px;"></div></a></li>
                     <li><a href="#" target="_blank"><div style="background:url(AD/ad-1.jpg) no-repeat  #F60; background-position:center; width:100%; height:450px;"></div></a></li>--%>
 				</ul>
@@ -261,7 +261,7 @@
   <div class="product_list left">
   		<div class="slideGroup">
 			<div class="parHd">
-				<ul><li>新品上市</li><li>超值特惠</li><li>本期团购</li><li>产品精选</li><li>抢先一步</li></ul>
+				<ul><li>免押金</li><li>先租后买</li><li>一台起租</li><li>产品精选</li><li>上门服务</li></ul>
 			</div>
 			<div class="parBd">
 					<div class="slideBoxs">
@@ -545,8 +545,8 @@
   </div>
  </div>
  <!--友情链接-->
- <div class="link_style clearfix">
- <div class="title">友情链接</div>
+ <%--<div class="link_style clearfix">
+ <div class="title"></div>
  <div class="link_name">
   <a href="#"><img src="products/logo/34.jpg"  width="100"/></a>
   <a href="#"><img src="products/logo/34.jpg"  width="100"/></a>
@@ -563,13 +563,13 @@
   <a href="#"><img src="products/logo/34.jpg"  width="100"/></a>
  </div>
  </div>
-</div>
+</div>--%>
 <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">
-        <div class="logo left margin-r20"><img src="images/fo-logo.jpg" width="152" height="81" /></div>
-        <div class="left"><img src="images/qd.jpg" width="90"  height="90" />
-            <p>扫描下载APP</p>
+        <div class="logo left margin-r20"></div>
+        <div class="left">
+
         </div>
        <div class="">
     <dl>
@@ -600,7 +600,7 @@
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>	
+	</dl>
     <dl>
 	 <dt>帮助中心</dt>
 	 <dd><a href="#">保险需求测试</a></dd>
@@ -621,13 +621,13 @@
      <dd><a href="#">专题及活动</a></dd>
      <dd><a href="#">挑选保险产品</a> </dd>
      <dd><a href="#">常见问题 </a></dd>
-	</dl>	   
+	</dl>
    </div>
     </div>
 </div>
 <!--网站地图END-->
 <!--网站页脚-->
-<div class="copyright">
+<%--<div class="copyright">
     <div class="copyright-bg">
         <div class="hotline">为生活充电在线 <span>招商热线：****-********</span> 客服热线：400-******</div>
         <div class="hotline co-ph">
@@ -638,7 +638,7 @@
                 E-mail:****@****.gov.cn</p>
         </div>
     </div>
-</div>
+</div>--%>
  <!--右侧菜单栏购物车样式-->
 <div class="fixedBox">
   <ul class="fixedBoxList">

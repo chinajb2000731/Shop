@@ -123,7 +123,7 @@
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
                   <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green">用户中心</a>&nbsp&nbsp
-                  <a href="店铺专区.jsp" class="green">店铺专区</a>
+                  <a href="settings/seller/selectsellershop.do?sid=${seller.sid}" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
@@ -513,9 +513,8 @@
  <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">
-        <div class="logo left margin-r20"><img src="images/fo-logo.jpg" width="152" height="81" /></div>
-        <div class="left"><img src="images/qd.jpg" width="90"  height="90" />
-            <p>扫描下载APP</p>
+        <div class="logo left margin-r20"></div>
+        <div class="left">
         </div>
        <div class="">
     <dl>
@@ -565,20 +564,7 @@
    </div>
     </div>
 </div>
-<!--网站地图END-->
-<!--网站页脚-->
-<div class="copyright">
-    <div class="copyright-bg">
-        <div class="hotline">为生活充电在线 <span>招商热线：****-********</span> 客服热线：400-******</div>
-        <div class="hotline co-ph">
-            <p>版权所有Copyright ©***************</p>
-            <p>*ICP备***************号 不良信息举报</p>
-            <p>总机电话：****-*********/194/195/196 客服电话：4000****** 传 真：********
-                
-                E-mail:****@****.gov.cn</p>
-        </div>
-    </div>
-</div>
+
 
 
 <!-- 1. 模态框的显示按钮，通常用于显示指定的模态框 -->

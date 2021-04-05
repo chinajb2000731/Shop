@@ -126,4 +126,21 @@
     <update id="updateeviction">
         update cart set is_eviction=2 where id=#{id}
     </update>
+
+
+    <insert id="sellshop">
+       insert into shop(id,sid,shopname,shopaddress,shopdesc,selleridcard,idcardphoto,businessscope,pimage,shopflag)values
+       (#{id},#{sid},#{shopname},#{shopaddress},#{shopdesc},#{selleridcard},#{idcardphoto},#{businessscope},#{pimage},0)
+   </insert>
+
+    <select id="selectsellershop" resultType="shop">
+          select * from shop where sid=#{sid}
+    </select>
+    <select id="getshoptotalcount" resultType="int">
+        select count(*) from shop where sid=#{sid}
+    </select>
+
+    <select id="getonshoptotalcount" resultType="int">
+        select count(*) from shop where sid=#{sid} and shopflag=2;
+    </select>
 </mapper>

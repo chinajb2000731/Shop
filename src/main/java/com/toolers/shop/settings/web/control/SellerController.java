@@ -130,7 +130,88 @@ public class SellerController extends HttpServlet {
         {
             updateeviction(request,response);
         }
+        else if("/settings/seller/sellershop.do".equals(path))
+        {
+            sellershop(request,response);
+        }
+        else if("/settings/seller/selectsellershop.do".equals(path))
+        {
+            selectsellershop(request,response);
+        }
             
+    }
+
+    private void selectsellershop(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String sid=request.getParameter("sid");
+
+        List<Shop> shopList=us.selectsellershop(sid);
+        int shopcount=us.getshoptotalcount(sid);
+        int onshopcount=us.getonshoptotalcount(sid);
+        request.getSession().setAttribute("shopList",shopList);
+        request.getSession().setAttribute("shopcount",shopcount);
+        request.getSession().setAttribute("onshopcount",onshopcount);
+        try {
+            response.sendRedirect(request.getContextPath()+"/seller_center.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void sellershop(HttpServletRequest request, HttpServletResponse response) {
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        Shop shop=new Shop();
+        Map<String,Object> map=new HashMap<String,Object>();
+        String sid=request.getParameter("sid");
+        int i=0;
+        try {
+            DiskFileItemFactory factory=new DiskFileItemFactory();
+            ServletFileUpload upload=new ServletFileUpload(factory);
+            List<FileItem> parseRequest=upload.parseRequest(request);
+            for(FileItem item:parseRequest){
+                //判断是否是普通表单
+                boolean forField =item.isFormField();
+                if (forField)
+                {
+                    String fieldName=item.getFieldName();
+                    String fieldValue=item.getString("UTF-8");
+                    map.put(fieldName,fieldValue);
+                }
+                else{
+                    //文件上传
+                    String fileName=item.getName();
+                    fileName=CommonsUtils.getUUid()+fileName;
+                    String path=this.getServletContext().getRealPath("shopphoto");
+                    InputStream in=item.getInputStream();
+                    OutputStream out=new FileOutputStream(path+"/"+fileName);
+                    IOUtils.copy(in,out);
+                    in.close();
+                    out.close();
+                    item.delete();
+                    if(i==0) {
+                        map.put("businessscope", "shopphoto/" + fileName);
+                    }
+                    else if(i==1)
+                    {
+                        map.put("idcardphoto", "shopphoto/" + fileName);
+                    }
+                    else
+                    {
+                        map.put("pimage", "shopphoto/" + fileName);
+                    }
+                    i++;
+
+                }
+            }
+            BeanUtils.populate(shop,map);
+            shop.setId(CommonsUtils.getUUid());
+            shop.setSid(sid);
+            us.sellshop(shop);
+            selectsellershop(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateeviction(HttpServletRequest request, HttpServletResponse response) {
@@ -138,6 +219,7 @@ public class SellerController extends HttpServlet {
         String id=request.getParameter("id");
         us.updateeviction(id);
         sellerorder(request,response);
+
     }
 
     private void updatedeliveryaddress(HttpServletRequest request, HttpServletResponse response) {
@@ -350,14 +432,14 @@ public class SellerController extends HttpServlet {
         Product product=new Product();
         Map<String,Object> map=new HashMap<String,Object>();
         String sid=request.getParameter("sid");
-       /* String cid=request.getParameter("cid");
-        String pname=request.getParameter("pname");
-        String pdesc=request.getParameter("pdesc");
-        String pricestr=request.getParameter("price");
-
-        double price=Double.parseDouble(pricestr);
-        String rentstr=request.getParameter("rent");
-        double rent=Double.parseDouble(rentstr);*/
+       /* String cid=request.getParameter("cid");*/
+       /* String pname=request.getParameter("pname");*/
+       /*   String pdesc=request.getParameter("pdesc");
+        String pricestr=request.getParameter("price");*/
+       /* double price=Double.parseDouble(pricestr);*/
+      /*  String rentstr=request.getParameter("rent");*/
+        /*double rent=Double.parseDouble(rentstr);*/
+      /*  System.out.println(pname);*/
         try {
             DiskFileItemFactory factory=new DiskFileItemFactory();
             ServletFileUpload upload=new ServletFileUpload(factory);

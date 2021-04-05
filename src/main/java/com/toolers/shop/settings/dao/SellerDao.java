@@ -67,6 +67,14 @@ public interface SellerDao {
 
     void updateeviction(String id);
 
+    void sellshop(Shop shop);
+
+    List<Shop> selectsellershop(String sid);
+
+    int getshoptotalcount(String sid);
+
+    int getonshoptotalcount(String sid);
+
 
 
 

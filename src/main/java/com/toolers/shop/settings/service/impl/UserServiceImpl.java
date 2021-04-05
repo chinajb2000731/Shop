@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
         if (user!=null)
         {
-            throw new RegisterException("账号以存在");
+            throw new RegisterException("账号已存在");
         }
         user=userDao.register(map);
         return user;

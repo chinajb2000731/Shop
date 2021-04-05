@@ -9,7 +9,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>亚夫在线</title>
+<title>易小租</title>
 <link href="css/base.css" rel="stylesheet" type="text/css" />
 <link href="css/css.css" rel="stylesheet" type="text/css" />
 <link href="css/style1.css" rel="stylesheet" type="text/css" />
@@ -184,7 +184,7 @@ document.getElementById(bg_div).style.display='none';
                     <c:when test="${empty user and !empty seller}">
                         <li><span>欢迎:【${seller.name}】</span>&nbsp&nbsp</li>
                         <li><a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class=" colororange">用户中心</a></li>
-                        <li><a href="店铺专区.jsp">店铺专区</a></li>
+                        <li><a href="seller_center.jsp">店铺专区</a></li>
                     </c:when>
                     <c:otherwise>
                         <li><span>欢迎:【${user.name}】</span>&nbsp&nbsp</li>
@@ -243,7 +243,7 @@ document.getElementById(bg_div).style.display='none';
 
 <!--网站头部-->
 <div class="sup-wid">
-	<div><img src="images/TB27.gif" width="100%"/></div>
+	<div><img src="images/biaoti.png" width="100%"/></div>
     <div class="supplie-top">
         <div class="clear">
             <table width="100%" border="0" cellpadding="0" cellspacing="0" class="nav">
@@ -257,7 +257,7 @@ document.getElementById(bg_div).style.display='none';
                 </tr>
             </table>
         </div>
-        <div class=" clear bread"><a href="javascript:void(0)">首页</a> <span class="pipe">&gt;</span> <a href="javascript:void(0)">某供应商</a> <span class="pipe">&gt;</span> <a href="javascript:void(0)">某产品</a></div>
+        <div class=" clear bread"><a href="javascript:void(0)"></a> <span class="pipe"></span> <a href="javascript:void(0)"></a> <span class="pipe"></span> <a href="javascript:void(0)"></a></div>
 </div>
     <div class="pro_detail" >
         <div class="pro_detail_img float-lt">
@@ -448,7 +448,7 @@ document.getElementById(bg_div).style.display='none';
         </div>
     </div>
     <div class="hotpro">
-        <div class="hotpro_title">热销产品</div>
+        <div class="hotpro_title">热租产品</div>
         <div class="hotpro_box">
             <div class="pro-view-hot">
                 <ul>
@@ -521,9 +521,9 @@ document.getElementById(bg_div).style.display='none';
 <!--网站地图-->
 <div class="fri-link-bg">
     <div class="fri-link">
-        <div class="logo float-lt margin-r20"><img src="images/fo-logo.jpg" width="152" height="81" /></div>
-        <div class="float-lt"><img src="images/qd.jpg" width="90"  height="90" />
-            <p>扫描下载APP</p>
+        <div class="logo float-lt margin-r20"></div>
+        <div class="float-lt">
+
         </div>
         <ul class="link-add float-lt ma">
             <li><a href="#" class="font14">网站栏目</a></li>
@@ -569,23 +569,7 @@ document.getElementById(bg_div).style.display='none';
         </ul>
     </div>
 </div>
-<!--网站地图END-->
 
-
-<!--网站页脚-->
-<div class="copyright">
-    <div class="copyright-bg">
-        <div class="hotline">为生活充电在线 <span>招商热线：****-********</span> 客服热线：400-******</div>
-        <div class="hotline co-ph">
-            <p>版权所有Copyright ©***************</p>
-            <p>*ICP备***************号 不良信息举报</p>
-            <p>总机电话：****-*********/194/195/196 客服电话：4000****** 传 真：********
-                
-                E-mail:****@****.gov.cn</p>
-        </div>
-    </div>
-</div>
-<!--网站页脚END-->
 
 
 

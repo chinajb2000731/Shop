@@ -39,7 +39,7 @@
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
                   <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
-                  <a href="店铺专区.jsp" class="green">店铺专区</a>
+                  <a href="settings/seller/selectsellershop.do?sid=${seller.sid}" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
@@ -147,10 +147,33 @@
   <div class="menu_styles">
    <ul class="menu_list">
     <li class="on"><em></em><a href="javascript:void(0)">店铺专区</a></li>
-    <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
-    <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
-    <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">发货管理</a></li>
-    <li><em></em><a href="收款账号.jsp">收款账户</a></li>
+       <c:if test="${onshopcount!=0}">
+           <li ><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
+       </c:if>
+       <c:if test="${onshopcount==0}">
+           <li ><em></em><a href="javascript:void(0)">商品专区(审核未通过不可用)</a></li>
+       </c:if>
+
+       <c:if test="${onshopcount!=0}">
+           <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
+       </c:if>
+       <c:if test="${onshopcount==0}">
+           <li ><em></em><a href="javascript:void(0)">订单专区(审核未通过不可用)</a></li>
+       </c:if>
+
+       <c:if test="${onshopcount!=0}">
+           <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">发货管理</a></li>
+       </c:if>
+       <c:if test="${onshopcount==0}">
+           <li ><em></em><a href="javascript:void(0)">发货管理(审核未通过不可用)</a></li>
+       </c:if>
+
+       <c:if test="${onshopcount!=0}">
+           <li><em></em><a href="收款账号.jsp">收款账户</a></li>
+       </c:if>
+       <c:if test="${onshopcount==0}">
+           <li ><em></em><a href="javascript:void(0)">收款账户(审核未通过不可用)</a></li>
+       </c:if>
    </ul>
   </div>
 </div>
@@ -159,36 +182,39 @@
    <div class="title_style"><em></em>店铺专区</div>
    <div class="content_style">
     <!--添加店铺-->
-   <!-- <div class="add_shops">
+       <c:if test="${shopcount==0}">
+    <div class="add_shops">
      <h3>你好，目前你没有任何店铺！</h3>
-     <a href="#">添加店铺</a>
-    </div>-->
-    <div class="Add_shop_style"><a href="./店铺专区（添加店铺）.html" id="newShop" onclick="addShop()" class="New_Shop_btn">新增店铺</a></div>
+     <a href="seller_shop.jsp">添加店铺</a>
+    </div>
+       </c:if>
+    <div class="Add_shop_style"><a href="seller_shop.jsp" id="newShop" onclick="addShop()" class="New_Shop_btn">新增店铺</a></div>
     <div class="shops_list">
-     <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="userheadportrait/1.jpg" /></a><span class="status">审核通过</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">西南交通大学</a>
-       <p class="Introduction">学校创建于1896年，前身为山海关北洋铁路官学堂，是中国第一所工程高等学府。建校以来，学校先后定名交通大学唐山工（程）学院、国立交通大学贵州分校、中国交通大学、北方交通大学、唐山铁道学院等。1952年全国高等学校院系调整，学校部分系科师资调入清华大学、天津大学等兄弟院校，1964年根据中央建设“大三线”精神内迁四川，1972年更名西南交通大学，1989年迁成都。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="edit_shops">编辑店铺</a><a href="店铺公告.html" class="shops_Bulletin">店铺公告</a></p>
-      </li>
-     </ul>
-     <%-- <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核中</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a></p>
-      </li>
-     </ul>--%>
-    <%--  <ul class="list_style">
-      <li class="img_link"><a href="#"><img src="images/shop_logo.jpg" /></a><span class="status">审核失败</span></li>
-      <li class="shopscontent">
-       <a href="#" class="title">江苏业祥科技股份有限公司</a>
-       <p class="Introduction">南京业祥科技发展有限公司成立于2003年，位于南京市风景秀丽的科技创新型科技园区----中山科技园。是安全技术防范领域的专业企业，集安全防范系统的设计研发、生产、销售及售后服务为一体的高科技企业。</p>
-       <p class="shops_operating"><a href="#" class="View_info">查看详情</a><a href="#" class="delete_shops">删除店铺</a></p>
-      </li>
-     </ul>--%>
+        <c:forEach items="${shopList}" var="shop">
+            <ul class="list_style">
+                <li class="img_link">
+                    <a href="#"> <img src="${pageContext.request.contextPath}/${shop.pimage}" /></a>
+                    <c:if test="${shop.shopflag==0}">
+                        <span class="status">待审核</span>
+                    </c:if>
+                    <c:if test="${shop.shopflag==1}">
+                        <span class="status" >审核未通过</span>
+                    </c:if>
+                    <c:if test="${shop.shopflag==2}">
+                        <span class="status" >审核通过</span>
+                    </c:if>
+                </li>
+                <li class="shopscontent">
+                    <a href="" class="title">${shop.shopname}</a>
+                    <p class="Introduction">${shop.shopdesc}</p>
+                    <p class="shops_operating">
+                        <a href="#" class="View_info">查看详情</a>
+                        <a href="#" class="edit_shops">编辑店铺</a>
+                        <a href="#" class="shops_Bulletin">店铺公告</a>
+                    </p>
+                </li>
+            </ul>
+        </c:forEach>
     </div>
    </div>
 </div>
@@ -196,9 +222,9 @@
 <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">
-        <div class="logo left margin-r20"><img src="images/fo-logo.jpg" width="152" height="81" /></div>
-        <div class="left"><img src="images/qd.jpg" width="90"  height="90" />
-            <p>扫描下载APP</p>
+        <div class="logo left margin-r20"></div>
+        <div class="left">
+
         </div>
        <div class="">
     <dl>
@@ -254,19 +280,8 @@
    </div>
     </div>
 </div>
-<!--网站地图END-->
-<!--网站页脚-->
-<div class="copyright">
-    <div class="copyright-bg">
-        <div class="hotline">为生活充电在线 <span>招商热线：****-********</span> 客服热线：400-******</div>
-        <div class="hotline co-ph">
-            <p>版权所有Copyright ©***************</p>
-            <p>*ICP备***************号 不良信息举报</p>
-            <p>总机电话：****-*********/194/195/196 客服电话：4000****** 传 真：********
-                
-                E-mail:****@****.gov.cn</p>
-        </div>
-    </div>
-</div>
+
+
+
 </body>
 </html>

@@ -59,6 +59,14 @@ public interface SellerService {
 
     void updateeviction(String id);
 
+    void sellshop(Shop shop);
+
+    List<Shop> selectsellershop(String sid);
+
+    int getshoptotalcount(String sid);
+
+    int getonshoptotalcount(String sid);
+
 
 
     /*List<Product> selectcheckproduct(String sid,int index,int currentCount);*/

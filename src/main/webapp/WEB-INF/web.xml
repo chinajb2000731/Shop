@@ -55,6 +55,8 @@
         <url-pattern>/settings/seller/deletedeliveryaddress.do</url-pattern>
         <url-pattern>/settings/seller/updatedeliveryaddress.do</url-pattern>
         <url-pattern>/settings/seller/updateeviction.do</url-pattern>
+        <url-pattern>/settings/seller/sellershop.do</url-pattern>
+        <url-pattern>/settings/seller/selectsellershop.do</url-pattern>
     </servlet-mapping>
 
 
@@ -83,6 +85,7 @@
         <url-pattern>/settings/product/selectusercenterorder.do</url-pattern>
         <url-pattern>/settings/product/updaterentday.do</url-pattern>
         <url-pattern>/settings/product/eviction.do</url-pattern>
+        <url-pattern>/settings/product/productpay.do</url-pattern>
     </servlet-mapping>
 
     <filter>

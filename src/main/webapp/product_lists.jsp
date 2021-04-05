@@ -83,7 +83,7 @@ function productsearch() {
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
                   <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
-                  <a href="店铺专区.jsp" class="green">店铺专区</a>
+                  <a href="seller_center.jsp" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
@@ -189,8 +189,8 @@ function productsearch() {
 	<div class="Navigation" id="Navigation">
         <ul class="Navigation_name">
             <li><a href="index.jsp">首页</a></li>
-            <li class="hour"><span class="bg_muen"></span><a href="半小时圈主页.jsp">半小时生活圈</a></li>
-            <li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>
+            <li class="hour"><a href="半小时圈主页.jsp">半小时生活圈</a></li>
+          <%--  <li><a href="javascript:void(0)">预售专区</a><em class="hot_icon"></em></li>--%>
             <li><a href="settings/product/productlists.do?cid=1">商城</a></li>
 
             <li><a href="javascript:void(0)">热销活动</a></li>
@@ -362,9 +362,8 @@ function productsearch() {
 <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">
-        <div class="logo left margin-r20"><img src="images/fo-logo.jpg" width="152" height="81" /></div>
-        <div class="left"><img src="images/qd.jpg" width="90"  height="90" />
-            <p>扫描下载APP</p>
+        <div class="logo left margin-r20"></div>
+        <div class="left">
         </div>
        <div class="">
     <dl>
@@ -419,63 +418,6 @@ function productsearch() {
 	</dl>	   
    </div>
     </div>
-</div>
-<!--网站地图END-->
-<!--网站页脚-->
-<div class="copyright">
-    <div class="copyright-bg">
-        <div class="hotline">为生活充电在线 <span>招商热线：****-********</span> 客服热线：400-******</div>
-        <div class="hotline co-ph">
-            <p>版权所有Copyright ©***************</p>
-            <p>*ICP备***************号 不良信息举报</p>
-            <p>总机电话：****-*********/194/195/196 客服电话：4000****** 传 真：********
-                
-                E-mail:****@****.gov.cn</p>
-        </div>
-    </div>
-</div>
- <!--右侧菜单栏购物车样式-->
-<div class="fixedBox">
-  <ul class="fixedBoxList">
-      <li class="fixeBoxLi user"><a href="#"> <span class="fixeBoxSpan"></span> <strong>消息中心</strong></a> </li>
-    <li class="fixeBoxLi cart_bd" style="display:block;" >
-		<p class="good_cart">9</p>
-			<span class="fixeBoxSpan"></span> <strong>购物车</strong>
-			<div class="cartBox">
-       		<div class="bjfff"></div><div class="message">购物车内暂无商品，赶紧选购吧</div>    </div></li>
-    <li class="fixeBoxLi Service "> <span class="fixeBoxSpan"></span> <strong>客服</strong>
-      <div class="ServiceBox">
-        <div class="bjfffs"></div>
-        <dl onclick="javascript:;">
-		    <dt><img src="images/Service1.png"></dt>
-		       <dd><strong>QQ客服1</strong>
-		          <p class="p1">9:00-22:00</p>
-		           <p class="p2"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456&amp;site=DGG三端同步&amp;menu=yes">点击交谈</a></p>
-		          </dd>
-		        </dl>
-				<dl onclick="javascript:;">
-		          <dt><img src="images/Service1.png"></dt>
-		          <dd> <strong>QQ客服1</strong>
-		            <p class="p1">9:00-22:00</p>
-		            <p class="p2"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456&amp;site=DGG三端同步&amp;menu=yes">点击交谈</a></p>
-		          </dd>
-		        </dl>
-	          </div>
-     </li>
-	 <li class="fixeBoxLi code cart_bd " style="display:block;" id="cartboxs">
-			<span class="fixeBoxSpan"></span> <strong>微信</strong>
-			<div class="cartBox">
-       		<div class="bjfff"></div>
-			<div class="QR_code">
-			 <p><img src="images/erweim.jpg" width="180px" height="180px" /></p>
-			 <p>微信扫扫，关注我们</p>
-			</div>		
-			</div>
-			</li>
-
-    <li class="fixeBoxLi Home"> <a href="./"> <span class="fixeBoxSpan"></span> <strong>收藏夹</strong> </a> </li>
-    <li class="fixeBoxLi BackToTop"> <span class="fixeBoxSpan"></span> <strong>返回顶部</strong> </li>
-  </ul>
 </div>
 </div>
 </body>

@@ -36,7 +36,7 @@
               <c:when test="${empty user and !empty seller}">
                   <span>欢迎:【${seller.name}】</span>&nbsp&nbsp
                   <a href="settings/product/selectusercenterorder.do?cid=${seller.loginAct}&flag=1" class="green" >用户中心</a>&nbsp&nbsp
-                  <a href="店铺专区.jsp" class="green">店铺专区</a>
+                  <a href="settings/seller/selectsellershop.do?sid=${seller.sid}" class="green">店铺专区</a>
               </c:when>
               <c:otherwise>
                   <span>欢迎:【${user.name}】</span>&nbsp&nbsp
@@ -146,7 +146,7 @@
 <!--列表-->
   <div class="menu_style">
    <ul class="menu_list">
-    <li ><em></em><a href="店铺专区.jsp">店铺专区</a></li>
+    <li ><em></em><a href="seller_center.jsp">店铺专区</a></li>
     <li class="on"><em></em><a href="settings/seller/selectcheckproduct.do?sid=${seller.sid}">商品专区</a></li>
     <li><em></em><a href="settings/seller/sellerorder.do?sid=${seller.sid}">订单专区</a></li>
     <li><em></em><a href="settings/seller/selectdeliveryaddress.do?sid=${seller.sid}">发货管理</a></li>
@@ -213,9 +213,8 @@ $(function(){
 <!--网站地图-->
 <div class="fri-link-bg clearfix">
     <div class="fri-link">
-        <div class="logo left margin-r20"><img src="images/fo-logo.jpg" width="152" height="81" /></div>
-        <div class="left"><img src="images/qd.jpg" width="90"  height="90" />
-            <p>扫描下载APP</p>
+        <div class="logo left margin-r20"></div>
+        <div class="left">
         </div>
        <div class="">
     <dl>
@@ -271,19 +270,6 @@ $(function(){
    </div>
     </div>
 </div>
-<!--网站地图END-->
-<!--网站页脚-->
-<div class="copyright">
-    <div class="copyright-bg">
-        <div class="hotline">为生活充电在线 <span>招商热线：****-********</span> 客服热线：400-******</div>
-        <div class="hotline co-ph">
-            <p>版权所有Copyright ©***************</p>
-            <p>*ICP备***************号 不良信息举报</p>
-            <p>总机电话：****-*********/194/195/196 客服电话：4000****** 传 真：********
-                
-                E-mail:****@****.gov.cn</p>
-        </div>
-    </div>
-</div>
+
 </body>
 </html>

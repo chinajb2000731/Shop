@@ -23,7 +23,7 @@ public class SellerServiceImpl implements SellerService {
         Seller seller1=sellerDao.registerSelect(seller);
         if (seller1!=null)
         {
-            throw new RegisterException("账号以存在");
+            throw new RegisterException("账号已存在");
         }
         seller1=sellerDao.register(seller);
         return seller1;
@@ -269,6 +269,29 @@ public class SellerServiceImpl implements SellerService {
     public void updateeviction(String id) {
         SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
         sellerDao.updateeviction(id);
+    }
+
+    public void sellshop(Shop shop) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        sellerDao.sellshop(shop);
+    }
+
+    public List<Shop> selectsellershop(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+       List<Shop> shopList= sellerDao.selectsellershop(sid);
+        return shopList;
+    }
+
+    public int getshoptotalcount(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        int shopcount=sellerDao.getshoptotalcount(sid);
+        return shopcount;
+    }
+
+    public int getonshoptotalcount(String sid) {
+        SellerDao sellerDao=SqlSessionUtil.getSqlSession().getMapper(SellerDao.class);
+        int shopcount=sellerDao.getonshoptotalcount(sid);
+        return shopcount;
     }
 
 
