@@ -81,9 +81,25 @@ public class UserController extends HttpServlet {
         {
             logout(request,response);
         }
+        else if("/settings/user/finduseraddress2.do".equals(path))
+        {
+            finduseraddress2(request,response);
+        }
 
 
+    }
 
+    private void finduseraddress2(HttpServletRequest request, HttpServletResponse response) {
+
+        UserService us=(UserService) ServiceFactory.getService(new UserServiceImpl());
+        String loginAct=request.getParameter("loginAct");
+        AddressBean addressBean=us.finduseraddress(loginAct);
+        request.getSession().setAttribute("addressBean",addressBean);
+        try {
+            response.sendRedirect(request.getContextPath()+"/useraddress.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void logout(HttpServletRequest request, HttpServletResponse response) {
@@ -150,7 +166,6 @@ public class UserController extends HttpServlet {
         request.getSession().setAttribute("addressBean",addressBean);
         PrintJson.printJsonFlag(response,true);
 
-
     }
 
     private void useraddress(HttpServletRequest request, HttpServletResponse response) {
@@ -175,19 +190,6 @@ public class UserController extends HttpServlet {
 
 
          request.getSession().setAttribute("addressBean",addressBean);
-       /* try {
-            request.getRequestDispatcher("/useraddress.jsp").forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        /*try {
-            response.sendRedirect(request.getContextPath()+"/useraddress.jsp");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
 
     }
 
@@ -254,7 +256,6 @@ public class UserController extends HttpServlet {
 
 
     private void register(HttpServletRequest request, HttpServletResponse response) {
-
         System.out.println("进入到验证注册的操作");
         String registerAct=request.getParameter("registerAct");
         String registerPwd=request.getParameter("registerPwd1");

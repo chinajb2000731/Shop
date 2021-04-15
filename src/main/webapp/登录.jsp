@@ -104,7 +104,7 @@ function sellerlogin() {
             if(data.success)
 
             {
-                location.href="settings/product/showcart.do?flag=1&tloginAc="+loginAct;
+                location.href="settings/product/showcart.do?flag=1&loginAc="+loginAct;
 
             }else {
 

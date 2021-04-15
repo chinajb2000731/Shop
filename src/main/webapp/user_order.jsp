@@ -213,7 +213,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <dd>
         <ul>
             <li> <a href="user_order.jsp">我的订单</a></li>
-            <li> <a href="useraddress.jsp">收货地址</a></li>
+            <c:choose>
+                <c:when test="${empty seller}">
+                    <li> <a href="settings/user/finduseraddress2.do?loginAct=${user.loginAct}">收货地址</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li> <a href="settings/seller/findselleraddress2.do?loginAct=${seller.loginAct}">收货地址</a></li>
+                </c:otherwise>
+            </c:choose>
             <li> <a href="javascript:void(0)">产品预租</a></li>
             <li><a href="javascript:void(0)">跟踪包裹</a></li>
         </ul>

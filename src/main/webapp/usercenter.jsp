@@ -214,7 +214,15 @@
                     <li> <a href="settings/product/selectorder.do?cid=${seller.loginAct}&flag=1&orderflag=0">全部订单</a></li>
                 </c:otherwise>
             </c:choose>
-            <li> <a href="useraddress.jsp" onclick="">收货地址</a></li>
+            <c:choose>
+                <c:when test="${empty seller}">
+                    <li> <a href="settings/user/finduseraddress2.do?loginAct=${user.loginAct}">收货地址</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li> <a href="settings/seller/findselleraddress2.do?loginAct=${seller.loginAct}">收货地址</a></li>
+                </c:otherwise>
+            </c:choose>
+
           <li> <a href="javascript:void(0)">产品预租</a></li>
             <li><a href="javascript:void(0)">跟踪包裹</a></li>
         </ul>
@@ -436,15 +444,15 @@
     <div class="right_user_recording">
     <div class="us_Record">
 	  <div id="Record_p" class="Record_p">
-	    <div class="title_name"><span class="name left">广告区(西南交通大学)</span><span class="pageState right"><span>1</span>/7</span></div>
+	    <div class="title_name"><span class="name left">广告区</span><span class="pageState right"><span>1</span>/7</span></div>
 	      <div class="hd"><a class="next">&lt;</a><a class="prev">&gt;</a></div>
             <div class="bd">
                 <ul >
                 <li class="clone">
                         <div class="p_width">
-                    <div class="pic"><a href="javascript:void(0)"><img src="userheadportrait/1.jpg"></a></div>
-                    <div class="title"><a href="javascript:void(0)">西南交通大学</a></div>
-                    <div class="Purchase_info"><span class="p_Price">百年学府</span> <a href="https://www.swjtu.edu.cn/" class="Purchase">立即加入</a></div>
+                    <div class="pic"><a href="javascript:void(0)"><img src="images/login-pic.jpg"></a></div>
+                    <div class="title"><a href="javascript:void(0)">广告区</a></div>
+                    <div class="Purchase_info"><span class="p_Price">广告区</span> <a href="https://www.swjtu.edu.cn/" class="Purchase">立即加入</a></div>
                 </div>	
                     </li>
                 </ul>

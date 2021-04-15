@@ -25,6 +25,7 @@
         <url-pattern>/settings/user/deleteuseraddress.do</url-pattern>
         <url-pattern>/settings/user/updateuseraddress.do</url-pattern>
         <url-pattern>/settings/user/logout.do</url-pattern>
+        <url-pattern>/settings/user/finduseraddress2.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -57,6 +58,7 @@
         <url-pattern>/settings/seller/updateeviction.do</url-pattern>
         <url-pattern>/settings/seller/sellershop.do</url-pattern>
         <url-pattern>/settings/seller/selectsellershop.do</url-pattern>
+        <url-pattern>/settings/seller/findselleraddress2.do</url-pattern>
     </servlet-mapping>
 
 

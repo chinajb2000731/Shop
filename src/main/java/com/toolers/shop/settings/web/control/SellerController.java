@@ -138,7 +138,26 @@ public class SellerController extends HttpServlet {
         {
             selectsellershop(request,response);
         }
+        else if("/settings/seller/findselleraddress2.do".equals(path))
+        {
+
+            findselleraddress2(request,response);
+        }
             
+    }
+
+    private void findselleraddress2(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入卖家地址");
+        SellerService us=(SellerService) ServiceFactory.getService(new SellerServiceImpl());
+        String loginAct=request.getParameter("loginAct");
+        AddressBean addressBean=us.findselleraddress(loginAct);
+        request.getSession().setAttribute("addressBean",addressBean);
+        try {
+            response.sendRedirect(request.getContextPath()+"/useraddress.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void selectsellershop(HttpServletRequest request, HttpServletResponse response) {
